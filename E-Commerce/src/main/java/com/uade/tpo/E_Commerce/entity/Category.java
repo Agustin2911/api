@@ -12,7 +12,7 @@ public class Category {
     private String name_category;
 
 
-    public void Category(int id,String name){
+    public Category(int id,String name){
 
         this.id_category=id;
         this.name_category=name;
