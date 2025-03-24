@@ -13,7 +13,7 @@ public class Basic_User {
     private String mail;
     private String password;
 
-    public void Basic_User(int id,String user, String mail_user, String password_user){
+    public Basic_User(int id,String user, String mail_user, String password_user){
         this.id_user=id;
         this.username=user;
         this.mail=mail_user;
