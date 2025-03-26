@@ -1,21 +1,24 @@
 package com.uade.tpo.E_Commerce.entity;
 
 
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 
-@Builder
+
 @Data
-
+@Entity
 public class Product_Stock {
-    private int id_product;
-    private int stock_warning;
-    private int id_shop;
 
-    public Product_Stock(int id_product, int stock_warning, int id_shop) {
-        this.id_product = id_product;
-        this.stock_warning = stock_warning;
-        this.id_shop = id_shop;
-    }
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "id_product",nullable = false)
+    private Product id_product;
+
+    @Column(name="stock",nullable = false)
+    private int stock;
+
+    @Column(name = "stock_warning",nullable = false)
+    private int stock_warning;
 
 }

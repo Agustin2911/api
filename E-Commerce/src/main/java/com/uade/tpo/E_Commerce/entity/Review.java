@@ -1,22 +1,26 @@
 package com.uade.tpo.E_Commerce.entity;
 
 
-import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
-@Builder
+@Entity
 public class Review {
 
-    private int id_comment;
-    private String text;
-    private int starts;
-    private int id_product;
 
-    public Review(int id_comment, String text, int starts, int id_product) {
-        this.id_comment = id_comment;
-        this.text = text;
-        this.starts = starts;
-        this.id_product = id_product;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id_comment;
+
+    @Column(name="text" , length = 2000)
+    private String text;
+
+    @Column(name="stars")
+    private int stars;
+
+    @ManyToOne
+    @JoinColumn(name = "id_product",nullable = false)
+    private Product id_product;
+
 }
