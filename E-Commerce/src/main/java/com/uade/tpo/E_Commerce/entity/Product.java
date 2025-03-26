@@ -1,29 +1,37 @@
 package com.uade.tpo.E_Commerce.entity;
 
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 
-@Builder
 @Data
+@Entity(name = "product")
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_product;
+
+    @Column(name = "product_name",length = 100)
     private String product_name;
+
+    @Column(name = "photo_url",length = 500)
     private String photo_url;
+
+    @Column(name = "price",nullable = false)
     private int price;
-    private int id_sub_category;
+
+    @ManyToOne
+    @JoinColumn(name = "id_sub_category",nullable = false)
+    private Sub_Category id_sub_category;
+
+    @Column(name = "descritpion",length = 500)
     private String description;
+
+    @Column(name = "discount_state",length = 5)
     private String discount_state;
+
+    @Column(name = "discount")
     private int discount;
 
-    public Product(int id_product, String product_name, String photo_url, int price, int id_sub_category, String description, String discount_state, int discount) {
-        this.id_product = id_product;
-        this.product_name = product_name;
-        this.photo_url = photo_url;
-        this.price = price;
-        this.id_sub_category = id_sub_category;
-        this.description = description;
-        this.discount_state = discount_state;
-        this.discount = discount;
-    }
 }

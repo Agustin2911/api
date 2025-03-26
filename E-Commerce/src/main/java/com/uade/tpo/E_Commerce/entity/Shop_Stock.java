@@ -1,19 +1,21 @@
 package com.uade.tpo.E_Commerce.entity;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Builder;
 import lombok.Data;
 
-@Builder
+
 @Data
+@Entity
 public class Shop_Stock {
+
+
+    @Id
     private int id_product;
     private int id_shop;
     private int stock;
 
-    public Shop_Stock(int id_product, int id_shop, int stock) {
-        this.id_product = id_product;
-        this.id_shop = id_shop;
-        this.stock = stock;
-    }
+
 }
