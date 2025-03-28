@@ -9,9 +9,7 @@ import lombok.Data;
 @Entity
 public class Category {
 
-    public Category(){
-
-    }
+    public Category(){}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

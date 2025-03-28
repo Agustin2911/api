@@ -9,6 +9,10 @@ import java.io.Serializable;
 @Entity
 public class User_Roles{
 
+
+    public User_Roles(){}
+
+
     @Id
     @ManyToOne
     @JoinColumn(name = "id_role", referencedColumnName = "id_role", nullable = false)
