@@ -1,18 +1,30 @@
 package com.uade.tpo.E_Commerce.entity;
 
-
-import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.Data;
 
-@Builder
 @Data
+@Entity(name = "company_shops")
 public class Company_Shops {
-    private int id_user;
-    private int id_shop;
 
-    public Company_Shops(int id_user, int id_shop){
-        this.id_user = id_user;
-        this.id_shop = id_shop;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_company_shop")
+    private int idCompanyShop;
+
+    @ManyToOne
+    @JoinColumn(name = "id_user", nullable = false)
+    private Basic_User user;
+
+    @ManyToOne
+    @JoinColumn(name = "id_shop", nullable = false)
+    private Shops shop;
+
+    public Company_Shops() {
     }
 
+    public Company_Shops(Basic_User user, Shops shop) {
+        this.user = user;
+        this.shop = shop;
+    }
 }

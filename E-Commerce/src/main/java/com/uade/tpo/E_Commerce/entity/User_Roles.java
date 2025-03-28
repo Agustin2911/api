@@ -1,17 +1,31 @@
 package com.uade.tpo.E_Commerce.entity;
-import lombok.Builder;
+
+import jakarta.persistence.*;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-@Builder
-public class User_Roles {
+@Entity
+public class User_Roles implements Serializable {
 
-    private int id_role;
-    private int id_user;
+    private static final long serialVersionUID = 1L;
 
-    public User_Roles(int id_r,int id_u){
-        this.id_role=id_r;
-        this.id_user=id_u;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "id_role", referencedColumnName = "id_role", nullable = false)
+    private Roles role;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "id_user", referencedColumnName = "id_user", nullable = false)
+    private Basic_User user;
+
+    public User_Roles() {
     }
 
+    public User_Roles(Roles role, Basic_User user) {
+        this.role = role;
+        this.user = user;
+    }
 }

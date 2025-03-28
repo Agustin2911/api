@@ -1,12 +1,7 @@
 package com.uade.tpo.E_Commerce.entity;
 
-
-import lombok.Builder;
 import lombok.Data;
 
-import java.util.Date;
-
-@Builder
 @Data
 public class Delivery_Status {
     private int id_delivery;

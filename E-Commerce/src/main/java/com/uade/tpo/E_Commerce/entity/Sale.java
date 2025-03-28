@@ -1,12 +1,10 @@
 package com.uade.tpo.E_Commerce.entity;
 
-import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-@Builder
 public class Sale {
     private int id_sale;
     private int total_price;
