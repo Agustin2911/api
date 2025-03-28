@@ -1,26 +1,32 @@
 package com.uade.tpo.E_Commerce.entity;
 
-
-import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
 
-@Builder
 @Data
+@Entity
 public class Delivery_Status {
-    private int id_delivery;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_delivery;
+
+    @Column(name = "delivery_type", length = 14)
     private String delivery_type;
+
+    @Column(name = "address", length = 50)
     private String address;
-    private int id_sale;
+
+    @Column(name = "delivery_status", length = 15)
     private String delivery_Status;
 
-    public Delivery_Status(int id_delivery, String delivery_type, String address, int id_sale, String delivery_Status){
-        this.id_delivery = id_delivery;
-        this.delivery_type = delivery_type;
-        this.address = address;
-        this.id_sale = id_sale;
-        this.delivery_Status = delivery_Status;
-    }
+    @OneToOne
+    @JoinColumn(name = "id_sale", nullable = false)
+    private Sale sale;
+
+
+
 }
 

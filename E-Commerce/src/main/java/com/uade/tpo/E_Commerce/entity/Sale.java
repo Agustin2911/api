@@ -1,24 +1,34 @@
 package com.uade.tpo.E_Commerce.entity;
 
-import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.Data;
-
 import java.util.Date;
 
 @Data
-@Builder
+@Entity(name = "sale")
 public class Sale {
-    private int id_sale;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_sale;
+
+    @Column(name = "total_price", nullable = false)
     private int total_price;
+
+
+    @Column(name = "id_user", nullable = false)
     private int id_user;
+
+    @Column(name = "sale_date", nullable = false)
     private Date sale_date;
 
-    public Sale (int id_sale, int total_price, int id_user, Date sale_date){
-        this.id_sale = id_sale;
-        this.total_price = total_price;
-        this.id_user = id_user;
-        this.sale_date = sale_date;
-    }
+    @OneToOne(mappedBy = "sale")
+    private Delivery_Status delivery_status;
+
+    @OneToOne
+    @JoinColumn(name = "id_user", nullable = false)
+    private Buyer_User buyer_user;
+
 
 }
 

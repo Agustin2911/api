@@ -1,27 +1,30 @@
 package com.uade.tpo.E_Commerce.entity;
 
 
-import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
-@Builder
+@Entity
 public class Seller_User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_user;
+
+    @Column(name = "cuit", nullable = false)
     private int cuit;
+
+    @Column(name = "company_name", length = 50)
     private String company_name;
+
+    @Column(name = "description", length = 2000)
     private String description;
+
+    @Column(name = "state", length = 30)
     private String state;
 
-
-    public void Seller_user(int id, int cuit_company,String company, String description_brand, String state_brand){
-        this.id_user=id;
-        this.cuit=cuit_company;
-        this.description=description_brand;
-        this.company_name=company;
-        this.state=state_brand;
-    }
-
+    @OneToMany(mappedBy = "Seller_User")
+    private Company_Shops company_shops;
 
 }
