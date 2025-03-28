@@ -1,7 +1,6 @@
 package com.uade.tpo.E_Commerce.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Data;
 
 @Data
@@ -25,7 +24,7 @@ public class Product {
     @JoinColumn(name = "id_sub_category",nullable = false)
     private Sub_Category id_sub_category;
 
-    @Column(name = "descritpion",length = 500)
+    @Column(name = "description",length = 500)
     private String description;
 
     @Column(name = "discount_state",length = 5)

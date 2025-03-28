@@ -1,25 +1,26 @@
 package com.uade.tpo.E_Commerce.entity;
 
-
-import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
-@Builder
+@Entity(name = "buyer_user")
 public class Buyer_User {
 
-    private int id_user;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_user;
+
+    @Column(name = "name", length =  30)
     private String name;
+
+    @Column(name = "last_name", length = 30)
     private String last_name;
+
+    @Column(name = "dni", nullable = false)
     private int dni;
 
-    public Buyer_User(int id,String user_name, String user_last_name,int dni_user ){
-        this.id_user=id;
-        this.name=user_name;
-        this.last_name=user_last_name;
-        this.dni=dni_user;
-    }
-
-
+    @OneToOne(mappedBy = "buyer_user")
+    private Sale sale;
 
 }
