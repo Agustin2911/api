@@ -1,20 +1,20 @@
 package com.uade.tpo.E_Commerce.entity;
 
-import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.Data;
 
-@Builder
 @Data
+@Entity(name = "Roles")
 public class Roles {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idRole;
 
-    private int id_role ;
-    private String role_name;
+    @Column(name = "role_name", length = 100)
+    private String roleName;
 
-    public Roles(int id,String name){
-        this.id_role=id;
-        this.role_name=name;
-
-    }
+    @OneToMany(mappedBy = "roles")
+    private User_Roles user_roles;
 
 }
