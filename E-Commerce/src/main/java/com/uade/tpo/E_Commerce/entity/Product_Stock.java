@@ -10,8 +10,8 @@ import lombok.Data;
 @Entity
 public class Product_Stock {
 
+    @Id
     @OneToOne
-    @MapsId
     @JoinColumn(name = "id_product",nullable = false)
     private Product id_product;
 

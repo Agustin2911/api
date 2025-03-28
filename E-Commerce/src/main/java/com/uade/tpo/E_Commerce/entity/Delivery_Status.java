@@ -1,10 +1,15 @@
 package com.uade.tpo.E_Commerce.entity;
 
+<<<<<<< HEAD
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
 
+=======
+import lombok.Data;
+
+>>>>>>> fda65e365da0f36af72f58512c4850b32faa1042
 @Data
 @Entity
 public class Delivery_Status {
