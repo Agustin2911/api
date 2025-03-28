@@ -1,8 +1,7 @@
 package com.uade.tpo.E_Commerce.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,8 +12,16 @@ public class Shop_Stock {
 
 
     @Id
-    private int id_product;
-    private int id_shop;
+    @ManyToOne
+    @JoinColumn(name = "id_product")
+    private Product id_product;
+
+
+    @OneToOne
+    @JoinColumn(name = "id_shop")
+    private Shops id_shop;
+
+    @Column(name = "stock")
     private int stock;
 
 
