@@ -1,22 +1,25 @@
 package com.uade.tpo.E_Commerce.entity;
 
-
-import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
-@Builder
+@Entity
 public class Sub_Category {
 
-    private int id_sub_category;
-    private int id_category;
-    private String name_sub_category;
-
-    public Sub_Category(int id,int id_cate,String name){
-        this.id_category=id;
-        this.id_sub_category=id_cate;
-        this.name_sub_category=name;
+    public Sub_Category(){
+        
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id_sub_category;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_category", referencedColumnName = "id_category") // El que tiene FK se le pone el joinColumn
+    private Category category;
+
+    @Column(name = "name_sub_category", length = 60)
+    private String name_sub_category;
 
 }
