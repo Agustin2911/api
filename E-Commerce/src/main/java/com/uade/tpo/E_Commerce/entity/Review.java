@@ -8,6 +8,7 @@ import lombok.Data;
 @Entity
 public class Review {
 
+    public Review(){}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

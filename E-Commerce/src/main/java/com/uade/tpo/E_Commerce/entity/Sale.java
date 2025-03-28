@@ -8,6 +8,9 @@ import java.util.Date;
 @Entity(name = "sale")
 public class Sale {
 
+
+    public Sale(){}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_sale;

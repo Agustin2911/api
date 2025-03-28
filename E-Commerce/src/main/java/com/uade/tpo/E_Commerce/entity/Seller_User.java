@@ -8,6 +8,11 @@ import lombok.Data;
 @Entity
 public class Seller_User {
 
+
+    public Seller_User(){}
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_user;

@@ -7,6 +7,9 @@ import lombok.Data;
 @Entity(name = "product")
 public class Product {
 
+    public Product(){}
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_product;
@@ -20,9 +23,6 @@ public class Product {
     @Column(name = "price",nullable = false)
     private int price;
 
-    @ManyToOne
-    @JoinColumn(name = "id_sub_category",nullable = false)
-    private Sub_Category id_sub_category;
 
     @Column(name = "description",length = 500)
     private String description;

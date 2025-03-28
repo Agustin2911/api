@@ -7,6 +7,9 @@ import lombok.Data;
 @Entity(name = "company_shops")
 public class Company_Shops {
 
+    public Company_Shops(){}
+
+
     @Id
     @ManyToOne
     @JoinColumn(name = "id_user", nullable = false)

@@ -7,6 +7,9 @@ import lombok.Data;
 @Entity(name = "basic_user")
 public class Basic_User {
 
+
+    public Basic_User(){}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_user;

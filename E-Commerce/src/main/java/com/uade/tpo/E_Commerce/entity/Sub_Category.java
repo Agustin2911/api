@@ -7,9 +7,7 @@ import lombok.Data;
 @Entity
 public class Sub_Category {
 
-    public Sub_Category(){
-        
-    }
+    public Sub_Category(){}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

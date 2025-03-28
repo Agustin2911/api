@@ -1,22 +1,33 @@
 package com.uade.tpo.E_Commerce.entity;
 
 
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 
 @Builder
 @Data
 public class Items {
+
+
+    public Items(){}
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_items;
-    private int id_product;
+
+
+    @ManyToMany
+    @JoinColumn(name = "id_product")
+    private Product id_product;
+
+    @ManyToOne
+    @JoinColumn(name = "id_sale")
     private int id_sale;
+
+    @Column(name = "amount")
     private int amount;
 
 
-    public Items(int id_items, int id_product, int id_sale, int amount){
-        this.id_items = id_items;
-        this.id_product = id_product;
-        this.id_sale = id_sale;
-        this.amount = amount;
-    }
 }

@@ -8,6 +8,9 @@ import lombok.Data;
 @Entity
 public class Shop_Stock {
 
+
+    public Shop_Stock (){}
+
     @Id
     @OneToMany
     @JoinColumn(name = "id_product", referencedColumnName = "id_product", nullable = false)
