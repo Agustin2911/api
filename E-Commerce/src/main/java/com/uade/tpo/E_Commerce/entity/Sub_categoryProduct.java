@@ -19,6 +19,6 @@ public class Sub_categoryProduct {
 
     @ManyToMany
     @JoinColumn(name="id_product")
-    private  List<Product> id_product;
+    private List<Product> id_product;
 
 }
