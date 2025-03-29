@@ -3,7 +3,6 @@ package com.uade.tpo.E_Commerce.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import java.util.List;
 
 @Entity
 @Data
@@ -16,11 +15,11 @@ public class Items {
     private int id_items;
 
 
-    @ManyToMany
+    @OneToOne
     @JoinColumn(name = "id_product")
-    private List<Product> id_product;
+    private Product id_product;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "id_sale")
     private Sale sale;
 
