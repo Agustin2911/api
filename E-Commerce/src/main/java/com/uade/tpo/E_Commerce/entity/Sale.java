@@ -18,10 +18,6 @@ public class Sale {
     @Column(name = "total_price", nullable = false)
     private int total_price;
 
-
-    @Column(name = "id_user", nullable = false)
-    private int id_user;
-
     @Column(name = "sale_date", nullable = false)
     private Date sale_date;
 
