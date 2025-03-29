@@ -1,6 +1,8 @@
 package com.uade.tpo.E_Commerce.entity;
 
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,7 +16,7 @@ public class Shop_Stock {
     @Id
     @OneToMany
     @JoinColumn(name = "id_product", referencedColumnName = "id_product", nullable = false)
-    private Product product;
+    private List<Product_Stock> product_stock;
 
     @ManyToOne
     @JoinColumn(name = "id_shop", referencedColumnName = "id_shop", nullable = false)
