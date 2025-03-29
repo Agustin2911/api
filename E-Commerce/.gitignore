@@ -31,7 +31,7 @@ build/
 
 ### app config
 *.properties
-
+src/main/resources/*.properties
 
 ### VS Code ###
 .vscode/
