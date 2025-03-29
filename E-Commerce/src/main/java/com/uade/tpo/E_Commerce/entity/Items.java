@@ -3,14 +3,12 @@ package com.uade.tpo.E_Commerce.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
+import java.util.List;
 
 @Data
 public class Items {
 
-
     public Items(){}
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +17,7 @@ public class Items {
 
     @ManyToMany
     @JoinColumn(name = "id_product")
-    private Product id_product;
+    private List<Product> id_product;
 
     @ManyToOne
     @JoinColumn(name = "id_sale")
@@ -27,6 +25,5 @@ public class Items {
 
     @Column(name = "amount")
     private int amount;
-
 
 }

@@ -11,7 +11,6 @@ public class Product_Stock {
 
     public  Product_Stock(){}
 
-
     @Id
     @OneToOne
     @JoinColumn(name = "id_product",nullable = false)

@@ -3,6 +3,8 @@ package com.uade.tpo.E_Commerce.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity(name = "product")
 public class Product {
@@ -33,4 +35,15 @@ public class Product {
     @Column(name = "discount")
     private int discount;
 
+    @OneToOne(mappedBy = "product")
+    private Product_Stock product_stock;
+
+    @OneToMany(mappedBy = "product")
+    private List<Review> review_list;
+
+    @ManyToMany(mappedBy = "product")
+    private List<Sub_categoryProduct> sub_categoryProductList;
+
+    @ManyToMany(mappedBy = "product")
+    private List<Items> items_list;
 }
