@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.util.List;
 
+@Entity
 @Data
 public class Items {
 
@@ -21,9 +22,9 @@ public class Items {
 
     @ManyToOne
     @JoinColumn(name = "id_sale")
-    private int id_sale;
+    private Sale sale;
 
-    @Column(name = "amount")
+    @Column(name = "amount", nullable = false)
     private int amount;
 
 }
