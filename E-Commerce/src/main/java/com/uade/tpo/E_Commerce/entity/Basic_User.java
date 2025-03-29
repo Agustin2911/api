@@ -11,7 +11,8 @@ public class Basic_User {
     public Basic_User(){}
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ManyToOne
+    @JoinColumn(name = "id_role", nullable = false)
     private Long id_user;
 
 

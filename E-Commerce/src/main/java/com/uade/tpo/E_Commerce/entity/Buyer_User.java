@@ -3,6 +3,8 @@ package com.uade.tpo.E_Commerce.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity(name = "buyer_user")
 public class Buyer_User {
@@ -22,7 +24,7 @@ public class Buyer_User {
     @Column(name = "dni", nullable = false)
     private int dni;
 
-    @OneToOne(mappedBy = "buyer_user")
-    private Sale sale;
+    @OneToMany(mappedBy = "buyer_user")
+    private List<Sale> sale;
 
 }

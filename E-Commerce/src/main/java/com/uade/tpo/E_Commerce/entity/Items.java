@@ -5,13 +5,13 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Builder
 @Data
 public class Items {
 
-
     public Items(){}
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Items {
 
     @ManyToMany
     @JoinColumn(name = "id_product")
-    private Product id_product;
+    private List<Product> id_product;
 
     @ManyToOne
     @JoinColumn(name = "id_sale")
@@ -28,6 +28,5 @@ public class Items {
 
     @Column(name = "amount")
     private int amount;
-
 
 }
