@@ -2,7 +2,6 @@ package com.uade.tpo.E_Commerce.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Data;
 
 

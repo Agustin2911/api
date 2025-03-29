@@ -28,7 +28,7 @@ public class Sale {
     @OneToOne(mappedBy = "sale")
     private Delivery_Status delivery_status;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_user", nullable = false)
     private Buyer_User buyer_user;
 

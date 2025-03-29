@@ -1,5 +1,7 @@
 package com.uade.tpo.E_Commerce.entity;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,5 +21,9 @@ public class Sub_Category {
 
     @Column(name = "name_sub_category", length = 60)
     private String name_sub_category;
+
+    @ManyToMany
+    @JoinColumn(name = "id_sub_category", referencedColumnName = "id_sub_category", nullable = false)
+    private List<Sub_categoryProduct> sub_categoryProduct;
 
 }

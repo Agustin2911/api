@@ -1,6 +1,8 @@
 package com.uade.tpo.E_Commerce.entity;
 
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -30,6 +32,6 @@ public class Seller_User {
     private String state;
 
     @OneToMany(mappedBy = "Seller_User")
-    private Company_Shops company_shops;
+    private List<Company_Shops> company_shops;
 
 }
