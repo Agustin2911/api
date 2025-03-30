@@ -7,9 +7,7 @@ import lombok.Data;
 @Entity
 public class Delivery_Status {
 
-
     public Delivery_Status(){}
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +25,6 @@ public class Delivery_Status {
     @OneToOne
     @JoinColumn(name = "id_sale", nullable = false)
     private Sale sale;
-
 
 
 }

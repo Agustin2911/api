@@ -12,14 +12,14 @@ public class Items {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_items;
+    private Long id_items;
 
 
     @OneToOne
     @JoinColumn(name = "id_product")
     private Product id_product;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_sale")
     private Sale sale;
 

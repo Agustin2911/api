@@ -3,8 +3,6 @@ package com.uade.tpo.E_Commerce.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.io.Serializable;
-
 @Data
 @Entity
 public class User_Roles{

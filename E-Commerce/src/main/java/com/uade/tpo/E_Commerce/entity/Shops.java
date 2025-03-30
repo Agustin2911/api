@@ -3,7 +3,6 @@ package com.uade.tpo.E_Commerce.entity;
 import java.util.List;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data

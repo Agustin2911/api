@@ -28,6 +28,7 @@ public class Sale {
     @JoinColumn(name = "id_user", nullable = false)
     private Buyer_User buyer_user;
 
-
+    @OneToMany(mappedBy = "sale")
+    private Items items;
 }
 
