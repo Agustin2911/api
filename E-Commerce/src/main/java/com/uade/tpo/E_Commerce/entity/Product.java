@@ -42,7 +42,7 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private ArrayList<Review> review_list;
 
-    @ManyToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product")
     private ArrayList<Sub_categoryProduct> sub_categoryProductList;
 
     @OneToMany(mappedBy = "product")

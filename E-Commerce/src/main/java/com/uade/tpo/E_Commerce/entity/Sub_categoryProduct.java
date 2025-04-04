@@ -1,24 +1,22 @@
 package com.uade.tpo.E_Commerce.entity;
 
 import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.*;
+import lombok.Data;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-
+@Data
+@Entity
 public class Sub_categoryProduct {
-
 
     public Sub_categoryProduct(){}
 
     @Id
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name="id_sub_category")
     private ArrayList<Sub_Category> id_sub_category;
 
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name="id_product")
     private ArrayList<Product> id_product;
 
