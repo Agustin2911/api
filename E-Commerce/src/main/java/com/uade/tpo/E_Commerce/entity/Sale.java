@@ -1,7 +1,11 @@
 package com.uade.tpo.E_Commerce.entity;
 
+import com.uade.tpo.E_Commerce.entity.dto.ItemsRequest;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 
 @Data
@@ -19,7 +23,7 @@ public class Sale {
     private int total_price;
 
     @Column(name = "sale_date", nullable = false)
-    private Date sale_date;
+    private LocalDateTime sale_date;
 
     @OneToOne(mappedBy = "sale")
     private Delivery_Status delivery_status;
@@ -30,5 +34,7 @@ public class Sale {
 
     @OneToMany(mappedBy = "sale")
     private Items items;
+
+
 }
 
