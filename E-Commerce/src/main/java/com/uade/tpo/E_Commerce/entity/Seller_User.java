@@ -1,6 +1,7 @@
 package com.uade.tpo.E_Commerce.entity;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -16,8 +17,9 @@ public class Seller_User {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_user;
+    @OneToOne
+    @JoinColumn(name = "id_user", nullable = false)
+    private Basic_User basic_user;
 
     @Column(name = "cuit", nullable = false)
     private int cuit;
@@ -32,6 +34,6 @@ public class Seller_User {
     private String state;
 
     @OneToMany(mappedBy = "Seller_User")
-    private List<Company_Shops> company_shops;
+    private ArrayList<Company_Shops> company_shops;
 
 }

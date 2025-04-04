@@ -10,15 +10,18 @@ public class User_Roles{
 
     public User_Roles(){}
 
-
     @Id
+    @Column(name = "id_user")
+    private Long id;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "id_user", referencedColumnName = "id_user", nullable = false)
+    private Basic_User user;
+
     @ManyToOne
     @JoinColumn(name = "id_role", referencedColumnName = "id_role", nullable = false)
     private Roles role;
 
-    @Id
-    @OneToOne
-    @JoinColumn(name = "id_user", referencedColumnName = "id_user", nullable = false)
-    private Basic_User user;
 
 }

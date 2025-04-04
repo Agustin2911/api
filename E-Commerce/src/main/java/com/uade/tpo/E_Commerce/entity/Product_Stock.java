@@ -12,7 +12,12 @@ public class Product_Stock {
     public  Product_Stock(){}
 
     @Id
+    @Column(name = "id_product", nullable = false)
+    private Long id;
+
+
     @OneToOne
+    @MapsId("id_product")
     @JoinColumn(name = "id_product",nullable = false)
     private Product id_product;
 

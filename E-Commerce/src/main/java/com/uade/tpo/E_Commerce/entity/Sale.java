@@ -36,6 +36,5 @@ public class Sale {
     @OneToMany(mappedBy = "sale")
     private ArrayList<Items> items;
 
-
 }
 

@@ -11,10 +11,9 @@ public class Basic_User {
     public Basic_User(){}
 
     @Id
-    @ManyToOne
-    @JoinColumn(name = "id_role", nullable = false)
-    private Long id_user;
-
+    @OneToOne
+    @JoinColumn(name = "id_user", nullable = false)
+    private Basic_User basic_user;
 
     @Column(name = "username", length = 100)
     private String username;
@@ -28,4 +27,9 @@ public class Basic_User {
     @OneToOne(mappedBy = "Basic_User")
     private User_Roles user_roles;
 
+    @OneToOne(mappedBy = "Basic_User")
+    private Buyer_User buyer_user;
+
+    @OneToOne(mappedBy = "Basic_User")
+    private Seller_User seller_user;
 }
