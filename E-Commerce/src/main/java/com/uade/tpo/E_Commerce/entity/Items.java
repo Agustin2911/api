@@ -15,7 +15,7 @@ public class Items {
     private Long id_items;
 
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_product")
     private Product id_product;
 

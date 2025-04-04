@@ -5,6 +5,7 @@ package com.uade.tpo.E_Commerce.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -21,5 +22,5 @@ public class Category {
     private String name_category;
 
     @OneToMany(mappedBy = "category") //El que tiene PK se le pone mappedBy
-    private List<Sub_Category> sub_category;
+    private ArrayList<Sub_Category> sub_category;
 }

@@ -3,6 +3,7 @@ package com.uade.tpo.E_Commerce.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -25,6 +26,6 @@ public class Buyer_User {
     private int dni;
 
     @OneToMany(mappedBy = "buyer_user")
-    private List<Sale> sale;
+    private ArrayList<Sale> sale;
 
 }

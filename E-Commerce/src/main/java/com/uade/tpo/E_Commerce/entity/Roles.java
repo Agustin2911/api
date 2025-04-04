@@ -2,6 +2,8 @@ package com.uade.tpo.E_Commerce.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -19,6 +21,6 @@ public class Roles {
     private String roleName;
 
     @OneToMany(mappedBy = "roles")
-    private List<User_Roles> userRolesList;
+    private ArrayList<User_Roles> userRolesList;
 
 }

@@ -1,5 +1,6 @@
 package com.uade.tpo.E_Commerce.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -24,6 +25,6 @@ public class Sub_Category {
 
     @ManyToMany
     @JoinColumn(name = "id_sub_category", referencedColumnName = "id_sub_category", nullable = false)
-    private List<Sub_categoryProduct> sub_categoryProduct;
+    private ArrayList<Sub_categoryProduct> sub_categoryProduct;
 
 }

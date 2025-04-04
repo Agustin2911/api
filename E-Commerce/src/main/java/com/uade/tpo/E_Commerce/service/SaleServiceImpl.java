@@ -32,7 +32,7 @@ public class SaleServiceImpl implements SaleService {
                     saleRepository.findSaleByUserDate(new_sale.getId_user().getId_user(),new_sale.getSale_date()).getId_sale();
 
             for (ItemsRequest item : items) {
-                itemsRepository.createNewItem(item.getId_item(), new_sale_id, item.getAmount());
+                itemsRepository.createNewItem(item.getId_product(), new_sale_id, item.getAmount());
             }
 
             return new_sale;

@@ -7,6 +7,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity(name = "sale")
@@ -33,7 +34,7 @@ public class Sale {
     private Buyer_User id_user;
 
     @OneToMany(mappedBy = "sale")
-    private Items items;
+    private ArrayList<Items> items;
 
 
 }
