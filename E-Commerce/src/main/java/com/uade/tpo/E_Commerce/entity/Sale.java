@@ -30,7 +30,7 @@ public class Sale {
 
     @ManyToOne
     @JoinColumn(name = "id_user", nullable = false)
-    private Buyer_User buyer_user;
+    private Buyer_User id_user;
 
     @OneToMany(mappedBy = "sale")
     private Items items;

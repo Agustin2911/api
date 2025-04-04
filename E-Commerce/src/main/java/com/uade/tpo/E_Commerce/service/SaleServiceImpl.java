@@ -28,7 +28,8 @@ public class SaleServiceImpl implements SaleService {
         if(search_sale == null){
             saleRepository.createNewSale(total_price, id_user, sale_date);
             Sale new_sale = saleRepository.findSaleByUserDate(id_user,sale_date);
-            Long new_sale_id = saleRepository.findSaleById(new_sale.getId_sale()).get().getId_sale();
+            Long new_sale_id =
+                    saleRepository.findSaleByUserDate(new_sale.getId_user().getId_user(),new_sale.getSale_date()).getId_sale();
 
             for (ItemsRequest item : items) {
                 itemsRepository.createNewItem(item.getId_item(), new_sale_id, item.getAmount());
@@ -43,7 +44,7 @@ public class SaleServiceImpl implements SaleService {
     }
 
     public Optional<Sale> updateSale(Long id_sale, int total_price, Long id_user, LocalDateTime sale_date) {
-        Optional<Sale> search_sale = saleRepository.findSaleById(id_sale);
+        Optional<Sale> search_sale = saleRepository.findSaleById(id_user);
         if(search_sale.isPresent()){
             saleRepository.updateSale(id_sale,total_price,id_user,sale_date);
             return saleRepository.findSaleById(id_sale);

@@ -12,6 +12,9 @@ import java.util.Optional;
 
 public interface SaleRepository extends JpaRepository<Sale, Long>{
 
+    @Query(value = "SELECT * FROM Sale s WHERE s.id_user = ?1, s.sale_date = ?2 ")
+    Sale findSaleByUserDate(Long id_user, LocalDateTime sale_date);
+
     @Query(value = "SELECT * FROM Sale s WHERE s.id_sale = ?1")
     Optional<Sale> findSaleById(Long id_sale);
 
@@ -32,7 +35,5 @@ public interface SaleRepository extends JpaRepository<Sale, Long>{
     @Query(value = "DELETE FROM Sale WHERE id_sale = ?1")
     void deleteSale(Long id_sale);
 
-    @Query(value = "SELECT * FROM Sale s WHERE s.id_user = ?1, s.sale_date = ?2 ")
-    Sale findSaleByUserDate(Long id_user, LocalDateTime sale_date);
 
 }

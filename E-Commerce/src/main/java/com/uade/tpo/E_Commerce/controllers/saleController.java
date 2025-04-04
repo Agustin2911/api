@@ -35,7 +35,7 @@ public class saleController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> createNewSale(@RequestBody SaleRequest request){
+    public ResponseEntity<Sale> createNewSale(@RequestBody SaleRequest request){
 
         Sale new_sale = saleService.createSale(request.getTotal_price(), request.getId_user(), request.getSale_date()
                 ,request.getItems());
