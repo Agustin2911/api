@@ -34,7 +34,7 @@ public class Sale {
     private Buyer_User id_user;
 
     @OneToMany(mappedBy = "sale")
-    private ArrayList<Items> items;
+    private List<Items> items;
 
 }
 

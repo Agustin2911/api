@@ -22,7 +22,7 @@ public class Shop_Stock {
     @OneToMany
     @MapsId("id_product")
     @JoinColumn(name = "id_product", referencedColumnName = "id_product", nullable = false)
-    private ArrayList<Product_Stock> product_stock;
+    private List<Product_Stock> product_stock;
 
     @ManyToOne
     @MapsId("id_shop")

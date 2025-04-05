@@ -24,9 +24,9 @@ public class Shops {
     private String street;
 
     @OneToMany(mappedBy = "shops")
-    private ArrayList<Shop_Stock> shop_stock;
+    private List<Shop_Stock> shop_stock;
 
     @OneToMany(mappedBy = "shops")
-    private ArrayList<Company_Shops> company_shops;
+    private List<Company_Shops> company_shops;
     
 }

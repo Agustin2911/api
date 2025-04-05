@@ -24,6 +24,6 @@ public class Sub_Category {
     private String name_sub_category;
 
     @OneToMany(mappedBy = "sub_category")
-    private ArrayList<Sub_categoryProduct> sub_categoryProduct;
+    private List<Sub_categoryProduct> sub_categoryProduct;
 
 }

@@ -26,6 +26,6 @@ public class Buyer_User {
     private int dni;
 
     @OneToMany(mappedBy = "buyer_user")
-    private ArrayList<Sale> sale;
+    private List<Sale> sale;
 
 }

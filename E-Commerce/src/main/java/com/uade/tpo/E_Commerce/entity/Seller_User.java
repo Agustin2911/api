@@ -14,10 +14,13 @@ public class Seller_User {
 
     public Seller_User(){}
 
-
-
     @Id
+    @Column(name = "id_user", nullable = false)
+    private Long id;
+
+
     @OneToOne
+    @MapsId("id_user")
     @JoinColumn(name = "id_user", nullable = false)
     private Basic_User basic_user;
 
@@ -34,6 +37,6 @@ public class Seller_User {
     private String state;
 
     @OneToMany(mappedBy = "Seller_User")
-    private ArrayList<Company_Shops> company_shops;
+    private List<Company_Shops> company_shops;
 
 }

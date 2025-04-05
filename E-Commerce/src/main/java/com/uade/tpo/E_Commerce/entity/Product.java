@@ -40,11 +40,11 @@ public class Product {
     private Product_Stock product_stock;
 
     @OneToMany(mappedBy = "product")
-    private ArrayList<Review> review_list;
+    private List<Review> review_list;
 
     @OneToMany(mappedBy = "product")
-    private ArrayList<Sub_categoryProduct> sub_categoryProductList;
+    private List<Sub_categoryProduct> sub_categoryProductList;
 
     @OneToMany(mappedBy = "product")
-    private ArrayList<Items> items_list;
+    private List<Items> items_list;
 }

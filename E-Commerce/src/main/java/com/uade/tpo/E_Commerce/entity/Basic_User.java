@@ -11,9 +11,8 @@ public class Basic_User {
     public Basic_User(){}
 
     @Id
-    @OneToOne
-    @JoinColumn(name = "id_user", nullable = false)
-    private Basic_User basic_user;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_user;
 
     @Column(name = "username", length = 100)
     private String username;
