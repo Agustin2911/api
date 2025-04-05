@@ -13,7 +13,7 @@ public class Buyer_User {
     public Buyer_User(){}
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_user", nullable = false)
     private Long id_user;
 
     @Column(name = "name", length =  30)
@@ -27,5 +27,10 @@ public class Buyer_User {
 
     @OneToMany(mappedBy = "buyer_user")
     private List<Sale> sale;
+
+    @OneToOne
+    @MapsId("id_user")
+    @JoinColumn(name = "id_user", nullable = false)
+    private Basic_User basic_user;
 
 }

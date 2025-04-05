@@ -20,11 +20,11 @@ public class Sub_categoryProduct {
     @ManyToOne
     @MapsId("id_sub_category")
     @JoinColumn(name="id_sub_category")
-    private Sub_Category id_sub_category;
+    private Sub_Category sub_category;
 
     @ManyToOne
     @MapsId("id_product")
     @JoinColumn(name="id_product")
-    private Product product_id;
+    private Product product;
 
 }

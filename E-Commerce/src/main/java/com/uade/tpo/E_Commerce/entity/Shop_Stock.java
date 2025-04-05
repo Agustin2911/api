@@ -19,15 +19,15 @@ public class Shop_Stock {
     private CompoundKeyShop_Stock id;
 
 
-    @OneToMany
+    @ManyToOne
     @MapsId("id_product")
     @JoinColumn(name = "id_product", referencedColumnName = "id_product", nullable = false)
-    private List<Product_Stock> product_stock;
+    private Product_Stock product_stock;
 
     @ManyToOne
     @MapsId("id_shop")
     @JoinColumn(name = "id_shop", referencedColumnName = "id_shop", nullable = false)
-    private Shops shop;
+    private Shops shops;
 
     @Column(name = "stock", nullable = false)
     private int stock;

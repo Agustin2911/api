@@ -17,11 +17,11 @@ public class User_Roles{
     @OneToOne
     @MapsId
     @JoinColumn(name = "id_user", referencedColumnName = "id_user", nullable = false)
-    private Basic_User user;
+    private Basic_User basic_user;
 
     @ManyToOne
     @JoinColumn(name = "id_role", referencedColumnName = "id_role", nullable = false)
-    private Roles role;
+    private Roles roles;
 
 
 }

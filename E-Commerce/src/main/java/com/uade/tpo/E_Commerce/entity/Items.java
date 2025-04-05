@@ -17,7 +17,7 @@ public class Items {
 
     @ManyToOne
     @JoinColumn(name = "id_product")
-    private Product id_product;
+    private Product product;
 
     @ManyToOne
     @JoinColumn(name = "id_sale")

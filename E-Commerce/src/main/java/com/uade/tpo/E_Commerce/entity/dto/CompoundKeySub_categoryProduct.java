@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class CompoundKeySub_categoryProduct {
-    private Long user;
-    private Long role;
+    private Long id_sub_category;
+    private Long id_product;
 }

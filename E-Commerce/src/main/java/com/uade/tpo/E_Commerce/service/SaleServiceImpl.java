@@ -29,7 +29,7 @@ public class SaleServiceImpl implements SaleService {
             saleRepository.createNewSale(total_price, id_user, sale_date);
             Sale new_sale = saleRepository.findSaleByUserDate(id_user,sale_date);
             Long new_sale_id =
-                    saleRepository.findSaleByUserDate(new_sale.getId_user().getId_user(),new_sale.getSale_date()).getId_sale();
+                    saleRepository.findSaleByUserDate(new_sale.getBuyer_user().getId_user(),new_sale.getSale_date()).getId_sale();
 
             for (ItemsRequest item : items) {
                 itemsRepository.createNewItem(item.getId_product(), new_sale_id, item.getAmount());

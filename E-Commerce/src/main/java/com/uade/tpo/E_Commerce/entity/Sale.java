@@ -31,7 +31,7 @@ public class Sale {
 
     @ManyToOne
     @JoinColumn(name = "id_user", nullable = false)
-    private Buyer_User id_user;
+    private Buyer_User buyer_user;
 
     @OneToMany(mappedBy = "sale")
     private List<Items> items;
