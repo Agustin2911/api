@@ -2,6 +2,8 @@ package com.uade.tpo.E_Commerce.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -13,7 +15,7 @@ public class Roles {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idRole;
+    private int id_role;
 
     @Column(name = "role_name", length = 100)
     private String roleName;
