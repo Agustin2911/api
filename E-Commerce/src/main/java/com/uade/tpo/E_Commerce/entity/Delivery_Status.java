@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -30,4 +31,5 @@ public class Delivery_Status {
 
 
 }
+
 

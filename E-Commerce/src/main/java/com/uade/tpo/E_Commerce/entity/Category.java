@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 
@@ -17,7 +18,7 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_category;
+    private int id_category;
 
     @Column(name = "name_category", length = 60)
     private String name_category;
@@ -25,3 +26,4 @@ public class Category {
     @OneToMany(mappedBy = "category") //El que tiene PK se le pone mappedBy
     private List<Sub_Category> sub_category;
 }
+

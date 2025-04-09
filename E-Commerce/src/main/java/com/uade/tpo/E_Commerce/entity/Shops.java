@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 import java.util.ArrayList;
@@ -30,3 +31,4 @@ public class Shops {
     private List<Company_Shops> company_shops;
     
 }
+

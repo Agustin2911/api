@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 import jakarta.persistence.*;
@@ -47,4 +48,5 @@ public class Product {
 
     @OneToMany(mappedBy = "product")
     private List<Items> items_list;
+
 }

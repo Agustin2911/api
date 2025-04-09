@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 import jakarta.persistence.*;
@@ -32,3 +33,4 @@ public class Basic_User {
     @OneToOne(mappedBy = "basic_user")
     private Seller_User seller_user;
 }
+

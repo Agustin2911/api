@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 
@@ -33,3 +34,4 @@ public class Shop_Stock {
     private int stock;
 
 }
+

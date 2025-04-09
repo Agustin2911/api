@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 import jakarta.persistence.*;
@@ -25,3 +26,4 @@ public class User_Roles{
 
 
 }
+

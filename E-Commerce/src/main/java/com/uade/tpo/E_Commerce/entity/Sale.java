@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -39,4 +40,5 @@ public class Sale {
     private List<Items> items;
 
 }
+
 
