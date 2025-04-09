@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Sub_Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_sub_category;
+    private Long id_sub_category;
     
     @ManyToOne
     @JoinColumn(name = "id_category", referencedColumnName = "id_category") // El que tiene FK se le pone el joinColumn
@@ -27,3 +28,4 @@ public class Sub_Category {
     private List<Sub_categoryProduct> sub_categoryProduct;
 
 }
+

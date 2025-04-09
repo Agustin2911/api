@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 
@@ -25,3 +26,4 @@ public class Category {
     @OneToMany(mappedBy = "category") //El que tiene PK se le pone mappedBy
     private List<Sub_Category> sub_category;
 }
+

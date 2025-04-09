@@ -1,4 +1,6 @@
+
 package com.uade.tpo.E_Commerce.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -22,10 +24,12 @@ public class Delivery_Status {
     @Column(name = "delivery_status", length = 15)
     private String delivery_Status;
 
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "id_sale", nullable = false)
     private Sale sale;
 
 
 }
+
 

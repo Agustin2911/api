@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 import jakarta.persistence.*;
@@ -15,7 +16,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_product;
+    private Long id_product;
 
     @Column(name = "product_name",length = 100)
     private String product_name;
@@ -47,4 +48,5 @@ public class Product {
 
     @OneToMany(mappedBy = "product")
     private List<Items> items_list;
+
 }

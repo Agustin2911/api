@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class Shops {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_shop;
+    private Long id_shop;
 
     @Column(name = "city" ,length = 40 , nullable = false)
     private String city;
@@ -30,3 +31,4 @@ public class Shops {
     private List<Company_Shops> company_shops;
     
 }
+

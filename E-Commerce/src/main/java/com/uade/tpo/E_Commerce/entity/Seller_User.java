@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 
@@ -40,3 +41,4 @@ public class Seller_User {
     private List<Company_Shops> company_shops;
 
 }
+

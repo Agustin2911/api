@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity.dto;
 
 import com.uade.tpo.E_Commerce.entity.Items;
@@ -18,3 +19,4 @@ public class SaleRequest {
 
 
 }
+

@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 import jakarta.persistence.*;
@@ -34,3 +35,4 @@ public class Buyer_User {
     private Basic_User basic_user;
 
 }
+
