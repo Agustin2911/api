@@ -14,7 +14,7 @@ public class Sub_Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_sub_category;
+    private Long id_sub_category;
     
     @ManyToOne
     @JoinColumn(name = "id_category", referencedColumnName = "id_category") // El que tiene FK se le pone el joinColumn

@@ -35,12 +35,15 @@ public class saleController {
     }
 
     @PostMapping
-    public ResponseEntity<Sale> createNewSale(@RequestBody SaleRequest request){
+    public ResponseEntity<Object> createNewSale(@RequestBody SaleRequest request){
 
         Sale new_sale = saleService.createSale(request.getTotal_price(), request.getId_user(), request.getSale_date()
                 ,request.getItems());
-        return ResponseEntity.created(URI.create("/sale/" + new_sale.getId_sale())).body(new_sale);
-
+        if(new_sale == null){
+            return ResponseEntity.badRequest().body("Ya existe un delivery status con esos datos.");
+        }else{
+            return ResponseEntity.created(URI.create("/sale/" + new_sale.getId_sale())).body(new_sale);
+        }
     }
 
     @PutMapping("/{id_sale}")

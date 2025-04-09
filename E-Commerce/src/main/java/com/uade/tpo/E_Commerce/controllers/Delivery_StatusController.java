@@ -34,7 +34,13 @@ public class Delivery_StatusController {
             /*throws DuplicateException*/{
         Delivery_Status new_delivery = delivery_statusService.createDeliveryStatus(request.getId_sale(),
                 request.getDelivery_type(), request.getAddress(), request.getDelivery_status());
-        return ResponseEntity.created(URI.create("/delivery-status/" + new_delivery.getId_delivery())).body(new_delivery);
+
+        if (new_delivery == null) {
+            return ResponseEntity.badRequest().body("Ya existe un delivery status con esos datos.");
+        }else{
+            return ResponseEntity.created(URI.create("/delivery-status/" + new_delivery.getId_delivery())).body(new_delivery);
+
+        }
 
     }
 

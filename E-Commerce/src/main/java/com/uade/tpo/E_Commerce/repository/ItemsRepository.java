@@ -12,8 +12,8 @@ public interface ItemsRepository extends JpaRepository<Items, Long> {
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO Items (id_product,id_sale,amount) VALUES" +
-            "(?1, ?2, ?3)")
-    void createNewItem(Long id_product, Long id_sale, int amount);
+            "(?1, ?2, ?3)", nativeQuery = true)
+    int createNewItem(Long id_product, Long id_sale, int amount);
 
 
 

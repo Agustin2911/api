@@ -23,8 +23,13 @@ public class Delivery_StatusServiceImpl implements Delivery_StatusService {
                                                 String delivery_status)  /*throws DuplicateException*/ {
         boolean exists = (delivery_statusRepository.findDeliveryStatusBySale(id_sale)) != null;
         if(!exists){
-            delivery_statusRepository.createNewDeliveryStatus(id_sale,delivery_type,address,delivery_status);
-            Delivery_Status new_delivery = delivery_statusRepository.findDeliveryStatusBySale(id_sale);
+            int check = delivery_statusRepository.createNewDeliveryStatus(id_sale,delivery_type,address,
+                    delivery_status);
+            if (check > 0){
+                Delivery_Status new_delivery = delivery_statusRepository.findDeliveryStatusBySale(id_sale);
+            }else{
+                return null;
+            }
         }
         return null;
 //        throw new DuplicateException();
@@ -35,8 +40,13 @@ public class Delivery_StatusServiceImpl implements Delivery_StatusService {
                                                           String address, String delivery_status) {
         Optional<Delivery_Status> current_delivery = delivery_statusRepository.findDeliveryStatusById(id_delivery);
         if (current_delivery.isPresent()){
-            delivery_statusRepository.updateDeliveryStatus(id_delivery,id_sale,delivery_type,address,delivery_status);
-            return delivery_statusRepository.findDeliveryStatusById(id_delivery);
+            int check = delivery_statusRepository.updateDeliveryStatus(id_delivery,id_sale,delivery_type,address,
+                    delivery_status);
+            if(check > 0){
+                return delivery_statusRepository.findDeliveryStatusById(id_delivery);
+            }else{
+                return Optional.empty();
+            }
         }
         return Optional.empty();
 //      new NotFoundException();
@@ -45,8 +55,12 @@ public class Delivery_StatusServiceImpl implements Delivery_StatusService {
 
 
     public boolean deleteDeliveryStatus(Long id_delivery) {
-        delivery_statusRepository.deleteDeliveryStatus(id_delivery);
+        int check = delivery_statusRepository.deleteDeliveryStatus(id_delivery);
         Optional<Delivery_Status> check_delivery = delivery_statusRepository.findDeliveryStatusById(id_delivery);
-        return check_delivery.isEmpty();
+        if(check > 0){
+            return check_delivery.isEmpty();
+        }else{
+            return false;
+        }
     }
 }
