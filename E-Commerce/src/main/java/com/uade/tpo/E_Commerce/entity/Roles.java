@@ -15,7 +15,7 @@ public class Roles {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_role;
+    private long id_role;
 
     @Column(name = "role_name", length = 100)
     private String roleName;
@@ -23,4 +23,15 @@ public class Roles {
     @OneToMany(mappedBy = "roles")
     private List<User_Roles> userRolesList;
 
+    public long getId_role() {
+        return id_role;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public List<User_Roles> getUserRolesList() {
+        return userRolesList;
+    }
 }

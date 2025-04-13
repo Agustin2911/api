@@ -16,5 +16,23 @@ public class SaleRequest {
     private LocalDateTime sale_date;
     private ArrayList<ItemsRequest> items;
 
+    public Long getId_sale() {
+        return id_sale;
+    }
 
+    public int getTotal_price() {
+        return total_price;
+    }
+
+    public Long getId_user() {
+        return id_user;
+    }
+
+    public LocalDateTime getSale_date() {
+        return sale_date;
+    }
+
+    public ArrayList<ItemsRequest> getItems() {
+        return items;
+    }
 }

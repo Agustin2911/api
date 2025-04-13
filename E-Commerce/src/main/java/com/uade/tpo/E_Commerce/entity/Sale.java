@@ -36,5 +36,28 @@ public class Sale {
     @OneToMany(mappedBy = "sale")
     private List<Items> items;
 
+    public Long getId_sale() {
+        return id_sale;
+    }
+
+    public int getTotal_price() {
+        return total_price;
+    }
+
+    public LocalDateTime getSale_date() {
+        return sale_date;
+    }
+
+    public Delivery_Status getDelivery_status() {
+        return delivery_status;
+    }
+
+    public Buyer_User getBuyer_user() {
+        return buyer_user;
+    }
+
+    public List<Items> getItems() {
+        return items;
+    }
 }
 

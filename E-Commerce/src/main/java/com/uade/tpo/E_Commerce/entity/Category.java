@@ -17,11 +17,24 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_category;
+    private long id_category;
 
     @Column(name = "name_category", length = 60)
     private String name_category;
 
     @OneToMany(mappedBy = "category") //El que tiene PK se le pone mappedBy
     private List<Sub_Category> sub_category;
+
+
+    public long getId_category() {
+        return id_category;
+    }
+
+    public String getName_category() {
+        return name_category;
+    }
+
+    public List<Sub_Category> getSub_category() {
+        return sub_category;
+    }
 }
