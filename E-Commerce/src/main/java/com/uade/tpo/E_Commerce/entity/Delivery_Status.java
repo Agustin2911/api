@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -46,4 +47,5 @@ public class Delivery_Status {
         return sale;
     }
 }
+
 

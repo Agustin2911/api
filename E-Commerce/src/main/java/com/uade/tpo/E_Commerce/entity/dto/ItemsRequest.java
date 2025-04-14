@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity.dto;
 
 import lombok.Data;
@@ -16,3 +17,4 @@ public class ItemsRequest {
         return amount;
     }
 }
+

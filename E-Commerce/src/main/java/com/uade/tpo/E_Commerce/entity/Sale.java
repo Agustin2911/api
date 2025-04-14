@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 import com.uade.tpo.E_Commerce.entity.dto.ItemsRequest;
@@ -28,7 +29,8 @@ public class Sale {
 
     @OneToOne(mappedBy = "sale")
     private Delivery_Status delivery_status;
-
+    
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_user", nullable = false)
     private Buyer_User buyer_user;

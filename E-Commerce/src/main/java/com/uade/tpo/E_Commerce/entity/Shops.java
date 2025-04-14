@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 import java.util.ArrayList;
@@ -72,3 +73,4 @@ public class Shops {
         this.company_shops = company_shops;
     }
 }
+
