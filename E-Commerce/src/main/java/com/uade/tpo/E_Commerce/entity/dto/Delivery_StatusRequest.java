@@ -12,4 +12,24 @@ public class Delivery_StatusRequest {
     private String address;
     private String delivery_status;
 
+    public Long getId_delivery() {
+        return id_delivery;
+    }
+
+    public Long getId_sale() {
+        return id_sale;
+    }
+
+    public String getDelivery_type() {
+        return delivery_type;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getDelivery_status() {
+        return delivery_status;
+    }
 }
+

@@ -32,5 +32,33 @@ public class Basic_User {
 
     @OneToOne(mappedBy = "basic_user")
     private Seller_User seller_user;
+
+    public Long getId_user() {
+        return id_user;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public User_Roles getUser_roles() {
+        return user_roles;
+    }
+
+    public Buyer_User getBuyer_user() {
+        return buyer_user;
+    }
+
+    public Seller_User getSeller_user() {
+        return seller_user;
+    }
 }
 

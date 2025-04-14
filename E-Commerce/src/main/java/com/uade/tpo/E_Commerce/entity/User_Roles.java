@@ -24,6 +24,16 @@ public class User_Roles{
     @JoinColumn(name = "id_role", referencedColumnName = "id_role", nullable = false)
     private Roles roles;
 
+    public Long getId() {
+        return id;
+    }
 
+    public Basic_User getBasic_user() {
+        return basic_user;
+    }
+
+    public Roles getRoles() {
+        return roles;
+    }
 }
 
