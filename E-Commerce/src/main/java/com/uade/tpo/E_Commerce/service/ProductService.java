@@ -81,23 +81,20 @@ public class ProductService implements  ProductImp{
         }
         repository.modifyProduct(id_product, name, photo_url, price, description, discount_state, discount);
 
-        product= repository.productByID(id_product);
+
+        product.get().setProduct_name(name);
+        product.get().setPhoto_url(photo_url);
+        product.get().setPrice(price);
+        product.get().setDescription(description);
+        product.get().setDiscount_state(discount_state);
+        product.get().setDiscount(discount);
+
+        return product;
 
 
 
-        if(product.isPresent()){
-
-            Product product_out= product.get();
-
-            if (product_out.getProduct_name().equals(name) && product_out.getPhoto_url().equals(photo_url)&& price==product_out.getPrice()&& description.equals(product_out.getDescription())&& discount_state.equals(product_out.getDiscount_state())&&discount==product_out.getDiscount()){
-                return product;
-            }
 
 
-        }
-
-
-        return Optional.empty();
     }
 
     @Override

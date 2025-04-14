@@ -51,4 +51,24 @@ public class Shops {
     public List<Company_Shops> getCompany_shops() {
         return company_shops;
     }
+
+    public void setId_shop(long id_shop) {
+        this.id_shop = id_shop;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setShop_stock(List<Shop_Stock> shop_stock) {
+        this.shop_stock = shop_stock;
+    }
+
+    public void setCompany_shops(List<Company_Shops> company_shops) {
+        this.company_shops = company_shops;
+    }
 }

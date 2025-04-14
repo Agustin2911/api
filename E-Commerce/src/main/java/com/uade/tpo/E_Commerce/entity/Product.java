@@ -98,4 +98,48 @@ public class Product {
     public List<Items> getItems_list() {
         return items_list;
     }
+
+    public void setId_product(long id_product) {
+        this.id_product = id_product;
+    }
+
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
+    }
+
+    public void setPhoto_url(String photo_url) {
+        this.photo_url = photo_url;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setDiscount_state(String discount_state) {
+        this.discount_state = discount_state;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
+    public void setProduct_stock(Product_Stock product_stock) {
+        this.product_stock = product_stock;
+    }
+
+    public void setReview_list(List<Review> review_list) {
+        this.review_list = review_list;
+    }
+
+    public void setSub_categoryProductList(List<Sub_categoryProduct> sub_categoryProductList) {
+        this.sub_categoryProductList = sub_categoryProductList;
+    }
+
+    public void setItems_list(List<Items> items_list) {
+        this.items_list = items_list;
+    }
 }

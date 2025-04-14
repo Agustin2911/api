@@ -64,15 +64,8 @@ public class ShopsService implements ShopsImp {
 
         repository.ModifySHop(id_shop,city,street);
 
-
-        if (shop.isPresent()){
-
-            Shops shop_out=shop.get();
-
-            if (shop_out.getCity().equals(city) && shop_out.getStreet().equals(street)){
-                return shop;
-            }
-        }
+        shop.get().setCity(city);
+        shop.get().setStreet(street);
 
         return shop;
     }
