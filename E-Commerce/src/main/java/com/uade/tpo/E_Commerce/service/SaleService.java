@@ -14,7 +14,7 @@ public interface SaleService {
     public Optional<Sale> getSaleById(Long id_sale);
 
     //POST
-    public Sale createSale(int total_price, Long id_user, LocalDateTime sale_date, ArrayList<ItemsRequest> items);
+    public Sale createSale(int total_price, Long id_user, LocalDateTime sale_date, ArrayList<ItemsRequest> items, Long id_sale);
 
     //PUT
     public Optional<Sale> updateSale(Long id_sale, int total_price, Long id_user, LocalDateTime sale_date);

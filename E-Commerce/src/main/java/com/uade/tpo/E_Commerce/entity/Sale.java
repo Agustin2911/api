@@ -1,6 +1,7 @@
 
 package com.uade.tpo.E_Commerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.uade.tpo.E_Commerce.entity.dto.ItemsRequest;
 import jakarta.persistence.*;
 import lombok.Data;
