@@ -3,8 +3,11 @@ package com.uade.tpo.E_Commerce.controllers;
 
 import com.uade.tpo.E_Commerce.entity.Delivery_Status;
 import com.uade.tpo.E_Commerce.entity.dto.Delivery_StatusRequest;
+import com.uade.tpo.E_Commerce.entity.dto.FailedResponse;
+import com.uade.tpo.E_Commerce.entity.dto.SuccesResponse;
 import com.uade.tpo.E_Commerce.service.Delivery_StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -20,13 +23,14 @@ public class Delivery_StatusController {
     private Delivery_StatusService delivery_statusService;
 
     @GetMapping("/{id_delivery}")
-    public ResponseEntity<Delivery_Status> getCategoryById(@PathVariable Long id_delivery){
+    public ResponseEntity<Object> getCategoryById(@PathVariable Long id_delivery){
         Optional<Delivery_Status> delivery_status = delivery_statusService.getDeliveryStatusById(id_delivery);
         //noinspection OptionalIsPresent
         if (delivery_status.isPresent()){
             return ResponseEntity.ok(delivery_status.get());
         }
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("There is no " +
+                "Delivery Status with this id"));
     }
 
     @PostMapping
@@ -36,7 +40,8 @@ public class Delivery_StatusController {
                 request.getDelivery_type(), request.getAddress(), request.getDelivery_status());
 
         if (new_delivery == null) {
-            return ResponseEntity.badRequest().body("Ya existe un delivery status con esos datos.");
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("There is already a " +
+                    "Delivery Status with this data"));
         }else{
             return ResponseEntity.created(URI.create("/delivery-status/" + new_delivery.getId_delivery())).body(new_delivery);
 
@@ -45,7 +50,7 @@ public class Delivery_StatusController {
     }
 
     @PutMapping("/{id_delivery}")
-    public ResponseEntity<Delivery_Status> updateDeliveryStatus(@PathVariable Long id_delivery,
+    public ResponseEntity<Object> updateDeliveryStatus(@PathVariable Long id_delivery,
                                                                 @RequestParam Long id_sale,
                                                                 @RequestParam String delivery_type,
                                                                 @RequestParam String address,
@@ -56,18 +61,20 @@ public class Delivery_StatusController {
         if (updatedDelivery.isPresent()){
             return ResponseEntity.ok(updatedDelivery.get());
         }
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("There is no " +
+                "Delivery Status with this id or the update went wrong"));
 
     }
 
     @DeleteMapping("/{id_delivery}")
-    public ResponseEntity<Void> deleteDeliveryStatus(@PathVariable Long id_delivery){
+    public ResponseEntity<Object> deleteDeliveryStatus(@PathVariable Long id_delivery){
 
         boolean deleted = delivery_statusService.deleteDeliveryStatus(id_delivery);
-        if (deleted){
-            return ResponseEntity.noContent().build();
+        if (deleted) {
+            return ResponseEntity.ok(new SuccesResponse("Delivery status successfully deleted"));
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("There is no " +
+                "Delivery Status with this id"));
     }
 
 }
