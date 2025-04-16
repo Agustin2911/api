@@ -16,6 +16,7 @@ public class SaleRequest {
     private Long id_user;
     private LocalDateTime sale_date;
     private ArrayList<ItemsRequest> items;
+    private Long id_shop;
 
     public Long getId_sale() {
         return id_sale;
@@ -36,5 +37,7 @@ public class SaleRequest {
     public ArrayList<ItemsRequest> getItems() {
         return items;
     }
+
+    public Long getId_shop(){return id_shop;}
 }
 

@@ -2,7 +2,9 @@ package com.uade.tpo.E_Commerce.service;
 
 import com.uade.tpo.E_Commerce.entity.Sale;
 import com.uade.tpo.E_Commerce.entity.dto.ItemsRequest;
+import com.uade.tpo.E_Commerce.entity.dto.ModifyStockResponse;
 import com.uade.tpo.E_Commerce.repository.ItemsRepository;
+import com.uade.tpo.E_Commerce.repository.ProductRepository;
 import com.uade.tpo.E_Commerce.repository.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,13 +20,16 @@ public class SaleServiceImpl implements SaleService {
     private SaleRepository saleRepository;
 
     @Autowired
-    private ItemsRepository itemsRepository;
+    private ItemsRepository itemsRepository; 
+
+    @Autowired
+    private StockService stockService;
 
     public Optional<Sale> getSaleById(Long id_sale) {
        return saleRepository.findSaleById(id_sale);
     }
 
-    public Sale createSale(int total_price, Long id_user, LocalDateTime sale_date, ArrayList<ItemsRequest> items) {
+    public Sale createSale(int total_price, Long id_user, LocalDateTime sale_date, ArrayList<ItemsRequest> items, Long id_shop) {
 
         Sale search_sale = saleRepository.findSaleByUserDate(id_user,sale_date);
         if(search_sale == null){
@@ -37,7 +42,11 @@ public class SaleServiceImpl implements SaleService {
 
                 for (ItemsRequest item : items) {
                     int checkItem = itemsRepository.createNewItem(item.getId_product(), new_sale_id, item.getAmount());
+                    Optional<ModifyStockResponse> updatedStock = stockService.modifyStock(item.getId_product(), id_shop, item.getAmount());
                 }
+
+
+
                 return new_sale;
             }
             else {

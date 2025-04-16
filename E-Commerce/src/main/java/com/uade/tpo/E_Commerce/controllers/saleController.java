@@ -38,7 +38,7 @@ public class saleController {
     public ResponseEntity<Object> createNewSale(@RequestBody SaleRequest request){
 
         Sale new_sale = saleService.createSale(request.getTotal_price(), request.getId_user(), request.getSale_date()
-                ,request.getItems());
+                ,request.getItems(), request.getId_shop());
         if(new_sale == null){
             return ResponseEntity.badRequest().body("Ya existe un delivery status con esos datos.");
         }else{
