@@ -31,9 +31,9 @@ public class Sale {
     @OneToOne(mappedBy = "sale")
     private Delivery_Status delivery_status;
     
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_user", nullable = false)
+    @JsonIgnore
     private Buyer_User buyer_user;
 
     @OneToMany(mappedBy = "sale")

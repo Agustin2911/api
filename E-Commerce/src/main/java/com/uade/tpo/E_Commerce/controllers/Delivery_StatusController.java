@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/delivery-status")
 public class Delivery_StatusController {
 
@@ -34,8 +34,13 @@ public class Delivery_StatusController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> createDeliveryStatus(@RequestBody Delivery_StatusRequest request)
-            /*throws DuplicateException*/{
+    public ResponseEntity<Object> createDeliveryStatus(@RequestBody Delivery_StatusRequest request) {
+
+        if (request.getId_sale() == null || request.getDelivery_type() == null || request.getAddress() == null || request.getDelivery_status() == null) {
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("The data you are " +
+                    "trying to insert is invalid"));
+        }
+
         Delivery_Status new_delivery = delivery_statusService.createDeliveryStatus(request.getId_sale(),
                 request.getDelivery_type(), request.getAddress(), request.getDelivery_status());
 

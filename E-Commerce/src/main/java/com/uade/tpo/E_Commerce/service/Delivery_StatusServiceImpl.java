@@ -3,6 +3,9 @@ package com.uade.tpo.E_Commerce.service;
 import com.uade.tpo.E_Commerce.entity.Delivery_Status;
 import com.uade.tpo.E_Commerce.entity.Sale;
 import com.uade.tpo.E_Commerce.repository.Delivery_StatusRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,9 @@ public class Delivery_StatusServiceImpl implements Delivery_StatusService {
 
     @Autowired
     private Delivery_StatusRepository delivery_statusRepository;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     public Optional<Delivery_Status> getDeliveryStatusById(Long id) {
         return delivery_statusRepository.findDeliveryStatusById(id);
@@ -26,7 +32,7 @@ public class Delivery_StatusServiceImpl implements Delivery_StatusService {
             int check = delivery_statusRepository.createNewDeliveryStatus(id_sale,delivery_type,address,
                     delivery_status);
             if (check > 0){
-                Delivery_Status new_delivery = delivery_statusRepository.findDeliveryStatusBySale(id_sale);
+                return delivery_statusRepository.findDeliveryStatusBySale(id_sale);
             }else{
                 return null;
             }
@@ -35,7 +41,7 @@ public class Delivery_StatusServiceImpl implements Delivery_StatusService {
 //        throw new DuplicateException();
     }
 
-
+    @Transactional
     public Optional<Delivery_Status> updateDeliveryStatus(Long id_delivery, Long id_sale, String delivery_type,
                                                           String address, String delivery_status) {
         Optional<Delivery_Status> current_delivery = delivery_statusRepository.findDeliveryStatusById(id_delivery);
@@ -43,6 +49,8 @@ public class Delivery_StatusServiceImpl implements Delivery_StatusService {
             int check = delivery_statusRepository.updateDeliveryStatus(id_delivery,id_sale,delivery_type,address,
                     delivery_status);
             if(check > 0){
+                entityManager.flush();
+                entityManager.clear();
                 return delivery_statusRepository.findDeliveryStatusById(id_delivery);
             }else{
                 return Optional.empty();

@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/sale")
 public class saleController {
 
@@ -40,6 +40,11 @@ public class saleController {
 
     @PostMapping
     public ResponseEntity<Object> createNewSale(@RequestBody SaleRequest request){
+
+        if (request.getTotal_price() <= 0 || request.getId_user() == null || request.getSale_date() == null || request.getItems() == null || request.getId_shop() == null) {
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("The data you are " +
+                    "trying to insert is invalid"));
+        }
 
         Sale new_sale = saleService.createSale(request.getTotal_price(), request.getId_user(), request.getSale_date()
                 ,request.getItems(), request.getId_shop());

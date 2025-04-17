@@ -1,5 +1,6 @@
 
 package com.uade.tpo.E_Commerce.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -25,6 +26,7 @@ public class Delivery_Status {
 
     @OneToOne
     @JoinColumn(name = "id_sale", nullable = false)
+    @JsonIgnore
     private Sale sale;
 
     public Long getId_delivery() {

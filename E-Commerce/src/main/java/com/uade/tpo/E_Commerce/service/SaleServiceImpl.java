@@ -6,6 +6,9 @@ import com.uade.tpo.E_Commerce.entity.dto.ModifyStockResponse;
 import com.uade.tpo.E_Commerce.repository.ItemsRepository;
 import com.uade.tpo.E_Commerce.repository.ProductRepository;
 import com.uade.tpo.E_Commerce.repository.SaleRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +23,10 @@ public class SaleServiceImpl implements SaleService {
     private SaleRepository saleRepository;
 
     @Autowired
-    private ItemsRepository itemsRepository; 
+    private ItemsRepository itemsRepository;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Autowired
     private StockService stockService;
@@ -44,9 +50,6 @@ public class SaleServiceImpl implements SaleService {
                     int checkItem = itemsRepository.createNewItem(item.getId_product(), new_sale_id, item.getAmount());
                     Optional<ModifyStockResponse> updatedStock = stockService.modifyStock(item.getId_product(), id_shop, item.getAmount());
                 }
-
-
-
                 return new_sale;
             }
             else {
@@ -59,13 +62,15 @@ public class SaleServiceImpl implements SaleService {
 
     }
 
+    @Transactional
     public Optional<Sale> updateSale(Long id_sale, int total_price, Long id_user, LocalDateTime sale_date) {
         Optional<Sale> search_sale = saleRepository.findSaleById(id_user);
         if(search_sale.isPresent()){
             int check = saleRepository.updateSale(id_sale,total_price,id_user,sale_date);
             if(check > 0){
+                entityManager.flush();
+                entityManager.clear();
                 return saleRepository.findSaleById(id_sale);
-
             }else{
                 return Optional.empty();
             }
