@@ -27,22 +27,35 @@ public class Sub_CategoryServiceImpl implements Sub_CategoryService{
     }
 
 
-    //public Sub_Category createSubCategory(String name_sub_category) { //throws DuplicateException
-        //List <Sub_Category> sub_categories = sub_CategoryRepository.findByName(name_sub_category);
-       // if (sub_categories.isEmpty()){
-       //     return sub_CategoryRepository.save(new Sub_Category(name_sub_category));
-       // } else {
-          //  return;
-             //throw new CategoryDuplicateException();
-  //      }
-  //  }
-
-    public void deleteSubCategory(String name_sub_category) {
-        List <Sub_Category> sub_categories = sub_CategoryRepository.findByName(name_sub_category);
+    public Sub_Category createSubCategory(String name_sub_category, Long id_category) { //throws DuplicateException
+        List <Sub_Category> sub_categories = sub_CategoryRepository.findSCByName(name_sub_category);
         if (sub_categories.isEmpty()){
-            return;
-            //throw new CategoryNotFoundException();
+            int check = sub_CategoryRepository.createNewSub_Category(id_category, name_sub_category);
+            if (check > 0){
+                List <Sub_Category> sub_categories_check = sub_CategoryRepository.findSCByName(name_sub_category);
+                if (!sub_categories_check.isEmpty()){
+                    Sub_Category sub_category = sub_categories_check.get(0);
+                    return sub_category;
+                } else {
+                    return null;
+                }
+            } else{
+                return null;
+            }
+        } else {
+            return null;
+             //throw new CategoryDuplicateException();
         }
-        return;
     }
+
+    public boolean deleteSubCategoryById(Long id_sub_category) {
+        int check = sub_CategoryRepository.deleteSCById(id_sub_category);
+        if (check > 0) {
+            Optional<Sub_Category> check_sub_category = sub_CategoryRepository.findSCById(id_sub_category);
+            return check_sub_category.isEmpty();
+        } else{
+            return false;
+        }
+    }
+
 }

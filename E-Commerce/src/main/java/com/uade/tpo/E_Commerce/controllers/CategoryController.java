@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.uade.tpo.E_Commerce.entity.Category;
 import com.uade.tpo.E_Commerce.entity.dto.CategoryRequest;
 import com.uade.tpo.E_Commerce.service.CategoryService;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -49,14 +51,17 @@ public class CategoryController {
     }
     
     @PostMapping
-    public ResponseEntity<Category> createCategory(@RequestBody CategoryRequest categoryRequest) {//throws DuplicateException 
+    public ResponseEntity<Category> createCategory(@RequestBody CategoryRequest categoryRequest) { 
         Category result = categoryService.createCategory(categoryRequest.getName_category());
         return ResponseEntity.created(URI.create("/categories/" + result.getId_category())).body(result);
         }
 
-    //@DeleteMapping("/{id_category}")
-   // public ResponseEntity<Void> deleteCategory(@PathVariable Long id_category) 
-     //   throws NotFoundException {
-        
-   //     } PREGUNTARLE A LA PROFE COMO HACER UN DELETE EN EL CONTROLLER
+    @DeleteMapping("/{id_category}")
+    public ResponseEntity<Void> deleteCategoryById(@PathVariable Long id_category) {
+        boolean deleted = categoryService.deleteCategoryById(id_category);
+        if (deleted){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+        } 
 }

@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class Sub_CategoryRequest {
     private Long id_sub_category;
-    private Category category;
+    private Long id_category;
     private String name_sub_category;
     private List<Sub_categoryProduct> sub_categoryProduct;
 }

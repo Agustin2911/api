@@ -13,8 +13,8 @@ public interface Sub_CategoryService {
 
     public Optional<Sub_Category> getSubCategoryById (Long id_sub_category); //Get de una sub categoria por id
 
-    public Sub_Category createSubCategory (String name_sub_category); // Post de una sub categoria
+    public Sub_Category createSubCategory (String name_sub_category, Long id_category); // Post de una sub categoria
 
-    public void deleteSubCategory (String name_sub_category); // Delete de una sub categoria
+    public boolean deleteSubCategoryById (Long id_sub_category); // Delete de una sub categoria
 
 }

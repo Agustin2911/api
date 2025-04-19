@@ -15,6 +15,5 @@ public interface CategoryService {
 
     public Category createCategory (String name_category); // Post de una categoria
 
-    public void deleteCategory (String name_category); // Delete de una categoria
-    
+    public boolean deleteCategoryById (Long id_category); // Delete de una categoria
 }

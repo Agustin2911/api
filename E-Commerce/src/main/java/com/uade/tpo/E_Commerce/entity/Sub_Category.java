@@ -2,6 +2,8 @@ package com.uade.tpo.E_Commerce.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,6 +19,7 @@ public class Sub_Category {
     
     @ManyToOne
     @JoinColumn(name = "id_category", referencedColumnName = "id_category") // El que tiene FK se le pone el joinColumn
+    @JsonBackReference
     private Category category;
 
     @Column(name = "name_sub_category", length = 60)

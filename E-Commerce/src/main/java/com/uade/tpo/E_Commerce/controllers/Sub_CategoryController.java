@@ -14,13 +14,14 @@ import com.uade.tpo.E_Commerce.entity.Sub_Category;
 import com.uade.tpo.E_Commerce.entity.dto.Sub_CategoryRequest;
 import com.uade.tpo.E_Commerce.service.Sub_CategoryService;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
+import io.micrometer.core.ipc.http.HttpSender;
 
 @RestController
 @RequestMapping("sub_categories")
@@ -51,14 +52,17 @@ public class Sub_CategoryController {
 
     @PostMapping
     public ResponseEntity<Sub_Category> createSubCategory(@RequestBody Sub_CategoryRequest sub_CategoryRequest){
-        Sub_Category result = sub_CategoryService.createSubCategory(sub_CategoryRequest.getName_sub_category());
+        Sub_Category result = sub_CategoryService.createSubCategory(sub_CategoryRequest.getName_sub_category(), sub_CategoryRequest.getId_category());
         return ResponseEntity.created(URI.create("/sub_categories" + result.getId_sub_category())).body(result);
     }
     
-    //@DeleteMapping("/{id_category}")
-   // public ResponseEntity<Void> deleteCategory(@PathVariable Long id_category) 
-     //   throws NotFoundException {
-        
-   //     } PREGUNTARLE A LA PROFE COMO HACER UN DELETE EN EL CONTROLLER
+    @DeleteMapping("/{id_sub_category}")
+    public ResponseEntity<Void> deleteSubCategoryById(@PathVariable Long id_sub_category){ //   throws NotFoundException 
+        boolean deleted = sub_CategoryService.deleteSubCategoryById(id_sub_category);
+        if (deleted){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+        } //PREGUNTARLE A LA PROFE COMO HACER UN DELETE EN EL CONTROLLER
 
 }

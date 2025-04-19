@@ -8,6 +8,8 @@ import lombok.Data;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Data
 @Entity
@@ -23,6 +25,7 @@ public class Category {
     private String name_category;
 
     @OneToMany(mappedBy = "category") //El que tiene PK se le pone mappedBy
+    @JsonManagedReference
     private List<Sub_Category> sub_category;
 }
 

@@ -10,5 +10,4 @@ import lombok.Data;
 public class CategoryRequest {
     private Long id_category;
     private String name_category;
-    private List<Sub_Category> sub_category;
 }
