@@ -22,8 +22,7 @@ public class Sub_Category {
     @Column(name = "name_sub_category", length = 60)
     private String name_sub_category;
 
-    @ManyToMany
-    @JoinColumn(name = "id_sub_category", referencedColumnName = "id_sub_category", nullable = false)
+    @OneToMany(mappedBy = "sub_category")
     private List<Sub_categoryProduct> sub_categoryProduct;
 
 }

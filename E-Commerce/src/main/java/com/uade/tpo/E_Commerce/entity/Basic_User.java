@@ -11,10 +11,8 @@ public class Basic_User {
     public Basic_User(){}
 
     @Id
-    @ManyToOne
-    @JoinColumn(name = "id_role", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_user;
-
 
     @Column(name = "username", length = 100)
     private String username;
@@ -25,7 +23,12 @@ public class Basic_User {
     @Column(name = "password", length = 200)
     private String password;
 
-    @OneToOne(mappedBy = "Basic_User")
+    @OneToOne(mappedBy = "basic_user")
     private User_Roles user_roles;
 
+    @OneToOne(mappedBy = "basic_user")
+    private Buyer_User buyer_user;
+
+    @OneToOne(mappedBy = "basic_user")
+    private Seller_User seller_user;
 }

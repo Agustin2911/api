@@ -1,9 +1,9 @@
 package com.uade.tpo.E_Commerce.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data
@@ -25,5 +25,8 @@ public class Shops {
 
     @OneToMany(mappedBy = "shops")
     private List<Shop_Stock> shop_stock;
+
+    @OneToMany(mappedBy = "shops")
+    private List<Company_Shops> company_shops;
     
 }
