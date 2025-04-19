@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 
@@ -27,4 +28,16 @@ public class Sub_categoryProduct {
     @JoinColumn(name="id_product")
     private Product product;
 
+    public CompoundKeySub_categoryProduct getId() {
+        return id;
+    }
+
+    public Sub_Category getSub_category() {
+        return sub_category;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
 }
+

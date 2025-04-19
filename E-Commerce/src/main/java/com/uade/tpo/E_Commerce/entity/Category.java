@@ -1,7 +1,4 @@
-
 package com.uade.tpo.E_Commerce.entity;
-
-
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -28,4 +25,3 @@ public class Category {
     @JsonManagedReference
     private List<Sub_Category> sub_category;
 }
-

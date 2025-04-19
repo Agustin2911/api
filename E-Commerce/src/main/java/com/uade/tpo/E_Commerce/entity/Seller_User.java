@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 
@@ -39,4 +40,32 @@ public class Seller_User {
     @OneToMany(mappedBy = "Seller_User")
     private List<Company_Shops> company_shops;
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public Basic_User getBasic_user() {
+        return basic_user;
+    }
+
+    public int getCuit() {
+        return cuit;
+    }
+
+    public String getCompany_name() {
+        return company_name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public List<Company_Shops> getCompany_shops() {
+        return company_shops;
+    }
 }

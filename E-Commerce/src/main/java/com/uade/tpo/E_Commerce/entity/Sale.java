@@ -1,5 +1,7 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.uade.tpo.E_Commerce.entity.dto.ItemsRequest;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -28,7 +30,8 @@ public class Sale {
 
     @OneToOne(mappedBy = "sale")
     private Delivery_Status delivery_status;
-
+    
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_user", nullable = false)
     private Buyer_User buyer_user;
@@ -36,5 +39,28 @@ public class Sale {
     @OneToMany(mappedBy = "sale")
     private List<Items> items;
 
+    public Long getId_sale() {
+        return id_sale;
+    }
+
+    public int getTotal_price() {
+        return total_price;
+    }
+
+    public LocalDateTime getSale_date() {
+        return sale_date;
+    }
+
+    public Delivery_Status getDelivery_status() {
+        return delivery_status;
+    }
+
+    public Buyer_User getBuyer_user() {
+        return buyer_user;
+    }
+
+    public List<Items> getItems() {
+        return items;
+    }
 }
 

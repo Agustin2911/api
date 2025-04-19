@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 import jakarta.persistence.*;
@@ -33,4 +34,28 @@ public class Buyer_User {
     @JoinColumn(name = "id_user", nullable = false)
     private Basic_User basic_user;
 
+
+    public Long getId_user() {
+        return id_user;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public List<Sale> getSale() {
+        return sale;
+    }
+
+    public Basic_User getBasic_user() {
+        return basic_user;
+    }
 }

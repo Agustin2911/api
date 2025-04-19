@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 import jakarta.persistence.*;
@@ -22,4 +23,16 @@ public class Company_Shops {
     @JoinColumn(name = "id_shop", nullable = false)
     private Shops shops;
 
+    public Long getId() {
+        return id;
+    }
+
+    public com.uade.tpo.E_Commerce.entity.Seller_User getSeller_User() {
+        return Seller_User;
+    }
+
+    public Shops getShops() {
+        return shops;
+    }
 }
+
