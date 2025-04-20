@@ -15,6 +15,7 @@ public class Product {
 
     public Product(){}
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_product;

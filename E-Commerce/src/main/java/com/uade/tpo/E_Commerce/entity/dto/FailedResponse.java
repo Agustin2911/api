@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity.dto;
 
 public class FailedResponse {
@@ -18,3 +19,6 @@ public class FailedResponse {
         return status;
     }
 }
+
+
+

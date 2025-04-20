@@ -1,6 +1,8 @@
 
 package com.uade.tpo.E_Commerce.entity;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -26,6 +28,12 @@ public class Buyer_User {
     @Column(name = "dni", nullable = false)
     private int dni;
 
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "buyer_user")
+    private List<Sale> sale;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "buyer_user")
     private List<Sale> sale;
 

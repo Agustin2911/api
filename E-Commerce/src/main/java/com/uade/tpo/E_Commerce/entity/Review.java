@@ -15,7 +15,7 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_comment;
-  
+
     @Column(name="text" , length = 2000)
     private String text;
 

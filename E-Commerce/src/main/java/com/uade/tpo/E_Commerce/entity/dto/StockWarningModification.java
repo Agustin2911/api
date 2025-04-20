@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity.dto;
 
 public class StockWarningModification {
@@ -19,3 +20,4 @@ public class StockWarningModification {
         return stock_warning;
     }
 }
+

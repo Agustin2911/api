@@ -18,6 +18,7 @@ public class SaleRequest {
     private ArrayList<ItemsRequest> items;
     private Long id_shop;
 
+
     public Long getId_sale() {
         return id_sale;
     }
@@ -38,6 +39,8 @@ public class SaleRequest {
         return items;
     }
 
+
     public Long getId_shop(){return id_shop;}
+
 }
 

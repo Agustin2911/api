@@ -1,6 +1,9 @@
 
 package com.uade.tpo.E_Commerce.entity;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -22,6 +25,7 @@ public class Roles {
     @Column(name = "role_name", length = 100)
     private String roleName;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "roles")
     private List<User_Roles> userRolesList;
 
@@ -36,4 +40,5 @@ public class Roles {
     public List<User_Roles> getUserRolesList() {
         return userRolesList;
     }
+
 }
