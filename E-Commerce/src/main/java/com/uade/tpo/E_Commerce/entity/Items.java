@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity;
 
 
@@ -12,18 +13,34 @@ public class Items {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_items;
+    private Long id_items;
 
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_product")
-    private Product id_product;
+    private Product product;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_sale")
     private Sale sale;
 
     @Column(name = "amount", nullable = false)
     private int amount;
 
+
+    public Long getId_items() {
+        return id_items;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public Sale getSale() {
+        return sale;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
 }
