@@ -77,4 +77,5 @@ public class Basic_UserController {
                     .body(new FailedResponse("User could not be deleted"));
         }
     }
+
 }
