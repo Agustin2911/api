@@ -1,4 +1,4 @@
-package com.uade.tpo.E_Commerce.controller;
+package com.uade.tpo.E_Commerce.controllers;
 
 import com.uade.tpo.E_Commerce.entity.Seller_User;
 import com.uade.tpo.E_Commerce.entity.dto.FailedResponse;
@@ -77,3 +77,4 @@ public class Seller_UserController {
         }
     }
 }
+
