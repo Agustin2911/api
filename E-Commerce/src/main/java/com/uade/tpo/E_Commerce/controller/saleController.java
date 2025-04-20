@@ -1,9 +1,8 @@
-package com.uade.tpo.E_Commerce.controllers;
+package com.uade.tpo.E_Commerce.controller;
 
 
 
 import com.uade.tpo.E_Commerce.entity.Sale;
-import com.uade.tpo.E_Commerce.entity.dto.ItemsRequest;
 import com.uade.tpo.E_Commerce.entity.dto.SaleRequest;
 import com.uade.tpo.E_Commerce.service.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Optional;
 
 @Controller

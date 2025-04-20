@@ -33,9 +33,6 @@ public class Buyer_User {
     @OneToMany(mappedBy = "buyer_user")
     private List<Sale> sale;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "buyer_user")
-    private List<Sale> sale;
 
     @OneToOne
     @MapsId("id_user")
@@ -62,7 +59,6 @@ public class Buyer_User {
     public List<Sale> getSale() {
         return sale;
     }
-
     public Basic_User getBasic_user() {
         return basic_user;
     }

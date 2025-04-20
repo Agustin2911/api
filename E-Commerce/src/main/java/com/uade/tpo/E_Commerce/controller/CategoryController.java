@@ -1,4 +1,4 @@
-package com.uade.tpo.E_Commerce.controllers;
+package com.uade.tpo.E_Commerce.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
