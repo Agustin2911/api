@@ -1,4 +1,4 @@
-package com.uade.tpo.E_Commerce.controllers;
+package com.uade.tpo.E_Commerce.controller;
 
 import com.uade.tpo.E_Commerce.entity.Product_Stock;
 import com.uade.tpo.E_Commerce.entity.Shop_Stock;
