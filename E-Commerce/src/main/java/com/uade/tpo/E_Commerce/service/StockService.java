@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.service;
 
 import com.uade.tpo.E_Commerce.entity.Product_Stock;
@@ -8,8 +9,7 @@ import com.uade.tpo.E_Commerce.repository.Product_StockRepository;
 import com.uade.tpo.E_Commerce.repository.Shop_StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -21,10 +21,6 @@ public class StockService implements  StockImp{
 
     @Autowired
     private Shop_StockRepository repository2;
-
-
-    @PersistenceContext
-    private EntityManager entityManager;
 
     @Override
     public Optional<Product_Stock> getStockOfAProductById(long id) {
@@ -117,11 +113,9 @@ public class StockService implements  StockImp{
 
             repository1.modifyStock(id,stock.get().getStock()+new_stock);
             repository2.updateShop_stock(id,id_shop,shop.get().getStock()+new_stock);
-            entityManager.flush();
-            stock=repository1.searchStock(id);
-            shop=repository2.searchByProductIdAndShopId(id,id_shop);
 
-            return Optional.of(new ModifyStockResponse(id,stock.get().getStock(),id_shop,shop.get().getStock()));
+
+            return Optional.of(new ModifyStockResponse(id,stock.get().getStock()+new_stock,id_shop,shop.get().getStock()+new_stock));
 
         }
 
@@ -133,8 +127,7 @@ public class StockService implements  StockImp{
         Optional<Product_Stock> product=repository1.searchStock(id);
         if(product.isPresent()){
             repository1.modifyStockWarning(id,Stock_warning);
-            entityManager.flush();
-            product=repository1.searchStock(id);
+            product.get().setStock_warning(Stock_warning);
             return product;
         }
         else {
@@ -145,3 +138,4 @@ public class StockService implements  StockImp{
 
 
 }
+

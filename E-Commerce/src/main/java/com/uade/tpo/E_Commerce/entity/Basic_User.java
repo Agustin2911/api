@@ -1,7 +1,7 @@
 
 package com.uade.tpo.E_Commerce.entity;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -24,6 +24,7 @@ public class Basic_User {
 
     @Column(name = "password", length = 200)
     private String password;
+
 
     @JsonIgnore
     @OneToOne(mappedBy = "basic_user")
