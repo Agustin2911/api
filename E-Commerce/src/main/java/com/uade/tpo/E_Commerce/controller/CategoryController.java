@@ -1,8 +1,9 @@
-package com.uade.tpo.E_Commerce.controller;
+package com.uade.tpo.E_Commerce.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,26 +43,33 @@ public class CategoryController {
     }
 
     @GetMapping("/{id_category}")
-    public ResponseEntity<Category> getCategoryById(@PathVariable Long id_category) {
+    public ResponseEntity<Object> getCategoryById(@PathVariable Long id_category) {
         Optional<Category> result = categoryService.getCategoryById(id_category);
         if (result.isPresent()){
             return ResponseEntity.ok(result.get());
         }
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                     .body("The Category ID was not found.");
     }
     
     @PostMapping
-    public ResponseEntity<Category> createCategory(@RequestBody CategoryRequest categoryRequest) { 
+    public ResponseEntity<Object> createCategory(@RequestBody CategoryRequest categoryRequest) { 
         Category result = categoryService.createCategory(categoryRequest.getName_category());
-        return ResponseEntity.created(URI.create("/categories/" + result.getId_category())).body(result);
+        if (result == null){
+            return ResponseEntity.badRequest().body("This Category already exists.");
+        } else {
+            return ResponseEntity.created(URI.create("/categories/" + result.getId_category())).body(result);
         }
+    }
 
     @DeleteMapping("/{id_category}")
-    public ResponseEntity<Void> deleteCategoryById(@PathVariable Long id_category) {
+    public ResponseEntity<Object> deleteCategoryById(@PathVariable Long id_category) {
         boolean deleted = categoryService.deleteCategoryById(id_category);
         if (deleted){
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
-        } 
+            return ResponseEntity.ok().body("The Category was succesfully deleted.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                     .body("The Category ID was not found, delete unsuccesful.");
+        }  
+    } 
 }
