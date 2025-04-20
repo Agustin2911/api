@@ -1,4 +1,4 @@
-package com.uade.tpo.E_Commerce.controller;
+package com.uade.tpo.E_Commerce.controllers;
 import com.uade.tpo.E_Commerce.entity.Review;
 import com.uade.tpo.E_Commerce.entity.dto.FailedResponse;
 import com.uade.tpo.E_Commerce.entity.dto.ReviewData;
