@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="51f5efc2-8dfc-407f-a617-9b4c42ed3990" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/ECommerceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/Basic_UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/Buyer_UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/CategoryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/Delivery_StatusController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/ProductController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/ReviewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/RolesController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/Seller_UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/ShopsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/StockController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/Sub_CategoryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/auth/AuthenticationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/auth/AuthenticationRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/auth/AuthenticationResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/auth/RegisterRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/config/ApplicationConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/config/JwtAuthenticationFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/config/JwtService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/config/UserPrincipal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/controllers/saleController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Basic_User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Buyer_User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Company_Shops.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Delivery_Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Items.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Product_Stock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Review.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Roles.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Sale.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Seller_User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Shop_Stock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Shops.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Sub_Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/Sub_categoryProduct.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/User_Roles.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/CategoryRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/CompoundKeyShop_Stock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/CompoundKeySub_categoryProduct.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/CreateProductStockDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/Delivery_StatusRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/FailedResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/ItemsRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/ModifyStockResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/ProductData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/ReviewData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/SaleRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/ShopsData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/StockWarningModification.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/Sub_CategoryRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/SuccesResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/newBasic_user.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/newBuyer_User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/entity/dto/newSeller_User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/Basic_UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/Buyer_UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/CategoryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/Company_ShopsRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/Delivery_StatusRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/ItemsRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/ProductRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/Product_StockRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/ReviewRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/RolesRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/SaleRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/Seller_UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/Shop_StockRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/ShopsRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/Sub_CategoryProductRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/Sub_CategoryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/repository/UserRolesRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/AuthenticationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/Basic_UserImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/Basic_UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/Buyer_UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/Buyer_UserServiceImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/CategoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/CategoryServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/Delivery_StatusService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/Delivery_StatusServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/ProductImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/ProductService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/ReviewImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/ReviewService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/RolesService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/RolesServiceImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/SaleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/SaleServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/Seller_UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/Seller_UserServiceImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/ShopsImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/ShopsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/StockImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/StockService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/Sub_CategoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uade/tpo/E_Commerce/service/Sub_CategoryServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/uade/tpo/E_Commerce/ECommerceApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;t-gorrinirech&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Agustin2911/api.git&quot;,
+    &quot;accountId&quot;: &quot;a63c0021-03d7-4230-93d5-83520db97a9d&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2ujDH9teakxWNS3ctAYUOGzYvQF" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ECommerceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ECommerceApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;tokens&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Tomas/Escritorio/E-Commerce&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="51f5efc2-8dfc-407f-a617-9b4c42ed3990" name="Changes" comment="" />
+      <created>1742752999318</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1742752999318</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.data.crossstore.ChangeSetPersister.NotFoundException" package="org.springframework.data.crossstore.ChangeSetPersister" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
