@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,9 @@ public interface Basic_UserRepository extends JpaRepository<Basic_User, Long> {
 
     @Query(value = "SELECT * FROM Basic_User WHERE id_user = ?1", nativeQuery = true)
     Optional<Basic_User> findByIdUser(long id);
+
+    @Query(value = "SELECT * FROM Basic_User WHERE mail=?1", nativeQuery = true)
+    Optional<Basic_User> findByIdMail(String mail);
 
     @Modifying
     @Transactional
@@ -38,5 +42,7 @@ public interface Basic_UserRepository extends JpaRepository<Basic_User, Long> {
     @Query(value = "SELECT * FROM Basic_User ORDER BY id_user DESC LIMIT 1", nativeQuery = true)
     Optional<Basic_User> findLatest();
 
+    @Query("SELECT u FROM basic_user u LEFT JOIN FETCH u.user_roles WHERE u.id_user = ?1")
+    Optional<Basic_User> findWithRolesById( Long id);
 
 }

@@ -12,4 +12,20 @@ public class Sub_CategoryRequest {
     private Long id_category;
     private String name_sub_category;
     private List<Sub_categoryProduct> sub_categoryProduct;
+
+    public Long getId_sub_category() {
+        return id_sub_category;
+    }
+
+    public Long getId_category() {
+        return id_category;
+    }
+
+    public String getName_sub_category() {
+        return name_sub_category;
+    }
+
+    public List<Sub_categoryProduct> getSub_categoryProduct() {
+        return sub_categoryProduct;
+    }
 }

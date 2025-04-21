@@ -12,6 +12,7 @@ public class Basic_User {
 
     public Basic_User(){}
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_user;
@@ -64,6 +65,34 @@ public class Basic_User {
 
     public Seller_User getSeller_user() {
         return seller_user;
+    }
+
+    public void setId_user(Long id_user) {
+        this.id_user = id_user;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUser_roles(User_Roles user_roles) {
+        this.user_roles = user_roles;
+    }
+
+    public void setBuyer_user(Buyer_User buyer_user) {
+        this.buyer_user = buyer_user;
+    }
+
+    public void setSeller_user(Seller_User seller_user) {
+        this.seller_user = seller_user;
     }
 }
 

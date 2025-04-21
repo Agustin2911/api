@@ -42,6 +42,7 @@ public class RolesService implements RolesServiceImp {
     public Optional<Roles> createRole(Roles role) {
         // Insertar utilizando query nativo.
         int rows = rolesRepository.insertRole(role.getRoleName());
+        entityManager.flush();
         if (rows > 0) {
             // Recuperar el último rol insertado (precaución si hay concurrencia)
             return rolesRepository.findLatestRole();

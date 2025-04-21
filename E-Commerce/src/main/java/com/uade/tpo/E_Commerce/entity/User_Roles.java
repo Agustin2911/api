@@ -35,5 +35,11 @@ public class User_Roles{
     public Roles getRoles() {
         return roles;
     }
+
+    public String getRoleName(){
+         Roles rol=getRoles();
+         return rol.getRoleName();
+    }
+
 }
 
