@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity.dto;
 
 
@@ -35,3 +36,4 @@ public class ModifyStockResponse {
         return stock_shop;
     }
 }
+

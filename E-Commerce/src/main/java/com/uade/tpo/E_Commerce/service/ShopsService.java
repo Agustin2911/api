@@ -4,6 +4,8 @@ import com.uade.tpo.E_Commerce.entity.Shops;
 import com.uade.tpo.E_Commerce.repository.Company_ShopsRepository;
 import com.uade.tpo.E_Commerce.repository.Shop_StockRepository;
 import com.uade.tpo.E_Commerce.repository.ShopsRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,9 @@ public class ShopsService implements ShopsImp {
 
     @Autowired
     private Shop_StockRepository repository3;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public Optional<Shops> SearchShop(Long id) {
@@ -63,10 +68,8 @@ public class ShopsService implements ShopsImp {
         }
 
         repository.ModifySHop(id_shop,city,street);
-
-        shop.get().setCity(city);
-        shop.get().setStreet(street);
-
+        entityManager.flush();
+        shop=repository.getShpById(id_shop);
         return shop;
     }
 

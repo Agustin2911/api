@@ -5,6 +5,9 @@ package com.uade.tpo.E_Commerce.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -37,6 +40,8 @@ public class Seller_User {
     @Column(name = "state", length = 30)
     private String state;
 
+
+    @JsonIgnore
     @OneToMany(mappedBy = "Seller_User")
     private List<Company_Shops> company_shops;
 

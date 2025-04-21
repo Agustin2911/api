@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity.dto;
 import lombok.Data;
 
@@ -52,3 +53,4 @@ public class ProductData {
         return id_sub_category;
     }
 }
+

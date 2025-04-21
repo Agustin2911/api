@@ -3,7 +3,7 @@ package com.uade.tpo.E_Commerce.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
+import com.uade.tpo.E_Commerce.entity.Seller_User;
 @Data
 @Entity(name = "company_shops")
 public class Company_Shops {
@@ -27,7 +27,7 @@ public class Company_Shops {
         return id;
     }
 
-    public com.uade.tpo.E_Commerce.entity.Seller_User getSeller_User() {
+    public Seller_User getSeller_User() {
         return Seller_User;
     }
 

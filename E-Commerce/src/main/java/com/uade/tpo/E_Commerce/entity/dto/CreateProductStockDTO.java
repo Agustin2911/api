@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity.dto;
 
 public class CreateProductStockDTO {
@@ -32,3 +33,4 @@ public class CreateProductStockDTO {
     }
 
 }
+
