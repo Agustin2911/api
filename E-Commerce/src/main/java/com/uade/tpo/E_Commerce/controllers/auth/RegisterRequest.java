@@ -17,7 +17,7 @@ public class RegisterRequest {
     private String firstname;
     private String email;
     private String password;
-    private long role;
+    private Long role;
 
     public String getFirstname() {
         return firstname;

@@ -68,7 +68,7 @@ public class AuthenticationService {
                         request.getEmail(),
                         request.getPassword()));
 
-        Optional<Basic_User> user = repository.findByIdMail(request.getEmail());
+        Optional<Basic_User> user = repository.findByMail(request.getEmail());
         var jwtToken = jwtService.generateToken(new UserPrincipal(user.get()));
         return new AuthenticationResponse(jwtToken);
     }

@@ -21,8 +21,8 @@ public interface Basic_UserRepository extends JpaRepository<Basic_User, Long> {
     @Query(value = "SELECT * FROM Basic_User WHERE id_user = ?1", nativeQuery = true)
     Optional<Basic_User> findByIdUser(long id);
 
-    @Query(value = "SELECT * FROM Basic_User WHERE mail=?1", nativeQuery = true)
-    Optional<Basic_User> findByIdMail(String mail);
+    @Query(value = "SELECT * FROM Basic_User WHERE mail = ?1", nativeQuery = true)
+    Optional<Basic_User> findByMail(String mail);
 
     @Modifying
     @Transactional
