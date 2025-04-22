@@ -4,7 +4,7 @@ import com.uade.tpo.E_Commerce.entity.Seller_User;
 import com.uade.tpo.E_Commerce.entity.dto.FailedResponse;
 import com.uade.tpo.E_Commerce.entity.dto.SuccesResponse;
 import com.uade.tpo.E_Commerce.entity.dto.newSeller_User;
-import com.uade.tpo.E_Commerce.service.Seller_UserServiceImp;
+import com.uade.tpo.E_Commerce.service.Seller_UserService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ import java.util.Optional;
 public class Seller_UserController {
 
     @Autowired
-    private Seller_UserServiceImp service;
+    private Seller_UserService service;
 
     @GetMapping
     public ResponseEntity<Object> getAllUsers() {

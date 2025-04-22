@@ -56,6 +56,7 @@ public class Basic_UserService implements Basic_UserImp{
         repository.updateUser(user.getUsername(), user.getMail(), hashedPassword, user.getId_user());
 
         entityManager.flush();
+        entityManager.clear();
 
         return repository.findByIdUser(user.getId_user());
     }

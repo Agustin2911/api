@@ -3,6 +3,8 @@ package com.uade.tpo.E_Commerce.controllers;
 import java.net.URI;
 import java.util.Optional;
 
+import com.uade.tpo.E_Commerce.entity.dto.FailedResponse;
+import com.uade.tpo.E_Commerce.service.Sub_CategoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.uade.tpo.E_Commerce.entity.Sub_Category;
 import com.uade.tpo.E_Commerce.entity.dto.Sub_CategoryRequest;
-import com.uade.tpo.E_Commerce.service.Sub_CategoryService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,18 +30,18 @@ import io.micrometer.core.ipc.http.HttpSender;
 public class Sub_CategoryController {
 
     @Autowired
-    private Sub_CategoryService sub_CategoryService;
+    private Sub_CategoryServiceImpl sub_CategoryService;
 
     @GetMapping
-    public ResponseEntity<Page<Sub_Category>> getSubCategories(
-        @RequestParam(required = false) Integer page,
-        @RequestParam(required = false) Integer size) {
-        
-        if (page == null || size == null){
-            return ResponseEntity.ok(sub_CategoryService.getSubCategories(PageRequest.of(0, Integer.MAX_VALUE)));
+    public ResponseEntity<Object> getSubCategories() {
+
+        if(sub_CategoryService.getSubCategories(PageRequest.of(0, Integer.MAX_VALUE)).getContent().isEmpty()){
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("There are no " +
+                    "existing subcategories"));
         }
-        return ResponseEntity.ok(sub_CategoryService.getSubCategories(PageRequest.of(page, size)));
-        }
+
+        return ResponseEntity.ok(sub_CategoryService.getSubCategories(PageRequest.of(0, Integer.MAX_VALUE)).getContent());
+    }
     
     @GetMapping("/{id_sub_category}")
     public ResponseEntity<Object> getSubCategoryById(@PathVariable Long id_sub_category) {

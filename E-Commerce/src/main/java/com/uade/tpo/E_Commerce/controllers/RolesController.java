@@ -4,7 +4,7 @@ import com.uade.tpo.E_Commerce.entity.Roles;
 import com.uade.tpo.E_Commerce.entity.User_Roles;
 import com.uade.tpo.E_Commerce.entity.dto.FailedResponse;
 import com.uade.tpo.E_Commerce.entity.dto.SuccesResponse;
-import com.uade.tpo.E_Commerce.service.RolesServiceImp;
+import com.uade.tpo.E_Commerce.service.RolesService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ import java.util.Optional;
 public class RolesController {
 
     @Autowired
-    private RolesServiceImp rolesService;
+    private RolesService rolesService;
 
 
     // GET /roles - Obtener todos los roles

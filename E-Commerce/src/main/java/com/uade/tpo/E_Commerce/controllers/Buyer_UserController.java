@@ -4,7 +4,7 @@ import com.uade.tpo.E_Commerce.entity.Buyer_User;
 import com.uade.tpo.E_Commerce.entity.dto.FailedResponse;
 import com.uade.tpo.E_Commerce.entity.dto.SuccesResponse;
 import com.uade.tpo.E_Commerce.entity.dto.newBuyer_User;
-import com.uade.tpo.E_Commerce.service.Buyer_UserServiceImp;
+import com.uade.tpo.E_Commerce.service.Buyer_UserService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ import java.util.Optional;
 public class Buyer_UserController {
 
     @Autowired
-    private Buyer_UserServiceImp service;
+    private Buyer_UserService service;
 
     @GetMapping
     public ResponseEntity<Object> getAllUsers() {

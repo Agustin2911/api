@@ -5,7 +5,7 @@ import com.uade.tpo.E_Commerce.entity.Delivery_Status;
 import com.uade.tpo.E_Commerce.entity.dto.Delivery_StatusRequest;
 import com.uade.tpo.E_Commerce.entity.dto.FailedResponse;
 import com.uade.tpo.E_Commerce.entity.dto.SuccesResponse;
-import com.uade.tpo.E_Commerce.service.Delivery_StatusService;
+import com.uade.tpo.E_Commerce.service.Delivery_StatusServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ import java.util.Optional;
 public class Delivery_StatusController {
 
     @Autowired
-    private Delivery_StatusService delivery_statusService;
+    private Delivery_StatusServiceImpl delivery_statusService;
 
     @GetMapping("/{id_delivery}")
     public ResponseEntity<Object> getCategoryById(@PathVariable Long id_delivery){

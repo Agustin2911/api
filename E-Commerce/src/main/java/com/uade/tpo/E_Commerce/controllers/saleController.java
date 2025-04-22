@@ -5,7 +5,8 @@ import com.uade.tpo.E_Commerce.entity.dto.FailedResponse;
 import com.uade.tpo.E_Commerce.entity.dto.ItemsRequest;
 import com.uade.tpo.E_Commerce.entity.dto.SaleRequest;
 import com.uade.tpo.E_Commerce.entity.dto.SuccesResponse;
-import com.uade.tpo.E_Commerce.service.SaleService;
+import com.uade.tpo.E_Commerce.service.SaleServiceImpl;
+import com.uade.tpo.E_Commerce.service.SaleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,7 @@ import java.util.Optional;
 public class saleController {
 
     @Autowired
-    private SaleService saleService;
+    private SaleServiceImpl saleService;
 
     @GetMapping("/{id_sale}")
     public ResponseEntity<Object> getSaleById(@PathVariable Long id_sale){

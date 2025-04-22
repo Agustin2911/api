@@ -87,7 +87,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/sale/{id}").hasAnyAuthority(Role.BUYER.name())
                         .requestMatchers(HttpMethod.DELETE, "/sale/{id}").hasAnyAuthority(Role.SELLER.name())
                         .requestMatchers(HttpMethod.GET, "/seller_user").hasAnyAuthority(Role.ADMIN.name())
-                        .requestMatchers(HttpMethod.GET, "/seller_user/{id}").hasAnyAuthority(Role.SELLER.name())
+                        .requestMatchers(HttpMethod.GET, "/seller_user/{id}").permitAll()
                         .requestMatchers(HttpMethod.POST, "/seller_user").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/seller_user").hasAnyAuthority(Role.SELLER.name())
                         .requestMatchers(HttpMethod.DELETE, "/seller_user/{id}").hasAnyAuthority(Role.SELLER.name())

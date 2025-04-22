@@ -60,6 +60,7 @@ public class RolesService implements RolesServiceImp {
         int rows = rolesRepository.updateRole(role.getRoleName(), role.getId_role());
         if (rows > 0) {
             entityManager.flush();
+            entityManager.clear();
             return rolesRepository.findRoleById(role.getId_role());
         }
         return Optional.empty();

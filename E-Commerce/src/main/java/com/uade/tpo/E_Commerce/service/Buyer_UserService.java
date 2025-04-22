@@ -57,6 +57,7 @@ public class Buyer_UserService implements Buyer_UserServiceImp {
         );
 
         entityManager.flush();
+        entityManager.clear();
 
         return repository.findByIdUser(user.getId_user());
     }

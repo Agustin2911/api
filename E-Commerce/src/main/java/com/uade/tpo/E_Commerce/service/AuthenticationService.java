@@ -48,10 +48,12 @@ public class AuthenticationService {
         String hashedPassword = passwordEncoder.encode(request.getPassword());
         repository.insertUser(request.getFirstname(),request.getEmail(),hashedPassword);
         entityManager.flush();
+        entityManager.clear();
         Optional<Basic_User> user=repository.findLatest();
         System.out.println(user.get().getId_user());
         repository2.assignRoleToUser(user.get().getId_user(),request.getRole());
         entityManager.flush();
+        entityManager.clear();
         Optional<User_Roles> role=repository2.findByUserId(user.get().getId_user());
 
         Optional<Basic_User> updatedUser=repository.findWithRolesById(user.get().getId_user());
