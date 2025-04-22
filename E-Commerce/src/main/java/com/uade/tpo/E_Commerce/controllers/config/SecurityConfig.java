@@ -95,8 +95,6 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/sub_categories/{id}").permitAll()
                         .requestMatchers(HttpMethod.POST, "/sub_categories").hasAnyAuthority(Role.ADMIN.name())
                         .requestMatchers(HttpMethod.DELETE, "/sub_categories/{id}").hasAnyAuthority(Role.ADMIN.name())
-
-
                         .anyRequest()
                         .authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
