@@ -33,26 +33,26 @@ public class Delivery_StatusController {
                 "Delivery Status with this id"));
     }
 
-    @PostMapping
-    public ResponseEntity<Object> createDeliveryStatus(@RequestBody Delivery_StatusRequest request) {
-
-        if (request.getId_sale() == null || request.getDelivery_type() == null || request.getAddress() == null || request.getDelivery_status() == null) {
-            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("The data you are " +
-                    "trying to insert is invalid"));
-        }
-
-        Delivery_Status new_delivery = delivery_statusService.createDeliveryStatus(request.getId_sale(),
-                request.getDelivery_type(), request.getAddress(), request.getDelivery_status());
-
-        if (new_delivery == null) {
-            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("There is already a " +
-                    "Delivery Status with this data"));
-        }else{
-            return ResponseEntity.created(URI.create("/delivery-status/" + new_delivery.getId_delivery())).body(new_delivery);
-
-        }
-
-    }
+//    @PostMapping
+//    public ResponseEntity<Object> createDeliveryStatus(@RequestBody Delivery_StatusRequest request) {
+//
+//        if (request.getId_sale() == null || request.getDelivery_type() == null || request.getAddress() == null || request.getDelivery_status() == null) {
+//            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("The data you are " +
+//                    "trying to insert is invalid"));
+//        }
+//
+//        Delivery_Status new_delivery = delivery_statusService.createDeliveryStatus(request.getId_sale(),
+//                request.getDelivery_type(), request.getAddress(), request.getDelivery_status());
+//
+//        if (new_delivery == null) {
+//            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("There is already a " +
+//                    "Delivery Status with this data"));
+//        }else{
+//            return ResponseEntity.created(URI.create("/delivery-status/" + new_delivery.getId_delivery())).body(new_delivery);
+//
+//        }
+//
+//    }
 
     @PutMapping("/{id_delivery}")
     public ResponseEntity<Object> updateDeliveryStatus(@PathVariable Long id_delivery,

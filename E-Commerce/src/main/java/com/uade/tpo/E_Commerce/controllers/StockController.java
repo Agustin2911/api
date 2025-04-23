@@ -74,27 +74,28 @@ public class StockController {
 
     }
 
-    @PostMapping("/shop_stock")
-    public ResponseEntity<Object> postStock_shop(@RequestBody Shop_Stock product){
-
-
-
-        Optional<Shop_Stock> shop_stock=service.createShopStock(product.getId().getId_product(),product.getStock(),product.getId().getId_shop());
-
-        if (shop_stock.isPresent()){
-            return  ResponseEntity.ok(shop_stock.get());
-        }
-
-        else{
-            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("the system couldn't create the stock for the product"));
-        }
-
-
-    }
+//    @PostMapping("/shop_stock")
+//    public ResponseEntity<Object> postStock_shop(@RequestBody Shop_Stock product){
+//
+//
+//
+//        Optional<Shop_Stock> shop_stock=service.createShopStock(product.getId().getId_product(),product.getStock(),product.getId().getId_shop());
+//
+//        if (shop_stock.isPresent()){
+//            return  ResponseEntity.ok(shop_stock.get());
+//        }
+//
+//        else{
+//            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("the system couldn't create the stock for the product"));
+//        }
+//
+//
+//    }
 
     @PutMapping
     public  ResponseEntity<Object> modifyStock(@RequestBody Shop_Stock data){
-        Optional<Product_Stock>  stock =service.modifyStock(data.getId().getId_product(),data.getId().getId_shop(),data.getStock());
+        Optional<Product_Stock> stock = service.modifyStock(data.getId().getId_product(),data.getId().getId_shop(),
+                data.getStock());
         if (stock.isPresent()){
             return  ResponseEntity.ok(stock.get());
         }

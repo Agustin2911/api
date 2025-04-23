@@ -95,17 +95,17 @@ public class RolesController {
         }
     }
 
-    // POST /roles/{roleId}/assign/{userId} - Asignar un rol a un usuario
-    @PostMapping("/assign/{roleId}/{userId}")
-    public ResponseEntity<Object> assignRole(@PathVariable long roleId, @PathVariable long userId) {
-        Optional<User_Roles> assigned = rolesService.assignRoleToUser(userId, roleId);
-        if (assigned.isPresent()) {
-            return ResponseEntity.ok(assigned.get());
-        } else {
-            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
-                    .body(new FailedResponse("Could not assign role to user"));
-        }
-    }
+// POST /roles/{roleId}/assign/{userId} - Asignar un rol a un usuario
+//    @PostMapping("/assign/{roleId}/{userId}")
+//    public ResponseEntity<Object> assignRole(@PathVariable long roleId, @PathVariable long userId) {
+//        Optional<User_Roles> assigned = rolesService.assignRoleToUser(userId, roleId);
+//        if (assigned.isPresent()) {
+//            return ResponseEntity.ok(assigned.get());
+//        } else {
+//            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
+//                    .body(new FailedResponse("Could not assign role to user"));
+//        }
+//    }
 
     // DELETE /roles/user/{userId} - Remover el rol asignado a un usuario
     @DeleteMapping("/user/{userId}")

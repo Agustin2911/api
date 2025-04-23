@@ -25,7 +25,7 @@ public class ProductController{
     @GetMapping
     public ResponseEntity<Object> getAllProducts() {
         Optional<ArrayList<Product>> respond = service.allProduct();
-        if (respond.isPresent()) {
+        if (!respond.get().isEmpty()) {
             return ResponseEntity.ok(respond.get());
 
         } else {
@@ -50,7 +50,7 @@ public class ProductController{
     @GetMapping("/byCategoryid/{id}")
     public ResponseEntity<Object> getProductByCategoryId(@PathVariable long id) {
         Optional<ArrayList<Product>> respond = service.productsByCategoryId(id);
-        if (respond.isPresent()) {
+        if (!respond.get().isEmpty()) {
             return ResponseEntity.ok(respond.get());
 
         } else {
@@ -63,7 +63,7 @@ public class ProductController{
     @GetMapping("/bySubCategoryid/{id}")
     public ResponseEntity<Object> getProductBySubCategoryId(@PathVariable long id) {
         Optional<ArrayList<Product>> respond = service.productsBySub_categoryId(id);
-        if (respond.isPresent()) {
+        if (!respond.get().isEmpty()) {
             return ResponseEntity.ok(respond.get());
 
         } else {

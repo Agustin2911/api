@@ -36,4 +36,9 @@ public interface Delivery_StatusRepository extends JpaRepository<Delivery_Status
     @Query(value = "DELETE FROM Delivery_Status WHERE id_delivery = ?1", nativeQuery = true)
     int deleteDeliveryStatus(Long id_delivery);
 
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM Delivery_Status WHERE id_sale = ?1", nativeQuery = true)
+    int deleteDeliveryStatusByIdSale(Long id_sale);
+
 }

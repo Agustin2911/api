@@ -48,7 +48,7 @@ public class saleController {
         }
 
         Sale new_sale = saleService.createSale(request.getTotal_price(), request.getId_user(), request.getSale_date()
-                ,request.getItems(), request.getId_shop());
+                ,request.getItems(), request.getId_shop(),request.getDelivery_type(), request.getAddress(), request.getDelivery_status());
         if(new_sale == null){
                 return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("There is " +
                         "already a Sale with this data"));
