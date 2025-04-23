@@ -23,7 +23,7 @@ public class Delivery_StatusServiceImpl implements Delivery_StatusService {
         return delivery_statusRepository.findDeliveryStatusById(id);
     }
 
-
+    @Transactional
     public Delivery_Status createDeliveryStatus(Long id_sale, String delivery_type, String address,
                                                 String delivery_status)  /*throws DuplicateException*/ {
         boolean exists = (delivery_statusRepository.findDeliveryStatusBySale(id_sale)) != null;
@@ -61,7 +61,7 @@ public class Delivery_StatusServiceImpl implements Delivery_StatusService {
 
     }
 
-
+    @Transactional
     public boolean deleteDeliveryStatus(Long id_delivery) {
         int check = delivery_statusRepository.deleteDeliveryStatus(id_delivery);
         Optional<Delivery_Status> check_delivery = delivery_statusRepository.findDeliveryStatusById(id_delivery);

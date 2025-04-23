@@ -53,6 +53,7 @@ public class ProductService implements  ProductImp{
         return repository.productsBySubcategory(id_sub_category);
     }
 
+    @Transactional
     @Override
     public Optional<Product> createProducts(String name, String photo_url, int price, String description, String discount_state, int discount,long id_sub_category) {
 
@@ -95,6 +96,7 @@ public class ProductService implements  ProductImp{
         return product;
     }
 
+    @Transactional
     @Override
     public boolean deleteProduct(long id_product) {
 

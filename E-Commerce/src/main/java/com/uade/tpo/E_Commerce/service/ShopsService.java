@@ -45,6 +45,7 @@ public class ShopsService implements ShopsImp {
         return repository.getShopsByCompanyId(id_company);
     }
 
+    @Transactional
     @Override
     public Optional<Shops> CreateShop(String city, String street,long id_user) {
 
@@ -83,6 +84,7 @@ public class ShopsService implements ShopsImp {
         return shop;
     }
 
+    @Transactional
     @Override
     public Boolean DeleteShop(long id_shop) {
 

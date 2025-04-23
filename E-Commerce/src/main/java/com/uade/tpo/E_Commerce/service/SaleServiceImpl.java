@@ -93,6 +93,7 @@ public class SaleServiceImpl implements SaleService {
 //      new NotFoundException();
     }
 
+    @Transactional
     public boolean deleteSaleById(Long id_sale) {
 
         int deleted_delivery = delivery_statusRepository.deleteDeliveryStatusByIdSale(id_sale);

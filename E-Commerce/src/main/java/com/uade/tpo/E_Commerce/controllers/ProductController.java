@@ -7,10 +7,16 @@ import com.uade.tpo.E_Commerce.entity.Product;
 import com.uade.tpo.E_Commerce.entity.dto.SuccesResponse;
 import com.uade.tpo.E_Commerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -20,6 +26,9 @@ public class ProductController{
 
     @Autowired
     private ProductService service;
+
+    @Value("${upload-dir}")
+    private String UPLOAD_DIR;
 
 
     @GetMapping
@@ -72,12 +81,22 @@ public class ProductController{
         }
     }
 
-    @PostMapping
-    public ResponseEntity<Object> postProduct(@RequestBody ProductData product) {
-
-        Optional<Product> product_created = service.createProducts(product.getProduct_name(), product.getPhoto_url(), product.getPrice(), product.getDescription(), product.getDiscount_state(), product.getDiscount(), product.getId_sub_category());
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Object> postProduct( @ModelAttribute ProductData productData) throws IOException {
+        String filePath = UPLOAD_DIR + System.currentTimeMillis() + "_" + productData.getFile().getOriginalFilename();
+        Optional<Product> product_created = service.createProducts(productData.getProduct_name(), filePath, productData.getPrice(), productData.getDescription(), productData.getDiscount_state(), productData.getDiscount(), productData.getId_sub_category());
 
         if (product_created.isPresent()) {
+            File uploadDir = new File(UPLOAD_DIR);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdirs();
+            }
+
+            File destination = new File(filePath);
+            productData.getFile().transferTo(destination);
+
+
+
             return ResponseEntity.ok(product_created.get());
         } else {
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("the system couldn't create the new product"));
