@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.service;
 
 import com.uade.tpo.E_Commerce.entity.Product_Stock;
@@ -6,6 +7,8 @@ import com.uade.tpo.E_Commerce.entity.dto.CreateProductStockDTO;
 import com.uade.tpo.E_Commerce.entity.dto.ModifyStockResponse;
 import com.uade.tpo.E_Commerce.repository.Product_StockRepository;
 import com.uade.tpo.E_Commerce.repository.Shop_StockRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +23,9 @@ public class StockService implements  StockImp{
 
     @Autowired
     private Shop_StockRepository repository2;
+
+    @Autowired
+    private EntityManager entityManager;
 
     @Override
     public Optional<Product_Stock> getStockOfAProductById(long id) {
@@ -97,8 +103,9 @@ public class StockService implements  StockImp{
 
 
     //se introduce +5 en new stock si hay 5 nuevas unidades o -5 si salieron 5 unidades
+    @Transactional
     @Override
-    public Optional<ModifyStockResponse> modifyStock(long id, long id_shop, int new_stock) {
+    public Optional<Product_Stock> modifyStock(long id, long id_shop, int new_stock) {
 
         Optional<Product_Stock> stock=repository1.searchStock(id);
         Optional<Shop_Stock> shop=repository2.searchByProductIdAndShopId(id,id_shop);
@@ -111,11 +118,15 @@ public class StockService implements  StockImp{
 
 
             repository1.modifyStock(id,stock.get().getStock()+new_stock);
+            entityManager.flush();
+
             repository2.updateShop_stock(id,id_shop,shop.get().getStock()+new_stock);
+            entityManager.flush();
+            entityManager.clear();
 
+            Optional<Product_Stock> product_stock =repository1.searchStock(id);
 
-            return Optional.of(new ModifyStockResponse(id,stock.get().getStock()+new_stock,id_shop,shop.get().getStock()+new_stock));
-
+            return product_stock;
         }
 
     }
@@ -137,3 +148,4 @@ public class StockService implements  StockImp{
 
 
 }
+

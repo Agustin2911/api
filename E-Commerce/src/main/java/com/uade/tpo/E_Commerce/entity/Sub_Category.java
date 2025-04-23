@@ -1,9 +1,11 @@
 
+
 package com.uade.tpo.E_Commerce.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -24,6 +26,7 @@ public class Sub_Category {
     @Column(name = "name_sub_category", length = 60)
     private String name_sub_category;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "sub_category")
     private List<Sub_categoryProduct> sub_categoryProduct;
 

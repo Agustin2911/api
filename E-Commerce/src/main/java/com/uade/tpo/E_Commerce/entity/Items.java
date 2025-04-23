@@ -2,6 +2,7 @@
 package com.uade.tpo.E_Commerce.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,11 +16,11 @@ public class Items {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_items;
 
-
     @ManyToOne
     @JoinColumn(name = "id_product")
     private Product product;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_sale")
     private Sale sale;

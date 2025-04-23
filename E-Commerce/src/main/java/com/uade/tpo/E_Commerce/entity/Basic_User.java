@@ -1,5 +1,6 @@
 
 package com.uade.tpo.E_Commerce.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -10,6 +11,7 @@ public class Basic_User {
 
 
     public Basic_User(){}
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,12 +26,16 @@ public class Basic_User {
     @Column(name = "password", length = 200)
     private String password;
 
+
+    @JsonIgnore
     @OneToOne(mappedBy = "basic_user")
     private User_Roles user_roles;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "basic_user")
     private Buyer_User buyer_user;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "basic_user")
     private Seller_User seller_user;
 
@@ -59,6 +65,34 @@ public class Basic_User {
 
     public Seller_User getSeller_user() {
         return seller_user;
+    }
+
+    public void setId_user(Long id_user) {
+        this.id_user = id_user;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUser_roles(User_Roles user_roles) {
+        this.user_roles = user_roles;
+    }
+
+    public void setBuyer_user(Buyer_User buyer_user) {
+        this.buyer_user = buyer_user;
+    }
+
+    public void setSeller_user(Seller_User seller_user) {
+        this.seller_user = seller_user;
     }
 }
 

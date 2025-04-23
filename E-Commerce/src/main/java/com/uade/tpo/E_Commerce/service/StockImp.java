@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.service;
 
 import com.uade.tpo.E_Commerce.entity.Product_Stock;
@@ -19,11 +20,13 @@ public interface StockImp {
 
     public Optional<Shop_Stock> createShopStock(long id_product,int stock,long id_shop);
 
-    public Optional<ModifyStockResponse> modifyStock(long id,long id_shop, int new_stock);
+    public Optional<Product_Stock> modifyStock(long id,long id_shop, int new_stock);
 
     public Optional<Product_Stock> modifyStock_warning(long id,int Stock_warning);
 
 
     
 }
+
+
 

@@ -1,3 +1,4 @@
+
 package com.uade.tpo.E_Commerce.entity.dto;
 
 public class SuccesResponse {
@@ -18,3 +19,4 @@ public class SuccesResponse {
         return status;
     }
 }
+

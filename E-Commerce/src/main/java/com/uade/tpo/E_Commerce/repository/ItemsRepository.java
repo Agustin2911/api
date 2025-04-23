@@ -15,6 +15,10 @@ public interface ItemsRepository extends JpaRepository<Items, Long> {
             "(?1, ?2, ?3)", nativeQuery = true)
     int createNewItem(Long id_product, Long id_sale, int amount);
 
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM items WHERE id_sale = ?1", nativeQuery = true)
+    int deleteItemByIdSale(Long id_sale);
 
 
 }
