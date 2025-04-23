@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public interface SaleRepository extends JpaRepository<Sale, Long>{
@@ -16,6 +17,9 @@ public interface SaleRepository extends JpaRepository<Sale, Long>{
 
     @Query(value = "SELECT * FROM Sale WHERE id_sale = ?1", nativeQuery = true)
     Optional<Sale> findSaleById(Long id_sale);
+
+    @Query(value = "SELECT * FROM sale WHERE id_user = ?1", nativeQuery = true)
+    ArrayList<Sale> findAllSalesByUser(Long id_user);
 
     @Modifying
     @Transactional
@@ -33,6 +37,11 @@ public interface SaleRepository extends JpaRepository<Sale, Long>{
     @Transactional
     @Query(value = "DELETE FROM Sale WHERE id_sale = ?1", nativeQuery = true)
     int deleteSale(Long id_sale);
+
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM Sale WHERE id_user = ?1", nativeQuery = true)
+    int deleteSaleByUserId(Long id_user);
 
 
 }

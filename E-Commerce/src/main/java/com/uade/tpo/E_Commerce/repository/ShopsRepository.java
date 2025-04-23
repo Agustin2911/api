@@ -1,5 +1,6 @@
 package com.uade.tpo.E_Commerce.repository;
 
+import com.uade.tpo.E_Commerce.entity.Sale;
 import com.uade.tpo.E_Commerce.entity.Shops;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,6 +20,8 @@ public interface ShopsRepository extends JpaRepository<Shops,Long> {
 
     @Query(value = "select s.* from shops s inner join company_shops c on s.id_shop=c.id_shop where c.id_user=?1 ",nativeQuery = true)
     public Optional<ArrayList<Shops>> getShopsByCompanyId(long id_company);
+
+
 
     @Modifying
     @Transactional

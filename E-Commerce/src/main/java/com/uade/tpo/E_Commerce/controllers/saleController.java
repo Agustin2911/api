@@ -2,20 +2,16 @@ package com.uade.tpo.E_Commerce.controllers;
 
 import com.uade.tpo.E_Commerce.entity.Sale;
 import com.uade.tpo.E_Commerce.entity.dto.FailedResponse;
-import com.uade.tpo.E_Commerce.entity.dto.ItemsRequest;
 import com.uade.tpo.E_Commerce.entity.dto.SaleRequest;
 import com.uade.tpo.E_Commerce.entity.dto.SuccesResponse;
-import com.uade.tpo.E_Commerce.service.SaleServiceImpl;
 import com.uade.tpo.E_Commerce.service.SaleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
