@@ -38,6 +38,7 @@ public class StockService implements  StockImp{
         return Optional.empty();
     }
 
+    @Transactional
     @Override
     public Optional<CreateProductStockDTO> createProduct_Stock(long id, int stock_entry, long shop , int stock_warning) {
 
@@ -79,6 +80,7 @@ public class StockService implements  StockImp{
 
     }
 
+    @Transactional
     @Override
     public Optional<Shop_Stock> createShopStock(long id_product, int stock, long id_shop) {
 
@@ -131,13 +133,18 @@ public class StockService implements  StockImp{
 
     }
 
+    @Transactional
     @Override
     public Optional<Product_Stock> modifyStock_warning(long id, int Stock_warning) {
 
         Optional<Product_Stock> product=repository1.searchStock(id);
         if(product.isPresent()){
             repository1.modifyStockWarning(id,Stock_warning);
-            product.get().setStock_warning(Stock_warning);
+
+            entityManager.flush();
+            entityManager.clear();
+
+            product=repository1.searchStock(id);
             return product;
         }
         else {

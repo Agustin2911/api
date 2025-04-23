@@ -45,5 +45,16 @@ public class SaleRequest {
 
     public Long getId_shop(){return id_shop;}
 
+    public String getDelivery_type() {
+        return delivery_type;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getDelivery_status() {
+        return delivery_status;
+    }
 }
 

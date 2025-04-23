@@ -2,6 +2,7 @@ package com.uade.tpo.E_Commerce.service;
 
 import com.uade.tpo.E_Commerce.entity.Review;
 import com.uade.tpo.E_Commerce.repository.ReviewRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class ReviewService implements ReviewImp{
 
     }
 
-
+    @Transactional
     @Override
     public Optional<ArrayList<Review>> CreateReview(String text, int stars, long id_product) {
         repository.createReview(text,stars,id_product);

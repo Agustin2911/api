@@ -3,6 +3,7 @@ package com.uade.tpo.E_Commerce.service;
 import java.util.List;
 import java.util.Optional;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,7 +27,7 @@ public class Sub_CategoryServiceImpl implements Sub_CategoryService{
         return sub_CategoryRepository.findById(id_sub_category);
     }
 
-
+    @Transactional
     public Sub_Category createSubCategory(String name_sub_category, Long id_category) { //throws DuplicateException
         List <Sub_Category> sub_categories = sub_CategoryRepository.findSCByName(name_sub_category);
         if (sub_categories.isEmpty()){
@@ -48,6 +49,7 @@ public class Sub_CategoryServiceImpl implements Sub_CategoryService{
         }
     }
 
+    @Transactional
     public boolean deleteSubCategoryById(Long id_sub_category) {
         int check = sub_CategoryRepository.deleteSCById(id_sub_category);
         if (check > 0) {

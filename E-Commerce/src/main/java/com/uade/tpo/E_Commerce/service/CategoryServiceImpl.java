@@ -3,6 +3,7 @@ package com.uade.tpo.E_Commerce.service;
 import java.util.List;
 import java.util.Optional;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -27,7 +28,7 @@ public class CategoryServiceImpl implements CategoryService{
         return categoryRepository.findById(id_category);
     }
 
-    
+    @Transactional
     public Category createCategory(String name_category) { //throws DuplicateException 
         List<Category> categories = categoryRepository.findCByName(name_category);
         if (categories.isEmpty()){
@@ -49,6 +50,7 @@ public class CategoryServiceImpl implements CategoryService{
         }
     }
 
+    @Transactional
     public boolean deleteCategoryById (Long id_category) { //throws NotFoundException  
         int check = categoryRepository.deleteCById(id_category);
         if (check > 0){

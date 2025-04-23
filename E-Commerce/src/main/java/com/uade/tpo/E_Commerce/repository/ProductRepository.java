@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Product,Long> {
 
 
-    @Query(value = "select * from product",nativeQuery = true)
+    @Query(value = "select p.id_product,p.description,p.discount,p.discount_state,p.photo_url,p.price,p.product_name from product p join product_stock ps on p.id_product=ps.id_product where ps.stock>0",nativeQuery = true)
     public Optional<ArrayList<Product>> allTheProducts();
 
     @Query(value="select * from product where id_product=?1",nativeQuery = true)
@@ -22,10 +22,10 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     @Query(value = "select * from product where product_name=?1  and photo_url=?2  and price=?3 and description=?4 and discount_state= ?5  and discount=?6 ",nativeQuery = true)
     public Optional<Product> productsByAtribiutes(String name, String photo_url, int price, String description, String discount_state, int discount);
 
-    @Query(value = "select p.* from product p  inner join Sub_category_Product s on s.id_product=p.id_product where id_sub_category= ?1 ",nativeQuery = true)
+    @Query(value = "select p.* from product p  inner join Sub_category_Product s on s.id_product=p.id_product inner join product_stock ps on p.id_product=ps.id_product where id_sub_category= ?1 and  ps.stock>0;",nativeQuery = true)
     public Optional<ArrayList<Product>> productsBySubcategory(long id);
 
-    @Query(value="select p.* from product p  inner join Sub_category_Product s on s.id_product=p.id_product inner join sub_category sc on sc.id_sub_category=s.id_sub_category where id_category=?1 ",nativeQuery = true)
+    @Query(value="select p.* from product p  inner join Sub_category_Product s on s.id_product=p.id_product inner join sub_category sc on sc.id_sub_category=s.id_sub_category inner join product_stock ps on p.id_product=ps.id_product  where id_category=?1 and  ps.stock>0; ",nativeQuery = true)
     public Optional<ArrayList<Product>> productsByCategory(long id);
 
 

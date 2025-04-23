@@ -68,8 +68,7 @@ public class Basic_UserService implements Basic_UserImp{
         Optional<Basic_User>user_exist=repository.findByIdUser(id);
 
         if(!user_exist.isPresent()){
-            return false
-                    ;
+            return false;
         }
 
         try {

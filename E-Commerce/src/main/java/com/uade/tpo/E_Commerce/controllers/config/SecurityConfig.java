@@ -60,6 +60,7 @@ public class SecurityConfig {
                                 "/product/byCategoryid/{id}",
                                 "/product/bySubCategoryid/{id}"
                         ).permitAll()
+                        //.requestMatchers(HttpMethod.POST,"/product").hasAnyAuthority(Role.SELLER.name())
                         .requestMatchers(HttpMethod.POST,"/product").hasAnyAuthority(Role.SELLER.name())
                         .requestMatchers(HttpMethod.PUT,"/product").hasAnyAuthority(Role.SELLER.name())
                         .requestMatchers(HttpMethod.DELETE,"/product/{id}").hasAnyAuthority(Role.SELLER.name())
