@@ -2,8 +2,12 @@ package com.uade.tpo.E_Commerce.service;
 import com.uade.tpo.E_Commerce.entity.Shop_Stock;
 import com.uade.tpo.E_Commerce.entity.Shops;
 import com.uade.tpo.E_Commerce.repository.Company_ShopsRepository;
+import com.uade.tpo.E_Commerce.repository.Seller_UserRepository;
 import com.uade.tpo.E_Commerce.repository.Shop_StockRepository;
 import com.uade.tpo.E_Commerce.repository.ShopsRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +23,14 @@ public class ShopsService implements ShopsImp {
     @Autowired
     private Company_ShopsRepository repository2;
 
-
     @Autowired
     private Shop_StockRepository repository3;
+
+    @Autowired
+    private Seller_UserRepository repository4;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public Optional<Shops> SearchShop(Long id) {
@@ -39,6 +48,10 @@ public class ShopsService implements ShopsImp {
     @Override
     public Optional<Shops> CreateShop(String city, String street,long id_user) {
 
+        if(!repository4.findByIdUser(id_user).isPresent()){
+            return Optional.empty();
+        }
+
         Optional<Shops> shop=repository.getShpByCityAndStreet(city, street);
         if (!shop.isPresent()){
 
@@ -53,6 +66,7 @@ public class ShopsService implements ShopsImp {
         return  shop;
     }
 
+    @Transactional
     @Override
     public Optional<Shops> ModifyShop(long id_shop,String city, String street) {
 
@@ -63,10 +77,9 @@ public class ShopsService implements ShopsImp {
         }
 
         repository.ModifySHop(id_shop,city,street);
-
-        shop.get().setCity(city);
-        shop.get().setStreet(street);
-
+        entityManager.flush();
+        entityManager.clear();
+        shop=repository.getShpById(id_shop);
         return shop;
     }
 
@@ -76,7 +89,7 @@ public class ShopsService implements ShopsImp {
         Optional<Shops> shop=repository.getShpById(id_shop);
 
         if(!shop.isPresent()){
-            return true;
+            return false;
         }
 
         repository3.deleteShop_stock(id_shop);

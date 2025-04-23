@@ -17,6 +17,9 @@ public class SaleRequest {
     private LocalDateTime sale_date;
     private ArrayList<ItemsRequest> items;
     private Long id_shop;
+    private String delivery_type;
+    private String address;
+    private String delivery_status;
 
 
     public Long getId_sale() {

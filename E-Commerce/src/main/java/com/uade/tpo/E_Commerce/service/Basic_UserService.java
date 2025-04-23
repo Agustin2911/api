@@ -1,4 +1,5 @@
 package com.uade.tpo.E_Commerce.service;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import com.uade.tpo.E_Commerce.entity.Basic_User;
 import com.uade.tpo.E_Commerce.entity.dto.newBasic_user;
@@ -16,6 +17,8 @@ public class Basic_UserService implements Basic_UserImp{
     @Autowired
     private Basic_UserRepository repository;
 
+    @Autowired
+    private  PasswordEncoder passwordEncoder;
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -49,10 +52,11 @@ public class Basic_UserService implements Basic_UserImp{
         if(!user_exist.isPresent()){
             return Optional.empty();
         }
-
-        repository.updateUser(user.getUsername(), user.getMail(), user.getPassword(), user.getId_user());
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
+        repository.updateUser(user.getUsername(), user.getMail(), hashedPassword, user.getId_user());
 
         entityManager.flush();
+        entityManager.clear();
 
         return repository.findByIdUser(user.getId_user());
     }

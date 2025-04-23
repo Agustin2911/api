@@ -4,7 +4,7 @@ import com.uade.tpo.E_Commerce.entity.Roles;
 import com.uade.tpo.E_Commerce.entity.User_Roles;
 import com.uade.tpo.E_Commerce.entity.dto.FailedResponse;
 import com.uade.tpo.E_Commerce.entity.dto.SuccesResponse;
-import com.uade.tpo.E_Commerce.service.RolesServiceImp;
+import com.uade.tpo.E_Commerce.service.RolesService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ import java.util.Optional;
 public class RolesController {
 
     @Autowired
-    private RolesServiceImp rolesService;
+    private RolesService rolesService;
 
 
     // GET /roles - Obtener todos los roles
@@ -95,17 +95,17 @@ public class RolesController {
         }
     }
 
-    // POST /roles/{roleId}/assign/{userId} - Asignar un rol a un usuario
-    @PostMapping("/assign/{roleId}/{userId}")
-    public ResponseEntity<Object> assignRole(@PathVariable long roleId, @PathVariable long userId) {
-        Optional<User_Roles> assigned = rolesService.assignRoleToUser(userId, roleId);
-        if (assigned.isPresent()) {
-            return ResponseEntity.ok(assigned.get());
-        } else {
-            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
-                    .body(new FailedResponse("Could not assign role to user"));
-        }
-    }
+// POST /roles/{roleId}/assign/{userId} - Asignar un rol a un usuario
+//    @PostMapping("/assign/{roleId}/{userId}")
+//    public ResponseEntity<Object> assignRole(@PathVariable long roleId, @PathVariable long userId) {
+//        Optional<User_Roles> assigned = rolesService.assignRoleToUser(userId, roleId);
+//        if (assigned.isPresent()) {
+//            return ResponseEntity.ok(assigned.get());
+//        } else {
+//            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
+//                    .body(new FailedResponse("Could not assign role to user"));
+//        }
+//    }
 
     // DELETE /roles/user/{userId} - Remover el rol asignado a un usuario
     @DeleteMapping("/user/{userId}")

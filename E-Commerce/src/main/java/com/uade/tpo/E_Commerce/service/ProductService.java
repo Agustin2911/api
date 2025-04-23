@@ -7,6 +7,8 @@ import com.uade.tpo.E_Commerce.repository.ProductRepository;
 import com.uade.tpo.E_Commerce.repository.Product_StockRepository;
 import com.uade.tpo.E_Commerce.repository.Shop_StockRepository;
 import com.uade.tpo.E_Commerce.repository.Sub_CategoryProductRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,9 @@ public class ProductService implements  ProductImp{
 
     @Autowired
     private Shop_StockRepository repository4;
+
+    @Autowired
+    private EntityManager entityManager;
 
     @Override
     public Optional<ArrayList<Product>> allProduct() {
@@ -73,6 +78,7 @@ public class ProductService implements  ProductImp{
         return product;
     }
 
+    @Transactional
     @Override
     public Optional<Product> modifyProduct(long id_product, String name, String photo_url, int price, String description, String discount_state, int discount) {
         Optional<Product>product=repository.productByID(id_product);
@@ -81,20 +87,12 @@ public class ProductService implements  ProductImp{
         }
         repository.modifyProduct(id_product, name, photo_url, price, description, discount_state, discount);
 
+        entityManager.flush();
+        entityManager.clear();
 
-        product.get().setProduct_name(name);
-        product.get().setPhoto_url(photo_url);
-        product.get().setPrice(price);
-        product.get().setDescription(description);
-        product.get().setDiscount_state(discount_state);
-        product.get().setDiscount(discount);
+        product=repository.productByID(id_product);
 
         return product;
-
-
-
-
-
     }
 
     @Override

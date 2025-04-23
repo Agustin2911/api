@@ -47,6 +47,7 @@ public class Seller_UserService implements Seller_UserServiceImp {
         }
         repository.updateUser(user.getId(), user.getCuit(), user.getCompany_name(), user.getDescription(), user.getState());
         entityManager.flush();
+        entityManager.clear();
         return repository.findByIdUser(user.getId());
     }
 
