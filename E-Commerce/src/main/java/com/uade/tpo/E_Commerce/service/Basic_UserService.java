@@ -20,6 +20,9 @@ public class Basic_UserService implements Basic_UserImp{
     @Autowired
     private  PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private  RolesService rolesService;
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -68,9 +71,10 @@ public class Basic_UserService implements Basic_UserImp{
         Optional<Basic_User>user_exist=repository.findByIdUser(id);
 
         if(!user_exist.isPresent()){
-            return false
-                    ;
+            return false;
         }
+
+        rolesService.removeRoleFromUser(id);
 
         try {
             repository.deleteUser(id);
