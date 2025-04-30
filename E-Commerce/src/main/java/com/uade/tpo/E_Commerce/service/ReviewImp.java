@@ -9,6 +9,6 @@ public interface ReviewImp {
 
     public Optional<ArrayList<Review>> getReviewsById(long id_product);
 
-    public Optional<ArrayList<Review>> CreateReview(String text, int stars,long id_product);
+    public Optional<ArrayList<Review>> CreateReview(String text, int stars,long id_product,long id_user);
 
 }

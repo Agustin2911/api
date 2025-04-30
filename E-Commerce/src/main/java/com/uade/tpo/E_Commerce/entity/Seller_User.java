@@ -22,7 +22,7 @@ public class Seller_User {
     @Column(name = "id_user", nullable = false)
     private Long id;
 
-
+    @JsonIgnore
     @OneToOne
     @MapsId("id_user")
     @JoinColumn(name = "id_user", nullable = false)
@@ -40,6 +40,8 @@ public class Seller_User {
     @Column(name = "state", length = 30)
     private String state;
 
+    @Column(name="photo_url",length=500)
+    private String photo_url;
 
     @JsonIgnore
     @OneToMany(mappedBy = "Seller_User")
@@ -72,5 +74,9 @@ public class Seller_User {
 
     public List<Company_Shops> getCompany_shops() {
         return company_shops;
+    }
+
+    public String getPhoto_url() {
+        return photo_url;
     }
 }

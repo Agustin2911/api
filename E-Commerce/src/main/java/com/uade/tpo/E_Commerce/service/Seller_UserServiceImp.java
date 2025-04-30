@@ -10,7 +10,7 @@ public interface Seller_UserServiceImp {
 
     Optional<List<Seller_User>> getAll();
     Optional<Seller_User> getById(long id);
-    Optional<Seller_User> createUser(newSeller_User user);
+    Optional<Seller_User> createUser(newSeller_User user,String filePath);
     Optional<Seller_User> updateUser(Seller_User user);
     boolean deleteUser(long id);
 }

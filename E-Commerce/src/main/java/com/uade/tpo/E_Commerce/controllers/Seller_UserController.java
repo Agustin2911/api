@@ -7,10 +7,14 @@ import com.uade.tpo.E_Commerce.entity.dto.newSeller_User;
 import com.uade.tpo.E_Commerce.service.Seller_UserService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +22,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/seller_user")
 public class Seller_UserController {
+
+    @Value("${upload-dir-seller-user}")
+    private String UPLOAD_DIR;
 
     @Autowired
     private Seller_UserService service;
@@ -44,11 +51,20 @@ public class Seller_UserController {
         }
     }
 
-    @PostMapping
-    public ResponseEntity<Object> createUser(@RequestBody newSeller_User user) {
-        Optional<Seller_User> created = service.createUser(user);
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Object> createUser(@ModelAttribute newSeller_User user) throws IOException  {
+        String filePath = UPLOAD_DIR + System.currentTimeMillis() + "_" + user.getFile().getOriginalFilename();
+
+        Optional<Seller_User> created = service.createUser(user,filePath);
         if (created.isPresent()) {
-            return ResponseEntity.ok(created.get());
+            File uploadDir = new File(UPLOAD_DIR);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdirs();
+            }
+
+            File destination = new File(filePath);
+            user.getFile().transferTo(destination);
+            return ResponseEntity.ok(new SuccesResponse("user created succesfully"));
         } else {
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
                     .body(new FailedResponse("Seller user could not be created"));

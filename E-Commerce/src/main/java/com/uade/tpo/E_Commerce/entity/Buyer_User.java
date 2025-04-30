@@ -34,6 +34,7 @@ public class Buyer_User {
     private List<Sale> sale;
 
 
+    @JsonIgnore
     @OneToOne
     @MapsId("id_user")
     @JoinColumn(name = "id_user", nullable = false)

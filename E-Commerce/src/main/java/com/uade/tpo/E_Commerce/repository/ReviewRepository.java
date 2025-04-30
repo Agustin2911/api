@@ -14,6 +14,9 @@ public interface ReviewRepository extends JpaRepository<Review,Long> {
     @Query(value="select * from Review where id_product=?1 ",nativeQuery = true)
     public Optional<ArrayList<Review>> ReviewsById(Long id);
 
+    @Query(value="select count(i.id_items) from sale s  inner join items i on s.id_sale=i.id_sale inner join product p on p.id_product=i.id_product where i.id_product=?1 and s.id_user=?2 ;",nativeQuery = true)
+    public int VerifyTheSale(long id_product, long id_user);
+
     @Query(value = "select * from review where id_product=?3  and text=?1 and stars=?2 ",nativeQuery = true)
     public Optional<ArrayList<Review>> ReviewById(String text,int stars,long id_product);
 
