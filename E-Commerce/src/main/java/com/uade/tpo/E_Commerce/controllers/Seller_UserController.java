@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,24 +53,33 @@ public class Seller_UserController {
     }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<Object> createUser(@ModelAttribute newSeller_User user) throws IOException  {
-        String filePath = UPLOAD_DIR + System.currentTimeMillis() + "_" + user.getFile().getOriginalFilename();
+    public ResponseEntity<Object> createUser(@ModelAttribute newSeller_User user) throws IOException {
+        MultipartFile file = user.getFile();
+        String filePath = null;
 
-        Optional<Seller_User> created = service.createUser(user,filePath);
-        if (created.isPresent()) {
+        // Solo generás la ruta si el archivo existe y no está vacío
+        if (file != null && !file.isEmpty()) {
+            filePath = UPLOAD_DIR + System.currentTimeMillis() + "_" + file.getOriginalFilename();
+
             File uploadDir = new File(UPLOAD_DIR);
             if (!uploadDir.exists()) {
                 uploadDir.mkdirs();
             }
 
             File destination = new File(filePath);
-            user.getFile().transferTo(destination);
-            return ResponseEntity.ok(new SuccesResponse("user created succesfully"));
+            file.transferTo(destination);
+        }
+
+        Optional<Seller_User> created = service.createUser(user, filePath);
+
+        if (created.isPresent()) {
+            return ResponseEntity.ok(new SuccesResponse("user created successfully"));
         } else {
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
                     .body(new FailedResponse("Seller user could not be created"));
         }
     }
+
 
     @PutMapping
     public ResponseEntity<Object> updateUser(@RequestBody Seller_User user) {
