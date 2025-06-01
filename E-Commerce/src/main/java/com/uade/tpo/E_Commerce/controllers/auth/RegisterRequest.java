@@ -19,6 +19,7 @@ public class RegisterRequest {
     private String password;
     private Long role;
 
+
     public String getFirstname() {
         return firstname;
     }
@@ -54,4 +55,7 @@ public class RegisterRequest {
     public void setRole(long role) {
         this.role = role;
     }
+
+
+
 }

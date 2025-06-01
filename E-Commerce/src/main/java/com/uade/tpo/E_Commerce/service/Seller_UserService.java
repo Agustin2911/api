@@ -50,8 +50,8 @@ public class Seller_UserService implements Seller_UserServiceImp {
 
     @Override
     @Transactional
-    public Optional<Seller_User> createUser(newSeller_User user) {
-        repository.insertUser(user.getId_user(), user.getCuit(), user.getCompanyName(), user.getDescription(), user.getState());
+    public Optional<Seller_User> createUser(newSeller_User user, String filePath) {
+        repository.insertUser(user.getId_user(), user.getCuit(), user.getCompanyName(), user.getDescription(), user.getState(),filePath);
         // Se asume que el seller_user creado se identifica mediante el id_user que se pasa.
         return repository.findByIdUser(user.getId_user());
     }

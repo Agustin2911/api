@@ -27,7 +27,7 @@ public class ProductController{
     @Autowired
     private ProductService service;
 
-    @Value("${upload-dir}")
+    @Value("${upload-dir-products}")
     private String UPLOAD_DIR;
 
 

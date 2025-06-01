@@ -7,10 +7,15 @@ import com.uade.tpo.E_Commerce.entity.dto.newBuyer_User;
 import com.uade.tpo.E_Commerce.service.Buyer_UserService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +26,10 @@ public class Buyer_UserController {
 
     @Autowired
     private Buyer_UserService service;
+
+    @Value("${upload-dir-buyer-user}")
+    private String UPLOAD_DIR;
+
 
     @GetMapping
     public ResponseEntity<Object> getAllUsers() {
@@ -44,16 +53,35 @@ public class Buyer_UserController {
         }
     }
 
-    @PostMapping
-    public ResponseEntity<Object> createUser(@RequestBody newBuyer_User user) {
-        Optional<Buyer_User> created = service.createUser(user);
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Object> createUser(@ModelAttribute newBuyer_User user) throws IOException {
+        MultipartFile file = user.getFile();
+        String filePath = null;
+
+        // Verificás si el archivo fue enviado
+        if (file != null && !file.isEmpty()) {
+            filePath = UPLOAD_DIR + System.currentTimeMillis() + "_" + file.getOriginalFilename();
+
+            File uploadDir = new File(UPLOAD_DIR);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdirs();
+            }
+
+            File destination = new File(filePath);
+            file.transferTo(destination);
+        }
+
+        // Pasás null o el filePath, según corresponda
+        Optional<Buyer_User> created = service.createUser(user, filePath);
+
         if (created.isPresent()) {
-            return ResponseEntity.ok(created.get());
+            return ResponseEntity.ok(new SuccesResponse("user created successfully"));
         } else {
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
                     .body(new FailedResponse("Buyer user could not be created"));
         }
     }
+
 
     @PutMapping
     public ResponseEntity<Object> updateUser(@RequestBody Buyer_User user) {

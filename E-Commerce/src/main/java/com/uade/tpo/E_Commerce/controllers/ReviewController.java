@@ -31,10 +31,16 @@ public class ReviewController {
     @PostMapping
     public ResponseEntity<Object> postReview(@RequestBody ReviewData review) {
 
-        Optional<ArrayList<Review>> respond = service.CreateReview(review.getText(), review.getStars(), review.getId_product());
-        if (!respond.get().isEmpty()) {
-            return ResponseEntity.ok(respond.get());
-        } else {
+        Optional<ArrayList<Review>> respond = service.CreateReview(review.getText(), review.getStars(), review.getId_product(),review.getId_user());
+        if (respond.isPresent()) {
+            if(! respond.get().isEmpty()) {
+                return ResponseEntity.ok(respond.get());
+            }
+            else{
+                return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("the System couldn't create the review"));
+            }
+        }
+        else {
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("the System couldn't create the review"));
         }
     }

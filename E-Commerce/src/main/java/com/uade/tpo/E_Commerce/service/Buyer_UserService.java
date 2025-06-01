@@ -52,9 +52,9 @@ public class Buyer_UserService implements Buyer_UserServiceImp {
 
     @Override
     @Transactional
-    public Optional<Buyer_User> createUser(newBuyer_User user) {
+    public Optional<Buyer_User> createUser(newBuyer_User user,String photo_url) {
         // Insertar Buyer_User
-        repository.insertUser(user.getId_user(), user.getName(), user.getLastName(), user.getDni());
+        repository.insertUser(user.getId_user(), user.getName(), user.getLastName(), user.getDni(),photo_url);
         // Retornar el último insertado
         return repository.findLatest();
     }

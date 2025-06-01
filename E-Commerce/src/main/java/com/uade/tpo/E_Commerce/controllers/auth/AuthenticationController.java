@@ -1,15 +1,17 @@
 package com.uade.tpo.E_Commerce.controllers.auth;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.uade.tpo.E_Commerce.service.AuthenticationService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/v1/auth")
 
@@ -21,10 +23,16 @@ public class AuthenticationController {
         this.service = service;
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody RegisterRequest request) {
-        return ResponseEntity.ok(service.register(request));
+    @PostMapping(value = "/register/seller_user", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<AuthenticationResponse> Sellerregister(
+            @ModelAttribute SellerRegister request) throws IOException {
+        return ResponseEntity.ok(service.Sellerregister(request));
+    }
+
+    @PostMapping(value = "/register/buyer_user", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<AuthenticationResponse> Buyerregister(
+            @ModelAttribute BuyerRegister request) throws IOException {
+        return ResponseEntity.ok(service.BuyerRegister(request));
     }
 
     @PostMapping("/authenticate")

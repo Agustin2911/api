@@ -22,7 +22,7 @@ public interface Buyer_UserRepository extends JpaRepository<Buyer_User, Long> {
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO Buyer_User(id_user,name, last_name, dni) VALUES (?1, ?2, ?3,?4)", nativeQuery = true)
-    int insertUser(long id_user,String name, String lastName, int dni);
+    int insertUser(long id_user,String name, String lastName, int dni,String photo_url);
 
     @Modifying
     @Transactional

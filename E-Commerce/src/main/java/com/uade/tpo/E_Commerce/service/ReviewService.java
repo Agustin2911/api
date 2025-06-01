@@ -32,7 +32,15 @@ public class ReviewService implements ReviewImp{
 
     @Transactional
     @Override
-    public Optional<ArrayList<Review>> CreateReview(String text, int stars, long id_product) {
+    public Optional<ArrayList<Review>> CreateReview(String text, int stars, long id_product,long id_user) {
+
+
+        int amount=repository.VerifyTheSale(id_product,id_user);
+        
+        if(amount==0){
+            return Optional.empty();
+        }
+
         repository.createReview(text,stars,id_product);
         Optional<ArrayList<Review>> review=repository.ReviewById(text, stars, id_product);
         if(review.isPresent()){
