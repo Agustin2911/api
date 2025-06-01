@@ -39,6 +39,8 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.swing.text.html.Option;
+
 @Service
 public class AuthenticationService {
 
@@ -105,8 +107,9 @@ public class AuthenticationService {
         }
 
         updatedUser.get().setUser_roles(role.get());
+        Optional<Buyer_User> buyer=buyer_repository.findByIdUser(updatedUser.get().getId_user());
         var jwtToken = jwtService.generateToken(new UserPrincipal(updatedUser.get()));
-        return new AuthenticationResponse(jwtToken);
+        return new AuthenticationResponse(jwtToken,updatedUser.get().getId_user(),buyer.get().getPhoto_url());
     }
 
     @Transactional
@@ -129,8 +132,10 @@ public class AuthenticationService {
         }
 
         updatedUser.get().setUser_roles(role.get());
+        Optional<Seller_User> seller_user=seller_repository.findByIdUser(updatedUser.get().getId_user());
+
         var jwtToken = jwtService.generateToken(new UserPrincipal(updatedUser.get()));
-        return new AuthenticationResponse(jwtToken);
+        return new AuthenticationResponse(jwtToken,updatedUser.get().getId_user(),seller_user.get().getPhoto_url());
     }
 
 
@@ -144,8 +149,18 @@ public class AuthenticationService {
                         request.getPassword()));
 
         Optional<Basic_User> user = repository.findByMail(request.getEmail());
-        var jwtToken = jwtService.generateToken(new UserPrincipal(user.get()));
-        return new AuthenticationResponse(jwtToken);
+        Optional<Seller_User> seller_user=seller_repository.findByIdUser(user.get().getId_user());
+        if(seller_user.isPresent()){
+            var jwtToken = jwtService.generateToken(new UserPrincipal(user.get()));
+            return new AuthenticationResponse(jwtToken,seller_user.get().getId(),seller_user.get().getPhoto_url());
+
+        }
+        else {
+            Optional<Buyer_User> buyer_user=buyer_repository.findByIdUser(user.get().getId_user());
+            var jwtToken = jwtService.generateToken(new UserPrincipal(user.get()));
+            return new AuthenticationResponse(jwtToken,user.get().getId_user(),buyer_user.get().getPhoto_url());
+
+        }
     }
 
 
