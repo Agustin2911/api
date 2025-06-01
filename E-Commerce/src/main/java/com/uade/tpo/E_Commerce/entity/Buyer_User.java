@@ -28,6 +28,8 @@ public class Buyer_User {
     @Column(name = "dni", nullable = false)
     private int dni;
 
+    @Column(name = "photo_url",length = 300)
+    private String photo_url;
 
     @JsonIgnore
     @OneToMany(mappedBy = "buyer_user")
@@ -62,5 +64,9 @@ public class Buyer_User {
     }
     public Basic_User getBasic_user() {
         return basic_user;
+    }
+
+    public String getPhoto_url() {
+        return photo_url;
     }
 }

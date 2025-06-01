@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.Optional;
-
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/sale")
 public class saleController {
