@@ -37,6 +37,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .cors(cors -> {})
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req.requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers("/error/**").permitAll()
@@ -90,7 +91,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT,"/stock").permitAll()
                         .requestMatchers(HttpMethod.PUT,"/stock/stockWarning").hasAnyAuthority(Role.SELLER.name())
                         .requestMatchers(HttpMethod.GET, "/sale/{id}").hasAnyAuthority(Role.BUYER.name())
-                        .requestMatchers(HttpMethod.POST, "/sale").hasAnyAuthority(Role.BUYER.name())
+                        //.requestMatchers(HttpMethod.POST, "/sale").hasAnyAuthority(Role.BUYER.name())
+                        .requestMatchers(HttpMethod.POST, "/sale").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/sale/{id}").hasAnyAuthority(Role.BUYER.name())
                         .requestMatchers(HttpMethod.DELETE, "/sale/{id}").hasAnyAuthority(Role.BUYER.name())
                         .requestMatchers(HttpMethod.DELETE, "/sale/{id}").hasAnyAuthority(Role.SELLER.name())
