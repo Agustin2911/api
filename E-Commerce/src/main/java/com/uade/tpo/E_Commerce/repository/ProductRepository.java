@@ -28,6 +28,11 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     @Query(value="select p.* from product p  inner join Sub_category_Product s on s.id_product=p.id_product inner join sub_category sc on sc.id_sub_category=s.id_sub_category inner join product_stock ps on p.id_product=ps.id_product  where id_category=?1 and  ps.stock>0; ",nativeQuery = true)
     public Optional<ArrayList<Product>> productsByCategory(long id);
 
+    @Query(value = "select c.name_category, sc.name_sub_category, c.id_category, sc.id_sub_category from category c inner join sub_category sc on c" +
+            ".id_category = sc.id_category inner join sub_category_product scp on sc.id_sub_category = scp" +
+            ".id_sub_category inner join product p on scp.id_product = p.id_product where p.id_product = ?1",
+            nativeQuery = true)
+    public Optional<Object> categoryAndSubcategoryById(long idProduct);
 
     @Modifying
     @Transactional
@@ -44,5 +49,6 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     @Transactional
     @Query(value = "delete from product where id_product=?1 ",nativeQuery = true)
     public int deleteProduct(long id);
+
 
 }

@@ -81,6 +81,18 @@ public class ProductController{
         }
     }
 
+    @GetMapping("/category-subCategory/{id}")
+    public ResponseEntity<Object> getCategoryAndSubCategoryById(@PathVariable long id) {
+        Optional<Object> respond = service.categorySubCategoryById(id);
+        if (respond.isPresent()) {
+            return ResponseEntity.ok(respond.get());
+
+        } else {
+
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("there is no product by this id"));
+        }
+    }
+
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Object> postProduct( @ModelAttribute ProductData productData) throws IOException {
         String filePath = UPLOAD_DIR + System.currentTimeMillis() + "_" + productData.getFile().getOriginalFilename();

@@ -106,6 +106,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/sub_categories/{id}").permitAll()
                         .requestMatchers(HttpMethod.POST, "/sub_categories").hasAnyAuthority(Role.ADMIN.name())
                         .requestMatchers(HttpMethod.DELETE, "/sub_categories/{id}").hasAnyAuthority(Role.ADMIN.name())
+                        .requestMatchers(HttpMethod.GET, "/product/category-subCategory/{id}").permitAll()
                         .requestMatchers(HttpMethod.GET, "/images/**").permitAll()
                         .anyRequest()
                         .authenticated())
