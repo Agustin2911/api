@@ -107,9 +107,10 @@ public class AuthenticationService {
         }
 
         updatedUser.get().setUser_roles(role.get());
-        Optional<Buyer_User> buyer=buyer_repository.findByIdUser(updatedUser.get().getId_user());
+        Optional<Seller_User> seller_user=seller_repository.findByIdUser(updatedUser.get().getId_user());
+
         var jwtToken = jwtService.generateToken(new UserPrincipal(updatedUser.get()));
-        return new AuthenticationResponse(jwtToken,updatedUser.get().getId_user(),buyer.get().getPhoto_url());
+        return new AuthenticationResponse(jwtToken,updatedUser.get().getId_user(),seller_user.get().getPhoto_url());
     }
 
     @Transactional
@@ -132,10 +133,12 @@ public class AuthenticationService {
         }
 
         updatedUser.get().setUser_roles(role.get());
-        Optional<Seller_User> seller_user=seller_repository.findByIdUser(updatedUser.get().getId_user());
+        Optional<Buyer_User> buyer=buyer_repository.findByIdUser(updatedUser.get().getId_user());
 
+        logger.info((buyer.get().getLast_name()));
         var jwtToken = jwtService.generateToken(new UserPrincipal(updatedUser.get()));
-        return new AuthenticationResponse(jwtToken,updatedUser.get().getId_user(),seller_user.get().getPhoto_url());
+        return new AuthenticationResponse(jwtToken,updatedUser.get().getId_user(),buyer.get().getPhoto_url());
+
     }
 
 
@@ -185,7 +188,7 @@ public class AuthenticationService {
             logger.info(filePath);
         }
 
-        seller_repository.insertUser(id_user, request.getCuit(), request.getCompanyName(), request.getDescription(), request.getState(), filePath);
+        seller_repository.insertUser(id_user, request.getCuit(), request.getCompanyName(), request.getDescription(), request.getState(),"/images/seller_user/"+file.getOriginalFilename());
         // Se asume que el seller_user creado se identifica mediante el id_user que se pasa.
         Optional<Seller_User> seller_user = seller_repository.findByIdUser(id_user);
         if (seller_user.isPresent()) {
@@ -217,7 +220,7 @@ public class AuthenticationService {
             logger.info(filePath);
         }
 
-        buyer_repository.insertUser(id_user, request.getName(), request.getLast_name(), request.getDni(),filePath);
+        buyer_repository.insertUser(id_user, request.getName(), request.getLast_name(), request.getDni(),"/images/buyer_user/"+file.getOriginalFilename());
 
         Optional<Buyer_User> buyer_user = buyer_repository.findByIdUser(id_user);
         if (buyer_user.isPresent()) {
