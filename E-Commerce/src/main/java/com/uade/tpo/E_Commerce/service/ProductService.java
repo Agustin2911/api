@@ -53,6 +53,11 @@ public class ProductService implements  ProductImp{
         return repository.productsBySubcategory(id_sub_category);
     }
 
+
+    public Optional<Object> categorySubCategoryById(long id_product) {
+        return repository.categoryAndSubcategoryById(id_product);
+    }
+
     @Transactional
     @Override
     public Optional<Product> createProducts(String name, String photo_url, int price, String description, String discount_state, int discount,long id_sub_category) {
@@ -118,4 +123,6 @@ public class ProductService implements  ProductImp{
             return true;
         }
     }
+
+
 }
