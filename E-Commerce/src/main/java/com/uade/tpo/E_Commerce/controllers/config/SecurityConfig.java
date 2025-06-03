@@ -55,6 +55,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST,"/categories").hasAnyAuthority(Role.ADMIN.name())
                         .requestMatchers(HttpMethod.DELETE,"/categories/{id_category}").hasAnyAuthority(Role.ADMIN.name())
                         .requestMatchers(HttpMethod.GET,"/delivery-status/{id_delivery}").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/delivery-status/orders/{id_user}").permitAll()
                         .requestMatchers(HttpMethod.POST,"/delivery-status").hasAnyAuthority(Role.BUYER.name())
                         .requestMatchers(HttpMethod.PUT,"/delivery-status/{id_delivery}").hasAnyAuthority(Role.SELLER.name())
                         .requestMatchers(HttpMethod.DELETE,"/delivery-status/{id_delivery}").hasAnyAuthority(Role.SELLER.name())
