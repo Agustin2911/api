@@ -2,12 +2,15 @@ package com.uade.tpo.E_Commerce.service;
 
 import com.uade.tpo.E_Commerce.entity.Delivery_Status;
 import com.uade.tpo.E_Commerce.entity.Sale;
+import com.uade.tpo.E_Commerce.entity.dto.Orders;
 import com.uade.tpo.E_Commerce.repository.Delivery_StatusRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import jakarta.persistence.EntityManager;
 
+import javax.swing.text.html.Option;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -71,4 +74,9 @@ public class Delivery_StatusServiceImpl implements Delivery_StatusService {
             return false;
         }
     }
+
+    public Optional<ArrayList<Orders>> getAllOrdersById(long id_user){
+                                                    return delivery_statusRepository.getAllOrdersById(id_user);
+    }
+
 }

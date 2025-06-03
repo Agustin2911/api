@@ -4,8 +4,10 @@ package com.uade.tpo.E_Commerce.controllers;
 import com.uade.tpo.E_Commerce.entity.Delivery_Status;
 import com.uade.tpo.E_Commerce.entity.dto.Delivery_StatusRequest;
 import com.uade.tpo.E_Commerce.entity.dto.FailedResponse;
+import com.uade.tpo.E_Commerce.entity.dto.Orders;
 import com.uade.tpo.E_Commerce.entity.dto.SuccesResponse;
 import com.uade.tpo.E_Commerce.service.Delivery_StatusServiceImpl;
+import org.hibernate.query.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
@@ -21,6 +24,16 @@ public class Delivery_StatusController {
 
     @Autowired
     private Delivery_StatusServiceImpl delivery_statusService;
+
+    @GetMapping("/orders/{id_user}")
+    public ResponseEntity<Object> getOrdersById(@PathVariable long id_user ){
+        Optional<ArrayList<Orders>> delivery_status=delivery_statusService.getAllOrdersById(id_user);
+        if (delivery_status.isPresent()){
+            return ResponseEntity.ok(delivery_status.get());
+        }
+        return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("There is no " +
+                "Delivery Status with this id"));
+    }
 
     @GetMapping("/{id_delivery}")
     public ResponseEntity<Object> getCategoryById(@PathVariable Long id_delivery){
@@ -81,5 +94,7 @@ public class Delivery_StatusController {
         return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("There is no " +
                 "Delivery Status with this id"));
     }
+
+
 
 }
