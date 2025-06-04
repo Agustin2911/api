@@ -1,5 +1,6 @@
 package com.uade.tpo.E_Commerce.controllers.auth;
 
+import jakarta.annotation.Nullable;
 import org.springframework.web.multipart.MultipartFile;
 
 public class SellerRegister extends  RegisterRequest{
@@ -10,6 +11,7 @@ public class SellerRegister extends  RegisterRequest{
     private String companyName;
     private String description;
     private String state;
+    @Nullable
     private MultipartFile file;
 
 

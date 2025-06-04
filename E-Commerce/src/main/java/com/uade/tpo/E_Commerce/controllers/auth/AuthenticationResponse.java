@@ -20,10 +20,15 @@ public class AuthenticationResponse {
     @JsonProperty("photo_url")
     private String photo_url;
 
-    public AuthenticationResponse(String accessToken,long id, String photo_url) {
+    @JsonProperty("type")
+    private String type;
+
+
+    public AuthenticationResponse(String accessToken,long id, String photo_url,String type) {
         this.accessToken = accessToken;
         this.id_user=id;
         this.photo_url=photo_url;
+        this.type=type;
     }
 
     public String getAccessToken() {
@@ -48,5 +53,13 @@ public class AuthenticationResponse {
 
     public void setPhoto_url(String photo_url) {
         this.photo_url = photo_url;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
