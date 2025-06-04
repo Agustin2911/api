@@ -52,6 +52,18 @@ public class Seller_UserController {
         }
     }
 
+    @GetMapping("/shops/{id}")
+    public ResponseEntity<Object> getCategoryAndSubCategoryById(@PathVariable long id) {
+        Optional<Object> respond = service.shopsById(id);
+        if (respond.isPresent()) {
+            return ResponseEntity.ok(respond.get());
+
+        } else {
+
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("there is no product by this id"));
+        }
+    }
+
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Object> createUser(@ModelAttribute newSeller_User user) throws IOException {
         MultipartFile file = user.getFile();

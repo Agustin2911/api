@@ -36,4 +36,8 @@ public interface Seller_UserRepository extends JpaRepository<Seller_User, Long> 
 
     @Query(value = "SELECT * FROM Seller_User ORDER BY id_user DESC LIMIT 1", nativeQuery = true)
     Optional<Seller_User> findLatest();
+
+    @Query(value = "select sh.* from seller_user su inner join company_shops cs on su.id_user = cs.id_user inner join" +
+            " shops sh on cs.id_shop = sh.id_shop where su.id_user = ?1", nativeQuery = true)
+    Optional<Object> findShopsByUserId(long id);
 }

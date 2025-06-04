@@ -60,4 +60,7 @@ public class Sub_CategoryServiceImpl implements Sub_CategoryService{
         }
     }
 
+    public Long getIdByName(String nameSubCategory) {
+        return sub_CategoryRepository.findIdByName(nameSubCategory);
+    }
 }

@@ -53,6 +53,15 @@ public class Sub_CategoryController {
                      .body("The Sub Category ID was not found.");
     }
 
+    @GetMapping("/name/{name_sub_category}")
+    public Long getIdByName(@PathVariable String name_sub_category) {
+        Long result = sub_CategoryService.getIdByName(name_sub_category);
+        if (result != null){
+            return result;
+        }
+        return 0L;
+    }
+
     @PostMapping
     public ResponseEntity<Object> createSubCategory(@RequestBody Sub_CategoryRequest sub_CategoryRequest){
         Sub_Category result = sub_CategoryService.createSubCategory(sub_CategoryRequest.getName_sub_category(), sub_CategoryRequest.getId_category());

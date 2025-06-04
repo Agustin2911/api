@@ -30,6 +30,7 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     @Query(value = "INSERT INTO Category (name_category) VALUES" + 
     "(?1)", nativeQuery = true)
     int createNewCategory(String name_category);
-    
 
+    @Query(value = "select c.id_category from category c where c.name_category = ?1", nativeQuery = true)
+    Long findIdByName(String nameCategory);
 }

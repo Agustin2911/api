@@ -32,4 +32,7 @@ public interface Sub_CategoryRepository extends JpaRepository<Sub_Category, Long
     "(?1, ?2)", nativeQuery = true)
     int createNewSub_Category(Long id_category, String name_sub_category);
 
+    @Query(value = "select sc.id_sub_category from sub_category sc where sc.name_sub_category = ?1",
+            nativeQuery = true)
+    Long findIdByName(String nameSubCategory);
 }

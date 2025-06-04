@@ -125,4 +125,7 @@ public class ProductService implements  ProductImp{
     }
 
 
+    public Long getIdByName(String nameProduct) {
+        return repository.findIdByName(nameProduct);
+    }
 }
