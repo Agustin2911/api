@@ -93,25 +93,42 @@ public class ProductController{
         }
     }
 
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<Object> postProduct( @ModelAttribute ProductData productData) throws IOException {
-        String filePath = UPLOAD_DIR + System.currentTimeMillis() + "_" + productData.getFile().getOriginalFilename();
-        Optional<Product> product_created = service.createProducts(productData.getProduct_name(), filePath, productData.getPrice(), productData.getDescription(), productData.getDiscount_state(), productData.getDiscount(), productData.getId_sub_category());
-
-        if (product_created.isPresent()) {
-            File uploadDir = new File(UPLOAD_DIR);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdirs();
-            }
-
-            File destination = new File(filePath);
-            productData.getFile().transferTo(destination);
+    @GetMapping("/name/{name_product}")
+    public Long getIdByName(@PathVariable String name_product) {
+        Long result = service.getIdByName(name_product);
+        if (result != null){
+            return result;
+        }
+        return 0L;
+    }
 
 
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> postProduct( @RequestBody ProductData productData) throws IOException {
+                                                            String name = productData.getProduct_name();
+                                                            String photoUrl = productData.getPhoto_url();
+                                                            int price = productData.getPrice();
+                                                            String description = productData.getDescription();
+                                                            String discountState = productData.getDiscount_state();
+                                                            int discount = productData.getDiscount();
+                                                            long subCategoryId = productData.getId_sub_category();
+        Optional<Product> productCreated = service.createProducts(
+                name,
+                photoUrl,
+                price,
+                description,
+                discountState,
+                discount,
+                subCategoryId
 
-            return ResponseEntity.ok(product_created.get());
+        );
+
+        if (productCreated.isPresent()) {
+            return ResponseEntity.ok(productCreated.get());
         } else {
-            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("the system couldn't create the new product"));
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
+                    .body(new FailedResponse("the system couldn't create the new product"));
         }
 
 

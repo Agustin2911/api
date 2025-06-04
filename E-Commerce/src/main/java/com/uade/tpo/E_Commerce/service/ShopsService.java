@@ -105,4 +105,8 @@ public class ShopsService implements ShopsImp {
         }
 
     }
+
+    public Long getIdByName(String street) {
+        return repository.findIdByName(street);
+    }
 }

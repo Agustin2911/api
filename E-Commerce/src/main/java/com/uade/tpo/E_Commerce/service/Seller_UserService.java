@@ -92,4 +92,8 @@ public class Seller_UserService implements Seller_UserServiceImp {
             return false;
         }
     }
+
+    public Optional<Object> shopsById(long id) {
+        return repository.findShopsByUserId(id);
+    }
 }

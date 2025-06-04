@@ -44,6 +44,15 @@ public class ShopsController {
         }
     }
 
+    @GetMapping("/street/{street}")
+    public Long getIdByName(@PathVariable String street) {
+        Long result = service.getIdByName(street);
+        if (result != null){
+            return result;
+        }
+        return 0L;
+    }
+
     @PostMapping
     public ResponseEntity<Object> postSHop(@RequestBody ShopsData shop){
 

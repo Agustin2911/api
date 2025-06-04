@@ -56,6 +56,15 @@ public class CategoryController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                      .body("The Category ID was not found.");
     }
+
+    @GetMapping("/name/{name_category}")
+    public Long getIdByName(@PathVariable String name_category) {
+        Long result = categoryService.getIdByName(name_category);
+        if (result != null){
+            return result;
+        }
+        return 0L;
+    }
     
     @PostMapping
     public ResponseEntity<Object> createCategory(@RequestBody CategoryRequest categoryRequest) { 

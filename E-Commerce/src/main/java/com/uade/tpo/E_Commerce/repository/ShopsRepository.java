@@ -40,4 +40,6 @@ public interface ShopsRepository extends JpaRepository<Shops,Long> {
     @Query(value="delete from Shops where id_shop=?1 ",nativeQuery = true)
     public int DeleteShop(long id_shop);
 
+    @Query(value = "select s.id_shop from shops s where s.street = ?1", nativeQuery = true)
+    Long findIdByName(String street);
 }

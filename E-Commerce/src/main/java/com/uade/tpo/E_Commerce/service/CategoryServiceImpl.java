@@ -61,4 +61,7 @@ public class CategoryServiceImpl implements CategoryService{
         }
     }
 
+    public Long getIdByName(String nameCategory) {
+        return categoryRepository.findIdByName(nameCategory);
+    }
 }
