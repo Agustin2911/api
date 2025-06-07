@@ -45,7 +45,7 @@ public class Basic_UserController {
         }
     }
 
-    /*@PostMapping
+    @PostMapping
     public ResponseEntity<Object> createUser(@RequestBody newBasic_user user) {
         Optional<Basic_User> created = service.createUser(user);
         if (created.isPresent()) {
@@ -54,7 +54,7 @@ public class Basic_UserController {
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
                     .body(new FailedResponse("User could not be created"));
         }
-    }*/
+    }
 
     @PutMapping
     public ResponseEntity<Object> updateUser(@RequestBody Basic_User user) {
