@@ -113,7 +113,7 @@ public class StockService implements  StockImp{
         Optional<Shop_Stock> shop=repository2.searchByProductIdAndShopId(id,id_shop);
 
         if(!stock.isPresent() || !shop.isPresent()){
-            return Optional.empty();
+            return Optional.empty();    
         }
 
         else{

@@ -113,7 +113,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/product/name/{name_product}").permitAll()
                         .requestMatchers(HttpMethod.GET, "/categories/name/{name_category}").permitAll()
                         .requestMatchers(HttpMethod.GET, "/shops/street/{street}").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/seller_user/shops/{id_seller}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/seller_user/shops/{id_seller}").hasAnyAuthority(Role.SELLER.name())
                         .requestMatchers(HttpMethod.GET, "/images/**").permitAll()
                         .anyRequest()
                         .authenticated())
