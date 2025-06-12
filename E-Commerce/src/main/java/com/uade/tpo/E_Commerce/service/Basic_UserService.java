@@ -1,4 +1,5 @@
 package com.uade.tpo.E_Commerce.service;
+import com.uade.tpo.E_Commerce.entity.dto.UserRolesRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import com.uade.tpo.E_Commerce.entity.Basic_User;
@@ -34,6 +35,10 @@ public class Basic_UserService implements Basic_UserImp{
     @Override
     public Optional<Basic_User> getById(long id) {
         return repository.findByIdUser(id);
+    }
+
+    public Optional<List<UserRolesRequest>> getRolesOfUsers() {
+        return repository.findRolesOfUsers();
     }
 
     @Override
@@ -83,7 +88,6 @@ public class Basic_UserService implements Basic_UserImp{
             return false;
         }
     }
-
 
 
 

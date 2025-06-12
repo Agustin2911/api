@@ -32,6 +32,10 @@ import com.uade.tpo.E_Commerce.repository.Basic_UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
@@ -84,6 +88,18 @@ public class AuthenticationService {
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
         this.authenticationManager = authenticationManager;
+    }
+
+    @Configuration
+    public class PasswordHashGenerator {
+
+        @Bean
+        public CommandLineRunner generateAdminHash(PasswordEncoder passwordEncoder) {
+            return args -> {
+                // Aquí imprime el hash de tu contraseña de admin
+                System.out.println("Admin hash: " + passwordEncoder.encode("admin"));
+            };
+        }
     }
 
     @Transactional
@@ -158,11 +174,21 @@ public class AuthenticationService {
             return new AuthenticationResponse(jwtToken,seller_user.get().getId(),seller_user.get().getPhoto_url(),"seller");
 
         }
-        else {
-            Optional<Buyer_User> buyer_user=buyer_repository.findByIdUser(user.get().getId_user());
+        Optional<Buyer_User> buyer_user=buyer_repository.findByIdUser(user.get().getId_user());
+        if (buyer_user.isPresent()) {
             var jwtToken = jwtService.generateToken(new UserPrincipal(user.get()));
             return new AuthenticationResponse(jwtToken,user.get().getId_user(),buyer_user.get().getPhoto_url(),"buyer");
 
+        }
+        else {
+            var jwtToken = jwtService.generateToken(new UserPrincipal(user.get()));
+            // Si tu entidad Basic_User no tiene foto, pásale null o un default
+            return new AuthenticationResponse(
+                    jwtToken,
+                    user.get().getId_user(),
+                    "",  // o null
+                    "admin"
+            );
         }
     }
 

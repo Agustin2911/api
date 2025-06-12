@@ -39,9 +39,10 @@ public class SecurityConfig {
         http
                 .cors(cors -> {})
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(req -> req.requestMatchers("/api/v1/auth/**").permitAll()
+                .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.POST,"/api/v1/auth/**").permitAll()
                         .requestMatchers("/error/**").permitAll()
-                        .requestMatchers(HttpMethod.GET,"/basic_user").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/basic_user").hasAnyAuthority(Role.ADMIN.name())
+                        .requestMatchers(HttpMethod.GET,"/basic_user/roles").hasAnyAuthority(Role.ADMIN.name())
                         .requestMatchers(HttpMethod.POST,"/basic_user").permitAll()
                         .requestMatchers(HttpMethod.DELETE,"/basic_user/{id}").hasAnyAuthority(Role.ADMIN.name())
                         .requestMatchers(HttpMethod.GET,"/buyer_user").hasAnyAuthority(Role.ADMIN.name())
@@ -99,10 +100,12 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/sale/{id}").hasAnyAuthority(Role.BUYER.name())
                         .requestMatchers(HttpMethod.DELETE, "/sale/{id}").hasAnyAuthority(Role.BUYER.name())
                         .requestMatchers(HttpMethod.DELETE, "/sale/{id}").hasAnyAuthority(Role.SELLER.name())
-                        .requestMatchers(HttpMethod.GET, "/seller_user").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/seller_user").hasAnyAuthority(Role.ADMIN.name())
                         .requestMatchers(HttpMethod.GET, "/seller_user/{id}").permitAll()
                         .requestMatchers(HttpMethod.POST, "/seller_user").permitAll()
-                        .requestMatchers(HttpMethod.PUT, "/seller_user").hasAnyAuthority(Role.SELLER.name())
+                        .requestMatchers(HttpMethod.PUT, "/seller_user").hasAnyAuthority(Role.SELLER.name(),
+                                Role.ADMIN.name())
+
                         .requestMatchers(HttpMethod.DELETE, "/seller_user/{id}").hasAnyAuthority(Role.SELLER.name())
                         .requestMatchers(HttpMethod.GET, "/sub_categories").permitAll()
                         .requestMatchers(HttpMethod.GET, "/sub_categories/{id}").permitAll()

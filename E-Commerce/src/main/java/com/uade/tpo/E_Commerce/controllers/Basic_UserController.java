@@ -3,6 +3,7 @@ package com.uade.tpo.E_Commerce.controllers;
 import com.uade.tpo.E_Commerce.entity.Basic_User;
 import com.uade.tpo.E_Commerce.entity.dto.FailedResponse;
 import com.uade.tpo.E_Commerce.entity.dto.SuccesResponse;
+import com.uade.tpo.E_Commerce.entity.dto.UserRolesRequest;
 import com.uade.tpo.E_Commerce.entity.dto.newBasic_user;
 
 import com.uade.tpo.E_Commerce.service.Basic_UserService;
@@ -28,6 +29,17 @@ public class Basic_UserController {
         Optional<List<Basic_User>> users = service.getAll();
         if (users.isPresent()) {
             return ResponseEntity.ok(users);
+        } else {
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
+                    .body(new FailedResponse("No users found"));
+        }
+    }
+
+    @GetMapping("/roles")
+    public ResponseEntity<?> getRolesOfUsers() {
+        Optional<List<UserRolesRequest>> roles = service.getRolesOfUsers();
+        if (roles.isPresent()) {
+            return ResponseEntity.ok(roles);
         } else {
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
                     .body(new FailedResponse("No users found"));
