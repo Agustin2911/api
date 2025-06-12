@@ -3,6 +3,7 @@ package com.uade.tpo.E_Commerce.controllers;
 import com.uade.tpo.E_Commerce.entity.Basic_User;
 import com.uade.tpo.E_Commerce.entity.dto.FailedResponse;
 import com.uade.tpo.E_Commerce.entity.dto.SuccesResponse;
+import com.uade.tpo.E_Commerce.entity.dto.UserRolesRequest;
 import com.uade.tpo.E_Commerce.entity.dto.newBasic_user;
 
 import com.uade.tpo.E_Commerce.service.Basic_UserService;
@@ -34,6 +35,17 @@ public class Basic_UserController {
         }
     }
 
+    @GetMapping("/roles")
+    public ResponseEntity<?> getRolesOfUsers() {
+        Optional<List<UserRolesRequest>> roles = service.getRolesOfUsers();
+        if (roles.isPresent()) {
+            return ResponseEntity.ok(roles);
+        } else {
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
+                    .body(new FailedResponse("No users found"));
+        }
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> getUserById(@PathVariable long id) {
         Optional<Basic_User> user = service.getById(id);
@@ -45,7 +57,7 @@ public class Basic_UserController {
         }
     }
 
-    /*@PostMapping
+    @PostMapping
     public ResponseEntity<Object> createUser(@RequestBody newBasic_user user) {
         Optional<Basic_User> created = service.createUser(user);
         if (created.isPresent()) {
@@ -54,7 +66,7 @@ public class Basic_UserController {
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
                     .body(new FailedResponse("User could not be created"));
         }
-    }*/
+    }
 
     @PutMapping
     public ResponseEntity<Object> updateUser(@RequestBody Basic_User user) {

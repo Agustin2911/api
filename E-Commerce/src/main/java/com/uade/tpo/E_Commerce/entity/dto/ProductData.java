@@ -8,7 +8,7 @@ public class ProductData {
 
 
     private String product_name;
-    private String photo_url;
+    private MultipartFile photo_url;
     private int price;
     private String description;
     private String discount_state;
@@ -16,7 +16,7 @@ public class ProductData {
     private long id_sub_category;
 
 
-    public ProductData(String product_name, String photo_url, int price, String description, String discount_state, int discount, long id_sub_category) {
+    public ProductData(String product_name, MultipartFile photo_url, int price, String description, String discount_state, int discount, long id_sub_category) {
         this.product_name = product_name;
         this.photo_url = photo_url;
         this.price = price;
@@ -31,7 +31,7 @@ public class ProductData {
         return product_name;
     }
 
-    public String getPhoto_url() {
+    public MultipartFile getPhoto_url() {
         return photo_url;
     }
 

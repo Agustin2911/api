@@ -12,12 +12,18 @@ public class WebConfig implements WebMvcConfigurer {
         // Aquí mapeamos la URL /images/** a la carpeta donde están las imágenes
         registry.addResourceHandler("/images/products/**")
                 .addResourceLocations("file:C:/Users/Admin/Documents/carpeta agus/uade/apis/api/E-Commerce/src/main/java" +
+                        "/com/uade/tpo/E_Commerce/images/products/")
+                .addResourceLocations("file:C:/Users/Tomas/Escritorio/tpo_apis/api/E-Commerce/src/main/java" +
                         "/com/uade/tpo/E_Commerce/images/products/");
         registry.addResourceHandler("/images/buyer_user/**")
                 .addResourceLocations("file:C:/Users/Admin/Documents/carpeta agus/uade/apis/api/E-Commerce/src/main/java" +
-                        "/com/uade/tpo/E_Commerce/images/buyer_user/");
+                        "/com/uade/tpo/E_Commerce/images/buyer_user/")
+        .addResourceLocations("file:C:/Users/Tomas/Escritorio/tpo_apis/api/E-Commerce/src/main/java" +
+                "/com/uade/tpo/E_Commerce/images/buyer_user/");
         registry.addResourceHandler("/images/seller_user/**")
                 .addResourceLocations("file:C:/Users/Admin/Documents/carpeta agus/uade/apis/api/E-Commerce/src/main/java" +
+                        "/com/uade/tpo/E_Commerce/images/seller_users/")
+                .addResourceLocations("file:C:/Users/Tomas/Escritorio/tpo_apis/api/E-Commerce/src/main/java" +
                         "/com/uade/tpo/E_Commerce/images/seller_users/");
     }
 }

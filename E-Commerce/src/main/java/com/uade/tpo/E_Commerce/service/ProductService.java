@@ -73,7 +73,8 @@ public class ProductService implements  ProductImp{
         }
 
         repository.CreateProduct(name, photo_url, price, description, discount_state, discount);
-        Optional<Product> product= repository.productsByAtribiutes(name, photo_url, price, description, discount_state, discount);
+        Optional<Product> product = repository.productsByAtribiutes(name, photo_url, price, description,
+                discount_state, discount);
 
         if (product.isPresent()){
 

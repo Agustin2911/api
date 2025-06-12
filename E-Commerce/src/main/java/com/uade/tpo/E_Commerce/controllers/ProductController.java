@@ -13,10 +13,14 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -103,17 +107,35 @@ public class ProductController{
     }
 
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> postProduct( @RequestBody ProductData productData) throws IOException {
-                                                            String name = productData.getProduct_name();
-                                                            String photoUrl = productData.getPhoto_url();
-                                                            int price = productData.getPrice();
-                                                            String description = productData.getDescription();
-                                                            String discountState = productData.getDiscount_state();
-                                                            int discount = productData.getDiscount();
-                                                            long subCategoryId = productData.getId_sub_category();
-        Optional<Product> productCreated = service.createProducts(
+    @PostMapping(
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Object> postProduct(
+            @RequestParam("product_name")   String name,
+            @RequestParam("price")          int price,
+            @RequestParam("description")    String description,
+            @RequestParam("discount_state") String discountState,
+            @RequestParam("discount")       int discount,
+            @RequestParam("id_sub_category") long subCategoryId,
+            @RequestPart("photo_url")           MultipartFile photo_url
+    ) throws IOException {
+        // 1) Guarda la imagen en disco
+        String filename = System.currentTimeMillis() + "_" + photo_url.getOriginalFilename();
+        Path target = Paths.get(UPLOAD_DIR).resolve(filename);
+        Files.createDirectories(target.getParent());
+        photo_url.transferTo(target.toFile());
+
+        // 2) Construye la URL pública desde donde se servirá la imagen
+        //    Puedes usar ServletUriComponentsBuilder o concatenar manualmente:
+        String photoUrl = ServletUriComponentsBuilder
+                .fromCurrentContextPath()
+                .path("/images/products/")
+                .path(filename)
+                .toUriString();
+
+        // 3) Llama al service con la URL de la foto (string) y resto de campos
+        Optional<Product> created = service.createProducts(
                 name,
                 photoUrl,
                 price,
@@ -121,17 +143,16 @@ public class ProductController{
                 discountState,
                 discount,
                 subCategoryId
-
         );
 
-        if (productCreated.isPresent()) {
-            return ResponseEntity.ok(productCreated.get());
+        // 4) Responde según el resultado
+        if (created.isPresent()) {
+            return ResponseEntity.ok(created.get());
         } else {
-            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
+            return ResponseEntity
+                    .status(HttpStatus.PRECONDITION_FAILED)
                     .body(new FailedResponse("the system couldn't create the new product"));
         }
-
-
     }
 
     @PutMapping
