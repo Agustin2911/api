@@ -52,8 +52,8 @@ public class SaleServiceImpl implements SaleService {
                 Long new_sale_id = new_sale.getId_sale();
 
                 for (ItemsRequest item : items) {
-                    itemsRepository.createNewItem(item.getId_product(), new_sale_id, -item.getAmount());
-                    stockService.modifyStock(item.getId_product(), id_shop, item.getAmount());
+                    itemsRepository.createNewItem(item.getId_product(), new_sale_id, item.getAmount());
+                    stockService.modifyStock(item.getId_product(),  item.getAmount());
                 }
 
                 int new_delivery = delivery_statusRepository.createNewDeliveryStatus(new_sale_id, delivery_type,

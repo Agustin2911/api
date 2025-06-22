@@ -15,4 +15,28 @@ public class UserRolesRequest {
         this.role_name = roleName;
     }
 
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public String getRole_name() {
+        return role_name;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public void setRole_name(String role_name) {
+        this.role_name = role_name;
+    }
 }

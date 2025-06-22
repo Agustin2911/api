@@ -94,7 +94,7 @@ public class StockController {
 
     @PutMapping
     public  ResponseEntity<Object> modifyStock(@RequestBody Shop_Stock data){
-        Optional<Product_Stock> stock = service.modifyStock(data.getId().getId_product(),data.getId().getId_shop(),
+        Optional<Product_Stock> stock = service.modifyStock(data.getId().getId_product(),
                 data.getStock());
         if (stock.isPresent()){
             return  ResponseEntity.ok(stock.get());

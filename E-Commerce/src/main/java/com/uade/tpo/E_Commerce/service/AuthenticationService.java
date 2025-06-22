@@ -237,7 +237,7 @@ public class AuthenticationService {
         logger.info("aca deberia estar la foto: "+String.valueOf(file));
         if (file != null) {
             new_name=System.currentTimeMillis() + "_" + file.getOriginalFilename();
-            filePath = UPLOAD_DIR_seller + new_name;
+            filePath = UPLOAD_DIR_buyer + new_name;
 
             logger.info("pase");
             File uploadDir = new File(UPLOAD_DIR_buyer);
