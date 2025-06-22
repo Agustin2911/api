@@ -107,12 +107,11 @@ public class StockService implements  StockImp{
     //se introduce +5 en new stock si hay 5 nuevas unidades o -5 si salieron 5 unidades
     @Transactional
     @Override
-    public Optional<Product_Stock> modifyStock(long id, long id_shop, int new_stock) {
+    public Optional<Product_Stock> modifyStock(long id, int new_stock) {
 
         Optional<Product_Stock> stock=repository1.searchStock(id);
-        Optional<Shop_Stock> shop=repository2.searchByProductIdAndShopId(id,id_shop);
 
-        if(!stock.isPresent() || !shop.isPresent()){
+        if(!stock.isPresent()){
             return Optional.empty();    
         }
 
@@ -122,9 +121,6 @@ public class StockService implements  StockImp{
             repository1.modifyStock(id,stock.get().getStock()+new_stock);
             entityManager.flush();
 
-            repository2.updateShop_stock(id,id_shop,shop.get().getStock()+new_stock);
-            entityManager.flush();
-            entityManager.clear();
 
             Optional<Product_Stock> product_stock =repository1.searchStock(id);
 
