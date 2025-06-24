@@ -1,5 +1,6 @@
 package com.uade.tpo.E_Commerce.repository;
 
+import com.uade.tpo.E_Commerce.entity.Product;
 import com.uade.tpo.E_Commerce.entity.Seller_User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -18,6 +19,11 @@ public interface Seller_UserRepository extends JpaRepository<Seller_User, Long> 
 
     @Query(value = "SELECT * FROM Seller_User WHERE id_user = ?1", nativeQuery = true)
     Optional<Seller_User> findByIdUser(long id);
+
+    @Query(value = "select p.* from product p inner join product_stock ps on p.id_product = ps.id_product inner " +
+            "join shop_stock ss on ps.id_product = ss.id_product inner join shops s on ss.id_shop = s.id_shop inner " +
+            "join company_shops cs on s.id_shop = cs.id_shop inner join seller_user su on cs.id_user = ?1", nativeQuery = true)
+    Optional<List<Product>> findProductsOfSeller(Long id);
 
     @Modifying
     @Transactional
@@ -40,4 +46,6 @@ public interface Seller_UserRepository extends JpaRepository<Seller_User, Long> 
     @Query(value = "select sh.* from seller_user su inner join company_shops cs on su.id_user = cs.id_user inner join" +
             " shops sh on cs.id_shop = sh.id_shop where su.id_user = ?1", nativeQuery = true)
     Optional<Object> findShopsByUserId(long id);
+
+
 }
