@@ -47,7 +47,6 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<Review> review_list;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "product")
     private List<Sub_categoryProduct> sub_categoryProductList;
 
