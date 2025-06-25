@@ -4,6 +4,7 @@ package com.uade.tpo.E_Commerce.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.uade.tpo.E_Commerce.entity.dto.CompoundKeySub_categoryProduct;
 import com.uade.tpo.E_Commerce.entity.Product;
 import jakarta.persistence.*;
@@ -14,7 +15,7 @@ import lombok.Data;
 public class Sub_categoryProduct {
 
     public Sub_categoryProduct(){}
-
+    @JsonIgnore
     @EmbeddedId
     private CompoundKeySub_categoryProduct id;
 
@@ -23,6 +24,7 @@ public class Sub_categoryProduct {
     @JoinColumn(name="id_sub_category")
     private Sub_Category sub_category;
 
+    @JsonIgnore
     @ManyToOne
     @MapsId("id_product")
     @JoinColumn(name="id_product")
