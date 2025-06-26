@@ -1,6 +1,7 @@
 package com.uade.tpo.E_Commerce.service;
 
 import com.uade.tpo.E_Commerce.entity.Company_Shops;
+import com.uade.tpo.E_Commerce.entity.Product;
 import com.uade.tpo.E_Commerce.entity.Sale;
 import com.uade.tpo.E_Commerce.entity.Seller_User;
 import com.uade.tpo.E_Commerce.entity.dto.newSeller_User;
@@ -46,6 +47,10 @@ public class Seller_UserService implements Seller_UserServiceImp {
     @Override
     public Optional<Seller_User> getById(long id) {
         return repository.findByIdUser(id);
+    }
+
+    public Optional<List<Product>> getProductsOfSeller(Long id) {
+        return repository.findProductsOfSeller(id);
     }
 
     @Override
@@ -96,4 +101,6 @@ public class Seller_UserService implements Seller_UserServiceImp {
     public Optional<Object> shopsById(long id) {
         return repository.findShopsByUserId(id);
     }
+
+
 }
