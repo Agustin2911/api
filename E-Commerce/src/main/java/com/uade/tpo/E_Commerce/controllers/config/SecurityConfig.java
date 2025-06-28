@@ -89,6 +89,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT,"/shops").hasAnyAuthority(Role.SELLER.name())
                         .requestMatchers(HttpMethod.DELETE,"/shops/{id}").hasAnyAuthority(Role.SELLER.name())
                         .requestMatchers(HttpMethod.GET,"/stock/getLocation/{id}").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/stock/all").hasAnyAuthority(Role.SELLER.name())
                         .requestMatchers(HttpMethod.POST,"/stock").hasAnyAuthority(Role.SELLER.name())
                         .requestMatchers(HttpMethod.POST,"/stock/shop_stock").hasAnyAuthority(Role.SELLER.name())
                         .requestMatchers(HttpMethod.PUT,"/stock").permitAll()
