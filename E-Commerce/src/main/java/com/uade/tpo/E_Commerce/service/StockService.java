@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -36,6 +37,10 @@ public class StockService implements  StockImp{
         }
 
         return Optional.empty();
+    }
+
+    public Optional<List<Product_Stock>> getAllStocks() {
+        return repository1.findAllStocks();
     }
 
     @Transactional
@@ -120,7 +125,7 @@ public class StockService implements  StockImp{
 
             repository1.modifyStock(id,stock.get().getStock()+new_stock);
             entityManager.flush();
-
+            entityManager.clear();
 
             Optional<Product_Stock> product_stock =repository1.searchStock(id);
 
@@ -148,6 +153,7 @@ public class StockService implements  StockImp{
         }
 
     }
+
 
 
 }

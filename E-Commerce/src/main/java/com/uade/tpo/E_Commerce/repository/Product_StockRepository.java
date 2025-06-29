@@ -6,12 +6,17 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 import java.util.Optional;
 
 public interface Product_StockRepository extends JpaRepository<Product_Stock, Product> {
 
     @Query(value="select * from product_stock where id_product=?1 ",nativeQuery = true)
     public Optional<Product_Stock> searchStock(long id);
+
+    @Query(value = "select * from product_stock", nativeQuery = true)
+    Optional<List<Product_Stock>> findAllStocks();
 
     @Modifying
     @Transactional
@@ -33,5 +38,6 @@ public interface Product_StockRepository extends JpaRepository<Product_Stock, Pr
     @Transactional
     @Query(value="delete from product_stock where id_product= ?1 ",nativeQuery = true)
     public  int deleteProductStock(long id);
+
 
 }

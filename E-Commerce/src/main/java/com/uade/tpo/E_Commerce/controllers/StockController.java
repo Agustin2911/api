@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -35,6 +36,23 @@ public class StockController {
         else{
 
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("there are no products with this id or you didn't registe the stock of it"));
+        }
+
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity <Object> getListOfStocks(){
+
+        Optional<List<Product_Stock>> stocks = service.getAllStocks();
+
+        if(stocks.isPresent()){
+
+            return ResponseEntity.ok(stocks.get());
+        }
+        else{
+
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(new FailedResponse("something went " +
+                    "wrong when searching for product stocks"));
         }
 
     }
