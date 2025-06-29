@@ -24,6 +24,11 @@ public class Review {
 
     @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "id_user", nullable = false)
+    private Buyer_User buyer_user;
+
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "id_product",nullable = false)
     private Product product;
 
@@ -38,6 +43,8 @@ public class Review {
     public int getStars() {
         return stars;
     }
+
+    public Buyer_User getBuyer_User() {return buyer_user; }
 
     public Product getProduct() {
         return product;

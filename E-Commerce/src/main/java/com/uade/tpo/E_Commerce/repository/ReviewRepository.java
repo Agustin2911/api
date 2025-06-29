@@ -20,9 +20,12 @@ public interface ReviewRepository extends JpaRepository<Review,Long> {
     @Query(value = "select * from review where id_product=?3  and text=?1 and stars=?2 ",nativeQuery = true)
     public Optional<ArrayList<Review>> ReviewById(String text,int stars,long id_product);
 
+    @Query(value = "SELECT COUNT(r.id_product) FROM review r WHERE r.id_user = ?1 AND r.id_product = ?2", nativeQuery = true)
+    public int checkReview(long id_user, long id_product);
+
     @Modifying
     @Transactional
-    @Query(value="insert into Review (text,stars,id_product) values(?1 , ?2  , ?3)",nativeQuery = true)
-    public int createReview(String text, int Stars , Long id_product);
+    @Query(value="insert into Review (text,stars,id_product,id_user) values(?1 , ?2  , ?3, ?4)",nativeQuery = true)
+    public int createReview(String text, int Stars , Long id_product, long id_user);
 
 }

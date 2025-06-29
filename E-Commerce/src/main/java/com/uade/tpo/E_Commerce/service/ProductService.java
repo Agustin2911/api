@@ -110,9 +110,9 @@ public class ProductService implements  ProductImp{
         if(!product.isPresent()){
             return  true;
         }
-        repository3.deleteProductStock(id_product);
-        repository4.deleteShop_stock(id_product);
-        repository2.deleteProduct(id_product);
+        repository.deleteShopStock(id_product);
+        repository.deleteStock(id_product);
+        repository.deleteSubCategoryProduct(id_product);
         repository.deleteProduct(id_product);
         Optional<Product> respond=repository.productByID(id_product);
 

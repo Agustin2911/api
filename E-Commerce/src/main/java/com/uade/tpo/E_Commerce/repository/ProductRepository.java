@@ -50,6 +50,21 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     @Query(value = "delete from product where id_product=?1 ",nativeQuery = true)
     public int deleteProduct(long id);
 
+    @Modifying
+    @Transactional
+    @Query(value = "delete from shop_stock where id_product=?1 ",nativeQuery = true)
+    public int deleteShopStock(long id);
+
+    @Modifying
+    @Transactional
+    @Query(value = "delete from product_stock where id_product=?1 ",nativeQuery = true)
+    public int deleteStock(long id);
+
+    @Modifying
+    @Transactional
+    @Query(value = "delete from sub_category_product where id_product=?1 ",nativeQuery = true)
+    public int deleteSubCategoryProduct(long id);
+
     @Query(value = "select p.id_product from product p where p.product_name = ?1", nativeQuery = true)
     Long findIdByName(String nameProduct);
 }

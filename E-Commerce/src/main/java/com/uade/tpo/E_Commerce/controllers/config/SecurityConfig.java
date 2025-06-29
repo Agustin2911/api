@@ -75,6 +75,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE,"/product/{id}").hasAnyAuthority(Role.ADMIN.name())
                         .requestMatchers(HttpMethod.GET,"/review/{id_product}").permitAll()
                         .requestMatchers(HttpMethod.POST,"/review").hasAnyAuthority(Role.BUYER.name())
+                        .requestMatchers(HttpMethod.GET, "/review/can-post-review/{id_product}/{id_user}").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/review/already-reviewed/{id_product}/{id_user}").hasAnyAuthority(Role.BUYER.name())
                         .requestMatchers(HttpMethod.GET,"/roles").hasAnyAuthority(Role.ADMIN.name())
                         .requestMatchers(HttpMethod.GET,"/roles/{id}").permitAll()
                         .requestMatchers(HttpMethod.POST,"/roles").hasAnyAuthority(Role.ADMIN.name())
