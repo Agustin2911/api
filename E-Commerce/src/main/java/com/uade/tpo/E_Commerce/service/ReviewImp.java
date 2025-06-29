@@ -11,4 +11,7 @@ public interface ReviewImp {
 
     public Optional<ArrayList<Review>> CreateReview(String text, int stars,long id_product,long id_user);
 
+    public boolean hasUserPurchased(long id_product, long id_user);
+
+    public boolean alreadyReviewed(long id_user, long id_product);
 }

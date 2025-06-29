@@ -41,7 +41,7 @@ public class ReviewService implements ReviewImp{
             return Optional.empty();
         }
 
-        repository.createReview(text,stars,id_product);
+        repository.createReview(text,stars,id_product, id_user);
         Optional<ArrayList<Review>> review=repository.ReviewById(text, stars, id_product);
         if(review.isPresent()){
 
@@ -50,5 +50,15 @@ public class ReviewService implements ReviewImp{
         else {
             return Optional.empty();
         }
+    }
+
+    @Override
+    public boolean hasUserPurchased(long id_product, long id_user) {
+        return repository.VerifyTheSale(id_product, id_user) > 0;
+    }
+
+    @Override
+    public boolean alreadyReviewed(long id_user, long id_product) {
+        return repository.checkReview(id_user, id_product) > 0;
     }
 }

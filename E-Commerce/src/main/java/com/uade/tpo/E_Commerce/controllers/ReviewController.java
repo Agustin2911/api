@@ -28,6 +28,20 @@ public class ReviewController {
         }
     }
 
+    @GetMapping("/can-post-review/{id_product}/{id_user}")
+    public ResponseEntity<Boolean> canPostReview(@PathVariable long id_product, @PathVariable long id_user) {
+
+        boolean canReview = service.hasUserPurchased(id_product, id_user);
+        return ResponseEntity.ok(canReview);
+    }
+
+    @GetMapping("/already-reviewed/{id_product}/{id_user}")
+    public ResponseEntity<Boolean> alreadyReviewed(@PathVariable long id_user, @PathVariable long id_product) {
+
+        boolean alreadyReviewed = service.alreadyReviewed(id_user, id_product);
+        return ResponseEntity.ok(alreadyReviewed);
+    }
+
     @PostMapping
     public ResponseEntity<Object> postReview(@RequestBody ReviewData review) {
 
