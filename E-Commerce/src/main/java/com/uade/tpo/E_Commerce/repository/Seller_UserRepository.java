@@ -22,7 +22,7 @@ public interface Seller_UserRepository extends JpaRepository<Seller_User, Long> 
 
     @Query(value = "select p.* from product p inner join product_stock ps on p.id_product = ps.id_product inner " +
             "join shop_stock ss on ps.id_product = ss.id_product inner join shops s on ss.id_shop = s.id_shop inner " +
-            "join company_shops cs on s.id_shop = cs.id_shop inner join seller_user su on su.id_user = ?1",
+            "join company_shops cs on s.id_shop = cs.id_shop inner join seller_user su on su.id_user = cs.id_user where cs.id_user = ?1",
             nativeQuery = true)
     Optional<List<Product>> findProductsOfSeller(Long id);
 
