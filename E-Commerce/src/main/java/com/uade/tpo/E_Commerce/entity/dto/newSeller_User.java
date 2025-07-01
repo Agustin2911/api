@@ -6,7 +6,7 @@ public class newSeller_User {
 
     // Se incluye id_user, ya que es el identificador del Basic_User que se usará para el seller.
     private long id_user;
-    private int cuit;
+    private long cuit;
     private String companyName;
     private String description;
     private String state;
@@ -31,7 +31,7 @@ public class newSeller_User {
         return id_user;
     }
 
-    public int getCuit() {
+    public long getCuit() {
         return cuit;
     }
 
@@ -59,7 +59,7 @@ public class newSeller_User {
         this.id_user = id_user;
     }
 
-    public void setCuit(int cuit) {
+    public void setCuit(long cuit) {
         this.cuit = cuit;
     }
 

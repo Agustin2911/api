@@ -29,7 +29,7 @@ public class Seller_User {
     private Basic_User basic_user;
 
     @Column(name = "cuit", nullable = false)
-    private int cuit;
+    private long cuit;
 
     @Column(name = "company_name", length = 50)
     private String company_name;
@@ -56,7 +56,7 @@ public class Seller_User {
         return basic_user;
     }
 
-    public int getCuit() {
+    public long getCuit() {
         return cuit;
     }
 

@@ -7,7 +7,7 @@ public class SellerRegister extends  RegisterRequest{
 
 
 
-    private int cuit;
+    private long cuit;
     private String companyName;
     private String description;
     private String state;
@@ -20,7 +20,7 @@ public class SellerRegister extends  RegisterRequest{
     }
 
 
-    public int getCuit() {
+    public long getCuit() {
         return cuit;
     }
 
@@ -40,7 +40,7 @@ public class SellerRegister extends  RegisterRequest{
         return file;
     }
 
-    public void setCuit(int cuit) {
+    public void setCuit(long cuit) {
         this.cuit = cuit;
     }
 
