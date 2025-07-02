@@ -42,6 +42,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(req -> req.requestMatchers(HttpMethod.POST,"/api/v1/auth/**").permitAll()
                         .requestMatchers("/error/**").permitAll()
                         .requestMatchers(HttpMethod.GET,"/basic_user").hasAnyAuthority(Role.ADMIN.name())
+                        .requestMatchers(HttpMethod.POST,"/basic_user/mail").permitAll()
                         .requestMatchers(HttpMethod.GET,"/basic_user/roles").hasAnyAuthority(Role.ADMIN.name())
                         .requestMatchers(HttpMethod.POST,"/basic_user").permitAll()
                         .requestMatchers(HttpMethod.DELETE,"/basic_user/{id}").hasAnyAuthority(Role.ADMIN.name())

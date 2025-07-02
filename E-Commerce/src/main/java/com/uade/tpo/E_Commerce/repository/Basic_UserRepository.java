@@ -31,6 +31,9 @@ public interface Basic_UserRepository extends JpaRepository<Basic_User, Long> {
     @Query(value = "SELECT * FROM Basic_User WHERE mail = ?1", nativeQuery = true)
     Optional<Basic_User> findByMail(String mail);
 
+    @Query(value = "select id_user from basic_user where mail = ?1", nativeQuery = true)
+    Optional<Object> checkMail(String mail);
+
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO Basic_User(username, mail, password) VALUES (?1, ?2, ?3)", nativeQuery = true)
@@ -51,6 +54,7 @@ public interface Basic_UserRepository extends JpaRepository<Basic_User, Long> {
 
     @Query("SELECT u FROM basic_user u LEFT JOIN FETCH u.user_roles WHERE u.id_user = ?1")
     Optional<Basic_User> findWithRolesById( Long id);
+
 
 
 }
