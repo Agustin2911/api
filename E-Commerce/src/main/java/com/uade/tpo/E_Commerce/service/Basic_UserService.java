@@ -41,6 +41,10 @@ public class Basic_UserService implements Basic_UserImp{
         return repository.findRolesOfUsers();
     }
 
+    public Optional<Object> checkMail(String mail) {
+        return repository.checkMail(mail);
+    }
+
     @Override
     @Transactional
     public Optional<Basic_User> createUser(newBasic_user user) {

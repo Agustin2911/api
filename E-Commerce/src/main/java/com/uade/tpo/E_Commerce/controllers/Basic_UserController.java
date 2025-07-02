@@ -1,10 +1,7 @@
 package com.uade.tpo.E_Commerce.controllers;
 
 import com.uade.tpo.E_Commerce.entity.Basic_User;
-import com.uade.tpo.E_Commerce.entity.dto.FailedResponse;
-import com.uade.tpo.E_Commerce.entity.dto.SuccesResponse;
-import com.uade.tpo.E_Commerce.entity.dto.UserRolesRequest;
-import com.uade.tpo.E_Commerce.entity.dto.newBasic_user;
+import com.uade.tpo.E_Commerce.entity.dto.*;
 
 import com.uade.tpo.E_Commerce.service.Basic_UserService;
 import lombok.Data;
@@ -21,6 +18,8 @@ import java.util.Optional;
 @RequestMapping("/basic_user")
 public class Basic_UserController {
 
+
+
     @Autowired
     private Basic_UserService service;
 
@@ -33,6 +32,15 @@ public class Basic_UserController {
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED)
                     .body(new FailedResponse("No users found"));
         }
+    }
+
+    @PostMapping("/mail")
+    public ResponseEntity<Object> checkMail(@RequestBody MailRequest body) {
+        return service.checkMail(body.getMail())
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity
+                        .status(HttpStatus.PRECONDITION_FAILED)
+                        .body(new FailedResponse("No match for provided mail")));
     }
 
     @GetMapping("/roles")
